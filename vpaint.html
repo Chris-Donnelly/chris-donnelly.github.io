@@ -128,11 +128,11 @@
 				<p>Hardware used:</p>
 
 				<ul>
-					<li>Windows 10 PC, with NVidia GeForce 980 graphics
-					<li>Kinect sensor for XBOX One <a href="https://www.xbox.com/en-GB/xbox-one/accessories/kinect" target="new">&#x1F5D7;<a/>
-					<li>Kinect for Windows Adapter<a href="https://support.xbox.com/en-US/xbox-on-windows/accessories/kinect-for-windows-v2-setup" target="new">&#x1F5D7;</a>
-					<li>Leap Motion Controller <a href="https://www.leapmotion.com/product/#104" target="new">&#x1F5D7;</a>
-					<li>Oculus DK2 HMD and sensor <a href="https://www.eteknix.com/oculus-rift-dk2-vr-headset-review/" target="new">&#x1F5D7;</a>
+                    <li>Windows 10 PC, with NVidia GeForce 980 graphics</li>
+                    <li>Kinect sensor for XBOX One <a href="https://www.xbox.com/en-GB/xbox-one/accessories/kinect" target="new">&#x1F5D7;</a></li>
+                    <li>Kinect for Windows Adapter<a href="https://support.xbox.com/en-US/xbox-on-windows/accessories/kinect-for-windows-v2-setup" target="new">&#x1F5D7;</a></li>
+                    <li>Leap Motion Controller <a href="https://www.leapmotion.com/product/#104" target="new">&#x1F5D7;</a></li>
+                    <li>Oculus DK2 HMD and sensor <a href="https://www.eteknix.com/oculus-rift-dk2-vr-headset-review/" target="new">&#x1F5D7;</a></li>
 				</ul>
 
 
@@ -141,53 +141,53 @@
 				<p>The application itself requires numerous major components (and subsystems) to manage the multiple APIs and data flow; these components can be divided up into the following:</p>
 				
 				<ul>
-					<li>Main application
+                    <li>Main application</li>
 					<ul>
-						<li><a href="#appframework">Application framework</a>
+                        <li><a href="#appframework">Application framework</a></li>
 					</ul>
 
-					<li>Joints
+                    <li>Joints</li>
 					<ul>
-						<li><a href="#jointslimbs">Joints and limbs</a>
-						<li><a href="#jointsmoothing">Joint Smoothing</a>
-						<li><a href="#jointreaders">Joint Readers</a>
+                        <li><a href="#jointslimbs">Joints and limbs</a></li>
+                        <li><a href="#jointsmoothing">Joint Smoothing</a></li>
+                        <li><a href="#jointreaders">Joint Readers</a></li>
 					</ul>
 
-					<li>The User
+                    <li>The User</li>
 					<ul>
-						<li><a href="#userbody">User body class (UserBody)</a>
-						<li><a href="#userskeleton">User skeleton class (UserHands)</a>
-						<li><a href="#userhands">User hands class (UserHands)</a>
-						<li><a href="#head">What about the head?</a>
+                        <li><a href="#userbody">User body class (UserBody)</a></li>
+                        <li><a href="#userskeleton">User skeleton class (UserHands)</a></li>
+                        <li><a href="#userhands">User hands class (UserHands)</a></li>
+                        <li><a href="#head">What about the head?</a></li>
 					</ul>
-					<li>Rendering
+                    <li>Rendering</li>
 					<ul>
-						<li><a href="#dxrenderer">Window Renderer</a>
-						<li><a href="#ovrrenderer">Oculus Renderer</a>
-						<li><a href="#uirenderer">UI Renderer</a>
+                        <li><a href="#dxrenderer">Window Renderer</a></li>
+                        <li><a href="#ovrrenderer">Oculus Renderer</a></li>
+                        <li><a href="#uirenderer">UI Renderer</a></li>
 					</ul>
-					<li>Sensor, Hardware & APIs
+                    <li>Sensor, Hardware &amp; APIs</li>
 					<ul>
-						<li><a href="#ovrapi">Oculus API Wrapper (OVRAPI)</a>
-						<li><a href="#kinectv2api">Kinect 2 API Wrapper (KinectV2API)</a>
-						<li><a href="#leapapi">Leap Motion API Wrapper (LeapAPI)</a>
+                        <li><a href="#ovrapi">Oculus API Wrapper (OVRAPI)</a></li>
+                        <li><a href="#kinectv2api">Kinect 2 API Wrapper (KinectV2API)</a></li>
+                        <li><a href="#leapapi">Leap Motion API Wrapper (LeapAPI)</a></li>
 					</ul>
-					<li>Pose and Gesture Management
+                    <li>Pose and Gesture Management</li>
 					<ul>
-						<li><a href="#handedness">Left -vs- Right handedness</a>
-						<li><a href="#poses">Pose and action config system</a>
+                        <li><a href="#handedness">Left -vs- Right handedness</a></li>
+                        <li><a href="#poses">Pose and action config system</a></li>
 						<ul>
-							<li><a href="#fingerpose">Finger Poses</a>
-							<li><a href="#handpose">Hand Poses</a>
-							<li><a href="#gestureaction">Building Gesture Actions</a>
+                            <li><a href="#fingerpose">Finger Poses</a></li>
+                            <li><a href="#handpose">Hand Poses</a></li>
+                            <li><a href="#gestureaction">Building Gesture Actions</a></li>
 						</ul>
-						<li><a href="#quantposes">Quantifying poses and gestures</a>
-						<li><a href="#timingposes">Timing poses and gestures</a>
-						<li><a href="#actionposes">Acting upon poses and gestures</a>
+                        <li><a href="#quantposes">Quantifying poses and gestures</a></li>
+                        <li><a href="#timingposes">Timing poses and gestures</a></li>
+                        <li><a href="#actionposes">Acting upon poses and gestures</a></li>
 					</ul>
-					<li>Further considerations
+                    <li>Further considerations</li>
 					<ul>
-						<li><a href="#addnotes">Additional Notes</a>
+                        <li><a href="#addnotes">Additional Notes</a></li>
 					</ul>
 
 				</ul>
@@ -195,7 +195,7 @@
 				
 				<h2 class="display-8">Main Application</h2><br/>
 				
-				<a id="appframework"><h3 class="display-8">Application Framework</h4></a><br/>
+				<a id="appframework"><h3 class="display-8">Application Framework</h3></a><br/>
 				
 				<p><i>This project is a quite complicated collection of systems, the application framework section will describe a higher-level overview of the application when running. Please refer to the 
 				list above for further detail into each component or system.</i></p>
@@ -228,7 +228,7 @@
 				
 				<h2 class="display-8">Joints</h2><br/>
 
-				<a id="jointslimbs"><h3 class="display-8">Joints and limbs</h4></a><br/>
+				<a id="jointslimbs"><h3 class="display-8">Joints and limbs</h3></a><br/>
 
 				<p>A key part of any body-reading project is the joint; a camera-space (where sensor is origin to its LCS) position representing a recognised point on the human body, supplied with its own properties such 
 				as biological measurement, rotation, etc. In the scope of this project, the location (and in the case of the UserSkeleton, rotation) data are mainly used to calculate joints, limbs, and therefore a body. Joints 
@@ -238,7 +238,7 @@
 				
 				<br/>
 
-				<a id="jointsmoothing"><h3 class="display-8">Joint Smoothing</h4></a><br/>
+				<a id="jointsmoothing"><h3 class="display-8">Joint Smoothing</h3></a><br/>
 				<p>Two elements require consideration when using body detection devices and software; sampling rate (the rate at which new joint data is produced) and noise (irregularities in the data, producing inaccurate joint 
 				positions). Sampling rates are shown below:<br/><br/></p>
 				
@@ -319,14 +319,14 @@
 				  </tr>
 				  </table>
 				
-				<p><br/><sup><i>Other tradeofss do apply; these are most important to the context of the project</i></sup></p>
+				<p><br/><sup><i>Other tradeoffs do apply; these are most important to the context of the project</i></sup></p>
 				
 				<p>Futher research is needed to provide a definitve answer as to the best combination of smoothing techniques and parameters; however the implementation allows output of all positions (per-frame, per-body) from 
 				each body to analyse positional differences over time for more statistical analysis, as well as rendering multiple filtered bodies overlaid to provide a complementary visual comparison analysis.</p>
 				
 				<br/>
 				
-				<a id="jointreaders"><h3 class="display-8">Joint Readers</h4></a><br/>
+				<a id="jointreaders"><h3 class="display-8">Joint Readers</h3></a><br/>
 				
 				<p>The joint reader classes are used to request the 'packets' (or frames) of sensor data from the appropriate API (a slight decoupling). Kinect2 and Leap APIs are queried for their new data and (if available), the readers 
 				retrieve the frame object, packing the data into a container, and unpacking it into the appropriate target location. These essentially manage packet/frame requests of data from the API.</p>
@@ -337,7 +337,7 @@
 				
 				<h2 class="display-8">The User</h2><br/>
 						
-				<a id="userbody"><h3 class="display-8">User body class</h4></a><br/>
+				<a id="userbody"><h3 class="display-8">User body class</h3></a><br/>
 				
 				<p>The UserBody class manages the virtual representation of the user (the avatar) as a whole, and contains one <a href="#userskeleton">UserSkeleton</a> and two <a href="#userhands">UserHand</a> 
 				classes, representing all detectable portions of a single body. The UserBody is updated as part of the current scene (or logic) loop, in turn passing a request to update the component skeleton and hand classes.
@@ -345,7 +345,7 @@
 				
 				<br/>
 				
-				<a id="usersksleton"><h3 class="display-8">User skeleton class</h4></a><br/>
+				<a id="usersksleton"><h3 class="display-8">User skeleton class</h3></a><br/>
 				
 				<p>The UserSkeleton class represents the detected body <i>excluding</i> the hands (although does include the wrists, or carpals with a joint), which is referred to in this project as the skeleton (semantics 
 				notwithstanding). Managing the data from the KinectV2 sensor (obtained as data packets from the <a href="#kinectv2api">KinectV2API</a>), the UserSkeleton manages entities for joints and 'limbs' (connecting 
@@ -358,7 +358,7 @@
 				
 				<br/>
 								
-				<a id="userhands"><h3 class="display-8">User hands class</h4></a><br/>
+				<a id="userhands"><h3 class="display-8">User hands class</h3></a><br/>
 
 				<p>Like the <a href="#userskeleton">UserSkeleton</a> class, the UserHand class manages entities and data in the domain of the hand (finger joints, bones, etc). Entities representing finger bones (like the limbs) and joints (
 				which are gathered from the endpoints of bones in the Leap Motion data) are created by each UserHands (the body has one per real detectable hand), and the entities are updated with new data. As with UserSkeleton, the joints or 
@@ -369,7 +369,7 @@
             <p><b>Note:</b> The UserHand entities are set as children (and therefore child transformations) of the exposable UserSkeleton wrist entities; this attaches them to the wrist as a hand would normally attach, with a customizable three-dimensional 
             offset vector known as the <i>carpal offset</i> to compensate for wrist bones, moving the hand away from the wrist to a desired scale.</p><br/>
 			  
-				<a id="head"><h3 class="display-8">What about the head?</h4></a><br/>
+				<a id="head"><h3 class="display-8">What about the head?</h3></a><br/>
 				
 				<p>Good Question. While the Kinect does 'see' the head as a joint location with an approximate quaternion for rotation, more detail is needed for rendering to the Oculus Rift HMD. The Oculus SDK does provide a means of accessing the 
 				orientation information of the HMD (namely, the tilt of the user's head, looking direction, etc), but the location is often approximated as the sensor (a small IR camera) may not see the floor clearly (at the time of implementation, 
@@ -388,7 +388,7 @@
 				
 				<p>Output to the screen, UI layer of the screen and Oculus HMD is achieved using Direct3D 11.0 as a general-purpose renderer. The functionality of the renderer was extended beyond a regular Win32 application to accomodate the Oculus HMD.</p><br/>
 				
-				<a id="rendering"><h3 class="display-8">Rendering systems</h4></a><br/>
+				<a id="rendering"><h3 class="display-8">Rendering systems</h3></a><br/>
 
 				<p>The renderer is statically instanciated to perform its rendering duties, and while static classes are constructed before the main entry point of the application, the DXRenderer takes no action until its method "Initialize" is 
 				invoked. When this happens, D3D resources are created for rendering, offscreen buffers (depth, stencil, render target, etc) and render modes (structures such as stencil types, rasterizer modes, etc) are created and stored internally. The 
@@ -408,20 +408,20 @@
 				
 				<br/>
 
-				<a id="dxrenderer"><h3 class="display-8">Window Renderer</h4></a><br/>
+				<a id="dxrenderer"><h3 class="display-8">Window Renderer</h3></a><br/>
 				
 				<p>The Window renderer refers to the DXRenderer operating in the context of the render targets, views and resources allocated to a given Win32 Window via its HWND handle. The render target is set to the resources and swapchain tied to the HWND, 
 				and internal states are set accordingly. The list of entities is processed for rendering by the renderer, and the output image created as normal. For window rendering the scene, a 'scene' camera is used (a view and projection matrix set to the 
 				parameters of viewing the scene). This camera is passed alongside the entities, and the view/projection matrices are extracted for rendering as a scene camera.</p><br/>
 				
-				<a id="ovrrenderer"><h3 class="display-8">Oculus Renderer</h4></a><br/>
+				<a id="ovrrenderer"><h3 class="display-8">Oculus Renderer</h3></a><br/>
 				
 				<p>The Oculus renderer is a slightly more complex beast than the Window renderer, as it must request rendering <i>two</i> times (obviously, one per eye view) with slightly different viewing parameters to accurately allow rendering from the location 
 				of each eye (the HMD/API provides a reading for IPD: interpupillary distance -- effectively the distance betweeen the pupils when looking straight ahead). For the HMD, an 'OVRCamera' is used, derived from a scene camera to allow more control by 
 				supplying the view/projection matrix from the Oculus API (HMDs models have varying FOVs and resolutions resulting in a different projection matrix for each HMD; Oculus documentation recommends always using the API to retrieve the projection data).</p>
 				<br/>
 				
-				<a id="uirenderer"><h3 class="display-8">UI Renderer</h4></a><br/>
+				<a id="uirenderer"><h3 class="display-8">UI Renderer</h3></a><br/>
 				
 				<p>The UI overlays in the app (such as live camera data and Oculus mirror) are only rendered to the window. The UI renderer is designed to use the <a href="#dxrenderer">DXRenderer</a> to render elements to the same buffer as the scene render, using 
 				a 'UICamera' -- an orthographic projection matrix set to the window's buffer size and identity view matrix.</p>
@@ -439,7 +439,7 @@
 				removing overdraw for those sections of screen when rendering the scene (effectively the inverse painter's algorithm).</p>
 				
 				<br/>
-				<a id="sensorapis"><h2 class="display-8">Sensor, Hardware & APIs</h2></a><br/>
+				<a id="sensorapis"><h2 class="display-8">Sensor, Hardware &amp; APIs</h2></a><br/>
 				<p>The project (rather obviously) makes use of hardware such as a Leap Motion Controller, Kinect V2 and Oculus DK2 (with sensor); each item requires its own software to control and access readings for these hardware items. Each API functionality 
 				is wrapped in a statically instanciated wrapper class (<a href="#kinevtv2api">KinectV2API</a>, <a href="#ovrapi">OVRAPI</a>, <a href="#leapapi">LeapAPI</a> for Kinect V2, Oculus and Leap Motion respectively). Since statically insanticiated classes 
 				are constructed at global scope and before the entry point of the program, the API wrappers do not initialize and create resources until the <i>initialize</i> method is called. This allows the application to prepare any necessary information before 
@@ -449,7 +449,7 @@
 				<p>Each API has an <i>Update</i> method, which is called to retrieve the latest state of the APi and hardware, and check for new data (if the API/device is functioning - if not, it shuts down the wrapper ready to be re-initialized by the main 
 				application logic loop). Any new data is stored internally, and a flag for new "clean" data is set.</p><br/>
 				
-				<a id="ovrapi"><h3 class="display-8">Oculus API Wrapper (OVRAPI)</h4></a><br/>
+				<a id="ovrapi"><h3 class="display-8">Oculus API Wrapper (OVRAPI)</h3></a><br/>
 				
 				<p>The Oculus wrapper encapsulates the libovr (Oculus SDK) functionality and state objects to provide a simple interface to address the API and hardware. The API creates HMD and view data types and accesses the oculus device (and sensor) 
 				via a stored session ADT. Rendering objects and states for the HMD are stored in the <a href="#ovrrenderer">Oculus Renderer</a> class, but the requests to create these objects are made via the <a href="#dxrenderer">Window Renderer/DXRenderer</a>.</p>
@@ -459,7 +459,7 @@
 				
 				<br/>
 				
-				<a id="kinectv2api"><h3 class="display-8">Kinect V2 API Wrapper (KinectV2API)</h4></a><br/>
+				<a id="kinectv2api"><h3 class="display-8">Kinect V2 API Wrapper (KinectV2API)</h3></a><br/>
 				
 				<p>The Kinect 2 API manages the Kinect2 SDK functionality and internal objects, retrieving body and infrared frames (although more frame types are available).</p>
 
@@ -476,7 +476,7 @@
 				<p>Like the <a href="#ovrapi">Oculus API wrapper</a>, the KinectV2API has a method to copy captured frame data (infrared in this case) to a specified material object, to be used by the UIRenderer and UIElements.</p>
 
 				<br/>
-				<a id="leapapi"><h3 class="display-8">Leap API Wrapper (LeapAPI)</h4></a><br/>
+				<a id="leapapi"><h3 class="display-8">Leap API Wrapper (LeapAPI)</h3></a><br/>
             
             <p>The Leap API Wrapper (LeapAPI) encapsulates functions and objects from the Leap SDK, working in the same way to the <a href="#ovrapi">Oculus</a> and <a href="#kinectv2api">Kinect</a> API wrappers.</p>
             
@@ -492,21 +492,20 @@
             
 				<h2 class="display-8">Pose and Gesture Management</h2><br/>
             
-            <p>After all the application, sensor, API and render management work is functioning, the program needs to be able to understand when the user's body is in a particular pre-defined state to act upon (such as a 'drawing' pose). Hard-coding values 
-            is a bad practice for most programmers, but makes for bigger problems when each user has different capabilities and measurements for their body and hands. Clearly, the developer's measurements (mine) won't match other user measurements or 
-            abilities (other users may have more or less ability of movement), but completely abstract values are no use either; the answer to measure the positions of fingers on a hand, or position of a body is to measure it agains </i>itself</i>, or 
+            <p>After all the application, sensor, API and render management work is functioning, the program needs to be able to understand when the user's body is in a particular pre-defined state to act upon (such as a 'drawing' pose). Hard-coding values is a bad practice for most programmers, but makes for bigger problems when each user has different capabilities and measurements for their body and hands. Clearly, the developer's measurements (mine) won't match other user measurements or 
+            abilities (other users may have more or less ability of movement), but completely abstract values are no use either; the answer to measure the positions of fingers on a hand, or position of a body is to measure it agains <i>itself</i>, or 
             at least agains its own standard measurements. To this end, the hand poses would measure the finger bone positions relative to their neighbours and the general palm normal and orthonormal basis vectors.</p>
             <br>
             
-				<a id="handedness"><h3 class="display-8">Left -vs- Right handedness</h4></a><br/>
+				<a id="handedness"><h3 class="display-8">Left -vs- Right handedness</h3></a><br/>
             
-            While right-handed, I thought it best to implement <b>handedness</b> to allow run-time switching between left and right-handed operating modes. The project does not refer to left or right hands when processing hand gestures, but uses the 
+            <p>While right-handed, I thought it best to implement <b>handedness</b> to allow run-time switching between left and right-handed operating modes. The project does not refer to left or right hands when processing hand gestures, but uses the 
             terms <b>dominant</b> and <b>non-dominant</b>, which refers to the UI selection on the main screen (choice of left/right). All pose enumeration and action processing uses arguments of a dominant and non-dominant hand to abstract usage to 
 			customizable working paramaters.
             </p>            
             <br/>
             
-			<a id="poses"><h3 class="display-8">Pose and action config systems</h4></a><br/>
+			<a id="poses"><h3 class="display-8">Pose and action config systems</h3></a><br/>
 			
             <p>Painting in the application does not require any physical objects (stylii, remote devices, etc) to 'paint'; the application parses the current hand positions into actions to carry out, and both hand pose and action are customizable through 
 			a series of human-readable data (mostly) read by the application on initialization. In short, these files represent what constitutes a finger's pose, and which finger poses constitute a hand's pose, and which two hand poses constitute a gesture.</p>
@@ -520,7 +519,7 @@
 
             <br/>
             
-			<a id="quantposes"><h3 class="display-8">Enumerating poses and gestures</h4></a><br/>
+			<a id="quantposes"><h3 class="display-8">Enumerating poses and gestures</h3></a><br/>
 
 			<a id="fingerpose"><h4 class="display-6">Finger Poses</h4></a><br/>
 
@@ -675,7 +674,7 @@
 				
 				<p>Mappings between GestureAction and handposes (dominand and non-dominant) are made in the config files, as readable text values.</p>
 
-				<a id="enumposes"><h3 class="display-8">Enumerating poses and gestures</h4></a><br/>
+				<a id="enumposes"><h3 class="display-8">Enumerating poses and gestures</h3></a><br/>
 				
 				<p><b>How does the app determine these poses and values?</b> The config files contain pre-averaged values to classify the poses of a finger as straight, curved, closed, etc. These values are compared to the signed angle between the z-basis of 
 				each bone (longitudinal axis; the line running 'through' the centre of the bone tip to tip). The accumulated angles represents the overall curvature value of the finger (every set of two neighbouring bones in the finger are compared and the 
@@ -760,7 +759,7 @@ THREECURVED		2 2    2 2    1 1    3 3    3 3
 				<b>HandPose</b> is NONE - an invalid or non-actionable result. Every dead end experienced before maximum depth is a NO POSE situation (or for incorrectly defined data, an incomplete pose, which may cause undefined behaviour).</p>
 				
 				<p>Now the application has now searched a user-editable (well, indirectly) tree structure to retrieve a <b>HandPose</b>, using <b>FingerPose</b> data. The application knows the <b>HandPose</b> of each hand. These <b>HandPoses</b> are 
-				passed to the <b>GestureController</b> class (see <a href="#timingposes">Timing poses and gestures<a/> for further information) to be processed and passed up the 'chain'.<p>
+                    passed to the <b>GestureController</b> class (see <a href="#timingposes">Timing poses and gestures</a> for further information) to be processed and passed up the 'chain'.</p>
 				
 				<p>Once more the configuration files play a role; they define the dominant and non-dominant <b>HandPoses</b> which create <b>GestureActions</b> (for example, an open hand and a fist means 'save', etc). This allows user customization to 
 				set which gestures perform which internal commands. The values in the file are hashed to create a key, tied to the <b>GestureAction</b> in an unordered map. The <b>GestureController</b> searches the map for the dominant and non-dominant 
@@ -769,7 +768,7 @@ THREECURVED		2 2    2 2    1 1    3 3    3 3
 				
 				<br/>
 
-				<a id="timingposes"><h3 class="display-8">Timing poses and gestures</h4></a><br/>
+				<a id="timingposes"><h3 class="display-8">Timing poses and gestures</h3></a><br/>
 				
 				<p>The <b>GestureController</b> class is the first class to recieve the two <b>HandPose</b> values for dominant and non-dominant; it has two purposes in the application - first is to find matching <b>GestureActions</b> for the current 
 				<b>HandPoses</b> from the specified values in the data files (or return a state of 'no gestureaction'), and secondly to perform timing control of the <b>GestureActions</b>.</p>
@@ -801,7 +800,7 @@ MENU			INVALID			THUMBUP
 				<p>Interestingly, the cooldown can also be applied to the PAINT <b>GestureAction</b>, effectively setting a 'sampling rate' or 'resolution' for the act of painting (a value of 0.1 seconds cooldown means 10 samples per second, giving a higher 
 				mesh/painting resolution than sampling at 0.25).</p><br/>
 				
-				<a id="actionposes"><h3 class="display-8">Acting upon poses and gestures</h4></a><br/>
+				<a id="actionposes"><h3 class="display-8">Acting upon poses and gestures</h3></a><br/>
 				
 				<p>The <b>GestureActor</b> class is passed <b>HandPose</b>, <b>GestureAction</b>, and skeletal/hand coordinate data from the <b>GestureController</b> (this data is filtered by time, and not necessarily passed every frame; see 
 				<a href="#timingposes">Timing poses and gestures</a>). When the GestureActor recieves this information, it <i>acts</i> - it carries out the <b>GestureAction</b> as a command, using the hand/pose/skeletal data available.</p>
@@ -820,7 +819,7 @@ MENU			INVALID			THUMBUP
 				<p>The main idea behind the application can be considered for further development, such as using multiple kinect sensors or natural UI software, or implementing a virtual environment where the full user body is realized for more 
 				realistic interaction with virtual objects and spatial awareness.</p><br/>
 				
-				<a id="addnotes"><h3 class="display-8">Additional Notes</h4></a><br/>
+				<a id="addnotes"><h3 class="display-8">Additional Notes</h3></a><br/>
 				
 				<p>Proper sensor placement is essential; the Leap controller has a 3D custom-printed mount to hold in place on the front of the Oculus DK2 (although an official one is also available), it is necessary to keep this level, and 
 				steadily mounted. Options exist in the Leap software to detect orientation, but ensuring the sensor is the correct way up will remove this extra work. Also, any wires between the sensor and HMD should be tied back.</p>
@@ -831,17 +830,8 @@ MENU			INVALID			THUMBUP
 				  <img src="img/vpaint/kinect_ovr.JPG" class="figure-img img-fluid" alt="KinectV2 / Constellation">
 				  <figcaption class="figure-caption">Setup for the KinectV2 and Constellation sensor</figcaption>
 				</figure>			
-			
-				<p>Correct parameters and limits for the Kinect skeletal smoothing are essential; allowing beyond the normalized range involves estimation overshot, over or under-compensation and other effects:</p>
-			
-				<figure class="figure">
-				  <img src="img/vpaint/bouncy.gif" class="figure-img img-fluid" alt="Incorrect smoothing parameters">
-				  <figcaption class="figure-caption">While it can look fun, some smoothing params can cause problems if not normalized</figcaption>
-				</figure>			
-
-				<p>However, that is an improvement to how I dance...</p>
-				
-				</div>
+							
+</div>
 		
 		</div>  
 		
