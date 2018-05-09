@@ -94,13 +94,13 @@
 				
 				<a id="context"><h2>Context</h2></a><br/>
 				
-				<p>Inspired by <a href="https://www.microsoft.com/en-gb/hololens" target="new">Microsoft Hololens&#x1F5D7;</a>, I chose the "Virtual Paintbrush" project for my MSc dissertation project at Hull. I wanted to create an 
+				<p>Inspired by <a href="https://www.microsoft.com/en-gb/hololens" target="new">Microsoft Hololens</a>, I chose the "Virtual Paintbrush" project for my MSc dissertation project at Hull. I wanted to create an 
 				application which could replicate some of the advantages of the Hololens (namely, more spatial awareness, and a connection between real-world movements and their digital representations by measuring the user 
 				body dimensions and positions and reflecting them in a matching virtual-world space, meaning the user height, actions and room-position are more accurately tracked than with current software).</p>
 				
 				<p>The software would of course require a VR HMD, and sensors to detect the user (from body positions to extremities such as hands, fingers, etc). I decided to use consumer-grade hardware and accompanying 
-				APIs (<a href="http://www.oculus.com/rift/" target="new">Oculus Rift DK2&#x1F5D7;</a>, a <a href="http://www.leapmotion.com/" target="new">Leap Motion Controller&#x1F5D7;</a> and <a href="https://en.wikipedia.org/wiki/Kinect#Kinect_for_Windows_v2_(2014)"
-				target="new">Microsoft Kinect V2&#x1F5D7;</a>) to achieve this.</p>
+				APIs (<a href="http://www.oculus.com/rift/" target="new">Oculus Rift DK2</a>, a <a href="http://www.leapmotion.com/" target="new">Leap Motion Controller</a> and <a href="https://en.wikipedia.org/wiki/Kinect#Kinect_for_Windows_v2_(2014)"
+				target="new">Microsoft Kinect V2</a>) to achieve this.</p>
 
 				<p>See the project in action:</p>
 				
@@ -117,22 +117,22 @@
 				<p>The application is written in C++11, and is developed for Microsoft Windows 10 (as a Win32 app), and uses a bespoke entity-component system for rapid development. Further libraries and specifications:</p>
 
 				<ul>
-					<li>Direct3D 11, June 2010 SDK <a href="https://www.microsoft.com/en-gb/download/details.aspx?id=6812" target="new">&#x1F5D7;</a>
-					<li>Kinect for Windows SDK v2.0.1409 <a href="https://www.microsoft.com/en-gb/download/details.aspx?id=44561" target="new">&#x1F5D7;</a>
-					<li>Leap Motion SDK version 3.2.0 <a href="https://developer.leapmotion.com/releases/leap-motion-orion-320" target="new">&#x1F5D7;</a>
-					<li>Oculus SDK v1.8.0 public <a href="https://developer.oculus.com/downloads/package/oculus-sdk-for-windows/1.18.0/" target="new">&#x1F5D7;</a>
-					<li>AntTweakBar v1.16 <a href="https://sourceforge.net/projects/anttweakbar/" target="new">&#x1F5D7;</a>
-					<li>OpenGL Mathematics v0.9.8.4 <a href="https://glm.g-truc.net/0.9.8/index.html" target="new">&#x1F5D7;</a>
+					<li><a href="https://www.microsoft.com/en-gb/download/details.aspx?id=6812" target="new">Direct3D 11, June 2010 SDK</a>
+					<li><a href="https://www.microsoft.com/en-gb/download/details.aspx?id=44561" target="new">Kinect for Windows SDK v2.0.1409</a>
+					<li><a href="https://developer.leapmotion.com/releases/leap-motion-orion-320" target="new">Leap Motion SDK version 3.2.0</a>
+					<li><a href="https://developer.oculus.com/downloads/package/oculus-sdk-for-windows/1.18.0/" target="new">Oculus SDK v1.8.0 public</a>
+					<li><a href="https://sourceforge.net/projects/anttweakbar/" target="new">AntTweakBar v1.16</a>
+					<li><a href="https://glm.g-truc.net/0.9.8/index.html" target="new">OpenGL Mathematics v0.9.8.4</a>
 				</ul>
 
 				<p>Hardware used:</p>
 
 				<ul>
                     <li>Windows 10 PC, with NVidia GeForce 980 graphics</li>
-                    <li>Kinect sensor for XBOX One <a href="https://www.xbox.com/en-GB/xbox-one/accessories/kinect" target="new">&#x1F5D7;</a></li>
-                    <li>Kinect for Windows Adapter<a href="https://support.xbox.com/en-US/xbox-on-windows/accessories/kinect-for-windows-v2-setup" target="new">&#x1F5D7;</a></li>
-                    <li>Leap Motion Controller <a href="https://www.leapmotion.com/product/#104" target="new">&#x1F5D7;</a></li>
-                    <li>Oculus DK2 HMD and sensor <a href="https://www.eteknix.com/oculus-rift-dk2-vr-headset-review/" target="new">&#x1F5D7;</a></li>
+                    <li><a href="https://www.xbox.com/en-GB/xbox-one/accessories/kinect" target="new">Kinect sensor for XBOX One</a></li>
+                    <li><a href="https://support.xbox.com/en-US/xbox-on-windows/accessories/kinect-for-windows-v2-setup" target="new">Kinect for Windows Adapter</a></li>
+                    <li><a href="https://www.leapmotion.com/product/#104" target="new">Leap Motion Controller</a></li>
+                    <li><a href="https://www.eteknix.com/oculus-rift-dk2-vr-headset-review/" target="new">Oculus DK2 HMD and sensor</a></li>
 				</ul>
 
 
@@ -431,7 +431,7 @@
 				  <figcaption class="figure-caption">UI Overlay elements (highlighted blue)</figcaption>
 				</figure>
 
-				<p>As you can see above, the app uses <a href="http://anttweakbar.sourceforge.net" target="new">AntTweakBar&#x1F5D7;</a> (left) to enable tweaking and show statistics; the bar is created by the scene, but the rendering call is managed by the UIRenderer. 
+				<p>As you can see above, the app uses <a href="http://anttweakbar.sourceforge.net" target="new">AntTweakBar</a> (left) to enable tweaking and show statistics; the bar is created by the scene, but the rendering call is managed by the UIRenderer. 
 				The bar uses opacity, so it is rendered last.</p>
 				
 				<p>UIElement objects (geometry whose texture data is live sensor camera data or mirror renders - right side of above image) create and set entities for rendering (quads with updatable texture data); these entities are stored internally in a 
@@ -839,10 +839,12 @@ MENU			INVALID			THUMBUP
 			<a href="#top" class="btn btn-cd" data-toggle="tooltip" data-placement="top" title="Go to top"><span class="fa fa-chevron-up fa-lg"></span></a>
 		</div>
 	   
+
 	</div><!--end of container-fluid-->
-       <footer class="pt-3">
-            <p class="small">Chris Donnelly's Portfolio</p>
-        </footer>
+	
+	<footer class="pt-3">
+		<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
+	</footer>
 	
 	
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
