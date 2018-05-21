@@ -791,7 +791,7 @@ MENU			INVALID			THUMBUP
 				<p>So for the top two lines, we know that to PAINT, the app will look for a PINCH pose in the dominant hand, and NONE in the nondominant hand. Note the line is copied below and includes INVALID; this ensures that both NONE and INVALID (out 
 				of view, or unreadable) are acceptable values for the non-dominant hand. The further examples work exactly the same, producing a MENU action if the non-dominant hand is THUMBUP and the dominant hand is either NONE or INVALID.</p>
 				
-				<p><b>Timing</b> - the second duty of the <b>GestureController</b>, is essential to maintain perogram performance. Cooldown values are applied to <b>GestureActions</b> to ensure that actions are not repeated every frame (unless necessary), 
+				<p><b>Timing</b> - the second duty of the <b>GestureController</b>, is essential to maintain program performance. Cooldown values are applied to <b>GestureActions</b> to ensure that actions are not repeated every frame (unless necessary), 
 				such as SAVE - if the user performs the SAVE gesture, the application would save the scene to a file anything up to 90 times in one second - not best for performance.</p>
 				
 				<p>The controller also has a complementary class called a <b>GestureFilter</b>, which conversely applies a 'warm-up' value to each <b>GestureAction</b> - ensuring no split-second fluctuation of <b>GestureActions</b> (for example, they must 
