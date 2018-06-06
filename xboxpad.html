@@ -55,6 +55,7 @@
 				<p class="display-6">Contents</p>
 				<ul class="contentlist">
 				<li><a href="#context">Context</a>
+				<li><a href="#spec">Specification</a>
 				<li><a href="#implementation">Implementation</a>
 				</ul>
 
@@ -81,9 +82,84 @@
 				  <img src="img/xboxpad/xbox.jpg" class="figure-img img-fluid" alt="Original XBOX">
 				  <figcaption class="figure-caption">The original XBOX, in all its glory (with customized USB connections, front x4)</figcaption>
 				</figure>
+				
+				<p>A majority of recent PC Games for Windows tend to use XInput as a standard lbary for gamepad input (although other libraries do exist and are used in some games) - and to ensure compatibility with devices, XInupt specifications require that 
+				pads conform to following values when reading from or writing to (in the case of vibrations) the pad:<br/><br/>
+				
+				<table border=0 cellpadding=10 cellspacing=5>
+				  <tr>
+					<th></th>
+					<th class="thlabel">Value Range</th>
+					<th class="thlabel">Deadzone</th>
+				  </tr>
+				  <tr>
+					<td class="tdlabel">Left/Right Trigger</td>
+					<td class="tddata">0 .. 255 (single axis)</td>
+					<td class="tddata">&le; 30 (single axis)</td>
+				  </tr>
+				  <tr>
+					<td class="tdlabel">Left thumbstick</td>
+					<td class="tddata">-32768 .. 32767 (per axis)</td>
+					<td class="tddata">-7849 .. 7849 (per axis)</td>
+				  </tr>
+				  <tr>
+					<td class="tdlabel">Right thumbstick</td>
+					<td class="tddata">-32768 .. 32767 (per axis)</td>
+					<td class="tddata">-8689 .. 8689 (per axis)</td>
+				  </tr>
+				  <tr>
+					<td class="tdlabel">Left/Right Vibration Motor</td>
+					<td class="tddata">0 .. 65535* (linear)</td>
+					<td class="tddata">n/a</td>
+				  </tr>
+				</table>
+				* <sup>This value is 0.0 .. 1.0 (floating-point) on XBOX 360</sup><br/><br/>
+	
+				Note that the vibration motors in the joypad are not identical - the right motor is high-frequency (and has a physically smaller mass weight than its lower-frequency counterpart) - although the API does not differentiate - the same values apply 
+				the same power to the motors. Another small mod I use on my joypads is to insert two low-frequency (but larger mass) motors into a pad for a different level of 'kickback'.</p>
+				
+				<p>Anyway - the main point here is that <b>games pre-dating XInput and (therefore analog triggers or differing precision thumbsticks) may either misunderstand or reject XInput data from XInput pads.</b></p>
+				
+				<p>These games may require binary value triggers (excluding the tolerance of a deadzone, their values may be stored as a bit value, zero or nonzero), or lower/higher sensitivity sticks. One such example is <b>Tom Clancy's Splinter Cell: Chaos 
+				Theory</b> - D-Pad, button and thumbstick values are the same using XInput joypads, but the analog triggers of an XInput pad (0 .. 255) will not function in-game, as it expects zero/nonzero values (binary/button triggers).</p><br/>
+								
+				<figure class="figure">
+				  <img src="img/xboxpad/chaos.jpg" class="figure-img img-fluid" alt="Chaos Theory PC">
+				  <figcaption class="figure-caption">Splinter Cell: Chaos Theory on PC doesn't work well with XBOX 360 XInput analog triggers</figcaption>
+				</figure>
+				
+				<p>So we need a joypad which will read as a binary/button trigger but has similarity with XBOX 360 XInput joypads. Enter the original XBOX controller (and it's odd physical connection which seemingly won't connect to a PC)....</p><br/>
 
-					   
-			</div><!--end of container-fluid-->
+				<a id="spec"><h2>Specification</h2></a><br/>
+				<p>It's mostly wire-stripping and soldering, but I'd recommend getting some heat-shrink sleeves, and there's a little software work to be done too. Requirements:</p>
+
+				<ul>
+					<li>XBOX controller (S-type or C-type) from first generation XBOX, included breakaway connector
+					<li>Wire-stripper or wire-stripping blade
+					<li>Soldering Iron and appropriate solder
+					<li>[optional] Heat-shrink sleeves [sized appropriately to the wiring]
+					<li>USB Extension cable (Male A to Female A)
+				</ul>
+				
+				<p>I'm assuming you can solder, and strip wires proficiently. If you need help learning these skills, give them a quick search on the web or take a class - it doesn't take too long to learn, you just need to take the time you need. Clean and 
+				measured is better than rushed and poor quality.</p>
+				
+				<p>The way this project goes, we're going to use both ends of the extension cable, creating a 'breakaway' midpoint inline. This means you can still plug the controller back into the XBOX (without being able to use the timing functionality).</p>
+
+				<br/>
+				<a id="implementation"><h2>Implementation</h2></a><br/>
+				
+				<ul>
+					<li><a href="#padanatomy">The XBOX joypad cable</a></li>
+					<li><a href="#stripping">Wire Stripping and cutting</a></li>
+					<li><a href="#soldering">Soldering and finishing</a></li>
+				</ul>				
+				
+				<br/><br/>
+				<p>UNDER CONSTRUCTION: More will be added soon</p>
+				
+
+			   </div><!--end of container-fluid-->
 		</div>
 
 		<footer class="pt-3">
