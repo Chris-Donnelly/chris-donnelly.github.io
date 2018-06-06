@@ -128,23 +128,23 @@
 				  <figcaption class="figure-caption">Splinter Cell: Chaos Theory on PC doesn't work well with XBOX 360 XInput analog triggers</figcaption>
 				</figure>
 				
-				<p>So we need a joypad which will read as a binary/button trigger but has similarity with XBOX 360 XInput joypads. Enter the original XBOX controller (and it's odd physical connection which seemingly won't connect to a PC)....</p><br/>
+				<p>The mod requires a joypad which will read as a binary/button trigger but has similar values with XBOX 360 XInput buttons and D-Pads. Enter the original XBOX controller (and it's odd physical connection which seemingly won't connect to a PC)....</p><br/>
 
 				<a id="spec"><h2>Specification</h2></a><br/>
-				<p>It's mostly wire-stripping and soldering, but I'd recommend getting some heat-shrink sleeves, and there's a little software work to be done too. Requirements:</p>
+				<p>The mod requires some wire-stripping and soldering, and some heat-shrink sleeves help keep the work clean and safe., Driver work requires a litle Windows configuration. Requirements:</p>
 
 				<ul>
-					<li>XBOX controller (S-type or C-type) from first generation XBOX, included breakaway connector
+					<li>XBOX controller (S-type or C-type) from first generation XBOX, including breakaway connector
 					<li>Wire-stripper or wire-stripping blade
 					<li>Soldering Iron and appropriate solder
-					<li>[optional] Heat-shrink sleeves [sized appropriately to the wiring]
+					<li>[optional] Heat-shrink sleeves
 					<li>USB Extension cable (Male A to Female A)
+					<li><a href="https://www.s-config.com/xbcd-original-xbox-controllers-win10/" target="new" title="XBOX Controller Driver software">XBox Controller Driver</a>
 				</ul>
 				
-				<p>I'm assuming you can solder, and strip wires proficiently. If you need help learning these skills, give them a quick search on the web or take a class - it doesn't take too long to learn, you just need to take the time you need. Clean and 
-				measured is better than rushed and poor quality.</p>
-				
-				<p>The way this project goes, we're going to use both ends of the extension cable, creating a 'breakaway' midpoint inline. This means you can still plug the controller back into the XBOX (without being able to use the timing functionality).</p>
+				<p><b>Note: The target platform is IBM PC Compatible, running Windows 10 64-bit, build 1803</b></p>
+								
+				<p>The project will use both ends of the extension cable, creating a 'breakaway' midpoint inline. This allows the controller to continue being used with the XBOX (minus the timing functionality, which is only needed for light gun accessories).</p>
 
 				<br/>
 				<a id="implementation"><h2>Implementation</h2></a><br/>
@@ -153,6 +153,7 @@
 					<li><a href="#padanatomy">The XBOX joypad cable</a></li>
 					<li><a href="#stripping">Wire Stripping and cutting</a></li>
 					<li><a href="#soldering">Soldering and finishing</a></li>
+					<li><a href="#drivers">Installing & configuring drivers/software</a></li>
 				</ul>				
 				
 				<br/><br/>
