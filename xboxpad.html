@@ -118,7 +118,7 @@
 				Note that the vibration motors in the joypad are not identical - the right motor is high-frequency (and has a physically smaller mass weight than its lower-frequency counterpart) - although the API does not differentiate - the same values apply 
 				the same power to the motors. Another small mod I use on my joypads is to insert two low-frequency (but larger mass) motors into a pad for a different level of 'kickback'.</p>
 				
-				<p>Anyway - the main point here is that <b>games pre-dating XInput and (therefore analog triggers or differing precision thumbsticks) may either misunderstand or reject XInput data from XInput pads.</b></p>
+				<p>Anyway - the main point here is that <b>games pre-dating XInput and (and its pad specifications) may either misunderstand or reject XInput data from XInput pads.</b></p>
 				
 				<p>These games may require binary value triggers (excluding the tolerance of a deadzone, their values may be stored as a bit value, zero or nonzero), or lower/higher sensitivity sticks. One such example is <b>Tom Clancy's Splinter Cell: Chaos 
 				Theory</b> - D-Pad, button and thumbstick values are the same using XInput joypads, but the analog triggers of an XInput pad (0 .. 255) will not function in-game, as it expects zero/nonzero values (binary/button triggers).</p><br/>
@@ -128,7 +128,7 @@
 				  <figcaption class="figure-caption">Splinter Cell: Chaos Theory on PC doesn't work well with XBOX 360 XInput analog triggers</figcaption>
 				</figure>
 				
-				<p>The mod requires a joypad which will read as a binary/button trigger but has similar values with XBOX 360 XInput buttons and D-Pads. Enter the original XBOX controller (and it's odd physical connection which seemingly won't connect to a PC)....</p><br/>
+				<p>The game requests a joypad which will read as a binary/button trigger but has similar values with XBOX 360 XInput buttons and D-Pads. Enter the original XBOX controller (and an odd physical connection which <i>seemingly</i> won't connect to a PC)....</p><br/>
 
 				<a id="spec"><h2>Specification</h2></a><br/>
 				<p>The mod requires some wire-stripping and soldering, and some heat-shrink sleeves help keep the work clean and safe., Driver work requires a litle Windows configuration. Requirements:</p>
@@ -140,7 +140,7 @@
 					<li>[optional] Heat-shrink sleeves
 					<li>USB Extension cable (Male A to Female A)
 					<li><a href="https://www.s-config.com/xbcd-original-xbox-controllers-win10/" target="new" title="XBOX Controller Driver software">XBox Controller Driver</a>
-				</ul>
+				</ul><br/>
 				
 				<p><b>Note: The target platform is IBM PC Compatible, running Windows 10 64-bit, build 1803</b></p>
 								
@@ -154,12 +154,36 @@
 					<li><a href="#stripping">Wire Stripping and cutting</a></li>
 					<li><a href="#soldering">Soldering and finishing</a></li>
 					<li><a href="#drivers">Installing & configuring drivers/software</a></li>
-				</ul>				
+				</ul>
+				<br/>
 				
-				<br/><br/>
-				<p>UNDER CONSTRUCTION: More will be added soon</p>
+				<a id="padanatomy"><h2>The XBOX joypad Cable</h2></a><br/>
 				
-
+				<p>As mentioned above, the XBOX joypad uses a modified version of USB - the cable has the base four lines (D+, D-, GND, PWR), and additional line, used for timing the light gun accessory to the vertical blank (VSYNC) of the output 
+				display (remember, this console was designed to use CRT displays). Just by looking at the connector, it's not too obvious from the shape that this is USB-based, but it is possible to see the 5 connector plates (like the 4 standard USB 
+				plates on a connector).</p>
+				
+				<figure class="figure">
+				  <img src="img/xboxpad/xboxusb.jpg" class="figure-img img-fluid" alt="XBOX Connector anatomy">
+				  <figcaption class="figure-caption">The connectors and lines in an XBOX controller, and their purposes</figcaption>
+				</figure>
+				
+				<p>The extra cable (yellow / VSYNC) is used for timing with special controller accessories (such as the light gun etc) to time the controller with the vertical screen blank; for the purposes of using the joypad, this cable can be removed, or 
+				at least disabled.</p><br/>
+	
+				<a id="stripping"><h2>Stripping the cable</h2></a><br/>
+				
+				<p>The cable needs to be cut at an appropriate point (nearer the connectors, further from the pad is better to preserve cable length even using the new connector). Inside the main cable is a metallic coating for shielding, and five wires 
+				represented in the <a href="#padanatomy">above</a> photo. The outer coating needs to be stripped back 10-20mm for each of the newly-cut parts. This shows the internal red/black/green/white/yellow cables. Each of these cables (except yellow) 
+				needs to be stripped back by about 5mm.</p>
+				
+				<p>The USB extension cable also needs to be cut, and stripped back in the same fashion, leaving the four (red/black/green/white) internal cables stripped.</p>
+	
+	
+	<br/><br/><br/><br/>
+	
+				<h3>Under construction - the rest of this article to follow soon.....</h3>
+				
 			   </div><!--end of container-fluid-->
 		</div>
 
