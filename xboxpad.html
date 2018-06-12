@@ -57,6 +57,7 @@
 				<li><a href="#context">Context</a>
 				<li><a href="#spec">Specification</a>
 				<li><a href="#implementation">Implementation</a>
+				<li><a href="#links">Further information</a>
 				</ul>
 
 			</div>
@@ -84,7 +85,7 @@
 				</figure>
 				
 				<p>A majority of recent PC Games for Windows tend to use XInput as a standard lbary for gamepad input (although other libraries do exist and are used in some games) - and to ensure compatibility with devices, XInupt specifications require that 
-				pads conform to following values when reading from or writing to (in the case of vibrations) the pad:<br/><br/>
+				pads conform to following values when reading from or writing to (in the case of vibrations), according to <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ee417001(v=vs.85).aspx" target="new">MSDN</a>:<br/><br/>
 				
 				<table border=0 cellpadding=10 cellspacing=5>
 				  <tr>
@@ -114,44 +115,47 @@
 				  </tr>
 				</table>
 				* <sup>This value is 0.0 .. 1.0 (floating-point) on XBOX 360</sup><br/><br/>
-	
-				Note that the vibration motors in the joypad are not identical - the right motor is high-frequency (and has a physically smaller mass weight than its lower-frequency counterpart) - although the API does not differentiate - the same values apply 
-				the same power to the motors. Another small mod I use on my joypads is to insert two low-frequency (but larger mass) motors into a pad for a different level of 'kickback'.</p>
+					
+				<p>Anyway - the main point here is that games some games do not understand the data provided by 360 pads (such as analog triggers or buttons, or the range of the analog sticks may differ).</p>
 				
-				<p>Anyway - the main point here is that <b>games pre-dating XInput and (and its pad specifications) may either misunderstand or reject XInput data from XInput pads.</b></p>
-				
-				<p>These games may require binary value triggers (excluding the tolerance of a deadzone, their values may be stored as a bit value, zero or nonzero), or lower/higher sensitivity sticks. One such example is <b>Tom Clancy's Splinter Cell: Chaos 
-				Theory</b> - D-Pad, button and thumbstick values are the same using XInput joypads, but the analog triggers of an XInput pad (0 .. 255) will not function in-game, as it expects zero/nonzero values (binary/button triggers).</p><br/>
-								
+				<p>One such example is <b>Tom Clancy's Splinter Cell: Chaos Theory</b> for Windows PC - D-Pad, button and thumbstick values are the same using XInput joypads, but the triggers of an XBOX 360 pad (0 .. 255 single axis analog triggers) don't 
+				function correctly in-game, as this game expects zero/nonzero values (binary/button triggers), not the range of the analog triggers.</p><br/>
+												
 				<figure class="figure">
 				  <img src="img/xboxpad/chaos.jpg" class="figure-img img-fluid" alt="Chaos Theory PC">
 				  <figcaption class="figure-caption">Splinter Cell: Chaos Theory on PC doesn't work well with XBOX 360 XInput analog triggers</figcaption>
 				</figure>
 				
-				<p>The game requests a joypad which will read as a binary/button trigger but has similar values with XBOX 360 XInput buttons and D-Pads. Enter the original XBOX controller (and an odd physical connection which <i>seemingly</i> won't connect to a PC)....</p><br/>
+				<p>It could be argued that <i>technically</i> the 360 triggers work as they provide a zero/nonzeero pattern for being pressed, but this is still a problem, as the value difference between off and on (not pressed vs pressed) is 1 unit of 
+				the 256 travel distance (zero inclusive) the trigger allows, but less than the recommended 30 threshold (deadzone). This would require on-the-fly editing to check that the trigger is either zero, or more than the 30 threshold needed to be 
+				considered pressed, providing a zero/nonzero value.</p>
+				
+				<p><b>But, this way I get to use the pad the game was made for (on the console), and I get to tinker with some hardware</b></p>
+				
+				<br/>
 
 				<a id="spec"><h2>Specification</h2></a><br/>
-				<p>The mod requires some wire-stripping and soldering, and some heat-shrink sleeves help keep the work clean and safe., Driver work requires a litle Windows configuration. Requirements:</p>
+				<p>Requirements:</p>
 
 				<ul>
-					<li>XBOX controller (S-type or C-type) from first generation XBOX, including breakaway connector
-					<li>Wire-stripper or wire-stripping blade
-					<li>Soldering Iron and appropriate solder
-					<li>[optional] Heat-shrink sleeves
-					<li>USB Extension cable (Male A to Female A)
+					<li>XBOX controller (S-type or C-type) from first generation XBOX, including the 'breakaway' connector
+					<li>Wire-stripper or wire-stripping blade (my ever-trusted 'Swiss-Army' knife)
+					<li>Soldering Iron and solder
+					<li>Electrical tape or heat-shrink sleeves
+					<li>USB Extension cable (Male Type A to Female Type A)
 					<li><a href="https://www.s-config.com/xbcd-original-xbox-controllers-win10/" target="new" title="XBOX Controller Driver software">XBox Controller Driver</a>
 				</ul><br/>
+
+				<p><i>Note: some cheaper USB extension cables do not follow the wiring colour scheme - voltage testing may be required.</i></p>
 				
-				<p><b>Note: The target platform is IBM PC Compatible, running Windows 10 64-bit, build 1803</b></p>
-								
-				<p>The project will use both ends of the extension cable, creating a 'breakaway' midpoint inline. This allows the controller to continue being used with the XBOX (minus the timing functionality, which is only needed for light gun accessories).</p>
+				<p><i>Target platform: IBM PC Compatible, running Windows 10 64-bit, build 1803</i>.</p>
 
 				<br/>
 				<a id="implementation"><h2>Implementation</h2></a><br/>
 				
 				<ul>
 					<li><a href="#padanatomy">The XBOX joypad cable</a></li>
-					<li><a href="#stripping">Wire Stripping and cutting</a></li>
+					<li><a href="#stripping">Cutting and stripping the cables</a></li>
 					<li><a href="#soldering">Soldering and finishing</a></li>
 					<li><a href="#drivers">Installing & configuring drivers/software</a></li>
 				</ul>
@@ -171,20 +175,97 @@
 				<p>The extra cable (yellow / VSYNC) is used for timing with special controller accessories (such as the light gun etc) to time the controller with the vertical screen blank; for the purposes of using the joypad, this cable can be removed, or 
 				at least disabled.</p><br/>
 	
-				<a id="stripping"><h2>Stripping the cable</h2></a><br/>
+				<a id="stripping"><h2>Cutting and stripping the cables</h2></a><br/>
 				
-				<p>The cable needs to be cut at an appropriate point (nearer the connectors, further from the pad is better to preserve cable length even using the new connector). Inside the main cable is a metallic coating for shielding, and five wires 
-				represented in the <a href="#padanatomy">above</a> photo. The outer coating needs to be stripped back 10-20mm for each of the newly-cut parts. This shows the internal red/black/green/white/yellow cables. Each of these cables (except yellow) 
-				needs to be stripped back by about 5mm.</p>
+				<p>The cable was cut near the connector (the part which goes into the console), although I removed the breakaway points, it's easily possible to leave them intact, and cut between the breakaway point and the connector. Inside the main cable 
+				is a metallic coating for shielding (which was be peeled back), and the five wires represented in the <a href="#padanatomy">above</a> picture. The outer coating was stripped back 10-20mm for each of the newly-cut parts. This shows the internal 
+				red/black/green/white/yellow cables. Each of these cables (except yellow) was stripped back by about 5mm.</p>
+
+				<p>The YELLOW cable (the composite vsync timer) was not stripped back, it was simply safely clipped off/cut, as it is not being used here.</p>
 				
-				<p>The USB extension cable also needs to be cut, and stripped back in the same fashion, leaving the four (red/black/green/white) internal cables stripped.</p>
-	
-	
-	<br/><br/><br/><br/>
-	
-				<h3>Under construction - the rest of this article to follow soon.....</h3>
+				<p>The USB extension cable was cut into two short parts (a connector and approximately 50mm of cable), and each end stripped back in the same fashion, leaving its four (red/black/green/white) internal cables stripped back by approximately 5mm.</p>
+								
+				<br/>
+				<a id="soldering"><h2>Soldering and finishing</h2></a><br/>
 				
-			   </div><!--end of container-fluid-->
+				<p>The cutting and stripping above left me with:
+				<ul>
+					<li>XBOX controller, with its wire cut and stripped back, near to the connector
+					<li>XBOX connector and 50mm of cable, internals stripped back by approximately 10mm
+					<li>USB Type A Male connector with 50mm of cable, all four internal lines stripped back
+					<li>USB Type A Female connector with 50mm of cable, all four internal lines stripped back
+				</ul></p><br/>
+				
+				<p>The controller and extension cable MALE connector/cables were soldered together by matching line types. Each line was heat-shrink sleeved (tape can be used) to prevent shorting, and an external sleeve was applied to protect the cable interieor.<br/>
+				
+				<table border=0 cellpadding=10 cellspacing=5>
+				  <tr>
+					<th></th>
+					<th class="thlabel">PWR</th>
+					<th class="thlabel">D-</th>
+					<th class="thlabel">D+</th>
+					<th class="thlabel">GND</th>
+				  </tr>
+				  <tr>
+					<td class="tdlabel">Controller - Male connector</td>
+					<td class="tddata">red - red</td>
+					<td class="tddata">white - white</td>
+					<td class="tddata">green - green</td>
+					<td class="tddata">black - black</td>
+				  </tr>
+				</table><br/><br/>
+
+				<p>The XBOX Connector (goes into the console) and the extension cable FEMALE connector were soldered together also by matching types (again, sleeved both internally and externally).<br/>
+				
+				<figure class="figure">
+				  <img src="img/xboxpad/female.jpg" class="figure-img img-fluid" alt="Female USB extension to male xbox connector">
+				  <figcaption class="figure-caption">The female extension soldered to the male console connector</figcaption>
+				</figure><br/><br/>
+				
+				<table border=0 cellpadding=10 cellspacing=5>
+				  <tr>
+					<th></th>
+					<th class="thlabel">PWR</th>
+					<th class="thlabel">D-</th>
+					<th class="thlabel">D+</th>
+					<th class="thlabel">GND</th>
+				  </tr>
+				  <tr>
+					<td class="tdlabel">Connector - Female connector</td>
+					<td class="tddata">red - red</td>
+					<td class="tddata">white - white</td>
+					<td class="tddata">green - green</td>
+					<td class="tddata">black - black</td>
+				  </tr>
+				</table>
+				</p>
+				<br/>
+								
+				<p>Effectively, this creates an extension (or passthrough) cable at teh controller's cut point, which is joined together by the opposing ends of the USB extension cable when being used on the XBOX, or allows the pad to be inserted into a 
+				standard PC USB port.</p>
+				<br/>
+
+				<figure class="figure">
+				  <img src="img/xboxpad/final.jpg" class="figure-img img-fluid" alt="Female USB extension to male xbox connector">
+				  <figcaption class="figure-caption">The PC-capable controller, extended to the XBOX connector - tested and functional on XBOX and PC</figcaption>
+				</figure><br/>
+				
+				<p>The process of installing the XBCD drivers may vary across versions of Windows, and may vary as new releases become available, so please refer to the <a href="" target="new">XBCD</a> website for instructions. Mine were installed under a 
+				'unsigned drivers' boot of Windows to enable the pad to work in Windows 8/10</p>
+				
+				<p>And until any remasters are available (please), I can now play Chaos Theory (and other games) using my original XBOX pad on both PC and original XBOX.</p>
+
+				<br/>
+				<a id="links"><h2>Further Information</h2></a>
+
+				<p>
+					<ul>
+						<li>"Hacking the Xbox: An introduction to reverse engineering" by Andrew "Bunnie" Huang (No Starch Press, ISBN 1593270291) (<a href="http://amzn.eu/aeBMutW" target="new">Amazon</a> / Free copy from <a href="https://bunniefoo.com/nostarch/HackingTheXbox_Free.pdf" target="new">Author's Website</a>)
+						<li><a href="https://www.s-config.com/xbcd-original-xbox-controllers-win10/" target="new">XBCD</a> - XBCD - Original Xbox Controllers with Win10-8 - S-Config
+					</ul>
+				</p>
+
+			</div><!--end of container-fluid-->
 		</div>
 
 		<footer class="pt-3">
