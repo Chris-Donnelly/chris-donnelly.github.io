@@ -5,9 +5,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
 	<!--Custom CSS -->  
-	<link rel=stylesheet href="bootstrap-CD-style.css">
+	<link rel="stylesheet" href="bootstrap-CD-style.css">
 	<!--Fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
 	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -18,10 +19,10 @@
 	<title>Project: Virtual Paintbrush</title>
 	  
   </head>
-	
+
+  
   <body id="top">
 	  
-
 	<div class="container-fluid">
 	
 	  <nav class="navbar navbar-expand-sm sticky-top">
@@ -32,7 +33,7 @@
 		  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 				<ul class="navbar-nav">
 				  <li class="nav-item">
-					 <a class="nav-link" href="index.html">Main Page</a>
+					<a class="nav-link" href="index.html">Main Page</a>
 				  </li>
 				  <li class="nav-item">
 					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
@@ -47,24 +48,21 @@
 		<div class="row py-sm-5 pl-sm-2">
 			
 			<div class="col-lg-3 py-sm-5">
-			<a id="contents"></a>
-			<div class=" my-5 pt-1 topbar bottombar">
-				<h1 class="display-4">Virtual Paintbrush</h1>
-				<p class="lead">A virtual reality painting application in room-scale, using customizable fuzzy sets, skeletal joint filtering, and search trees to paint in 3D using gestures</p>
-				<p class="lead">Written in C++11, using Direct3D11, Kinect V2, Leap Motion, Oculus VR</p>
-				<p class="lead">MSc Dissertation Project / University of Hull, 2016-17</p><br/>
-				
-				<p class="display-6">Contents</p>
-				<ul class="contentlist">
-				<li><a href="#context">Context</a>
-				<li><a href="#spec">Specification</a>
-				<li><a href="#implementation">Implementation</a>
-				</ul>
-			
-
-			</div>
-				
-			 </div>  
+				<a id="contents"></a>
+				<div class=" my-5 pt-1 topbar bottombar">
+					<h1 class="display-4">Virtual Paintbrush</h1>
+					<p class="lead">A virtual reality painting application in room-scale, using customizable fuzzy sets, skeletal joint filtering, and search trees to paint in 3D using gestures</p>
+					<p class="lead">Written in C++11, using Direct3D11, Kinect V2, Leap Motion, Oculus VR</p>
+					<p class="lead">MSc Dissertation Project / University of Hull, 2016-17</p><br/>
+					
+					<p class="display-6">Contents</p>
+					<ul class="contentlist">
+						<li><a href="#context">Context</a></li>
+						<li><a href="#spec">Specification</a></li>
+						<li><a href="#implementation">Implementation</a></li>
+					</ul>
+				</div>	
+			</div> 
 			
 			<div class="col-sm-10 offset-sm-1 col-lg-5 offset-md-1">
 
@@ -73,13 +71,13 @@
 				<p>A virtual reality painting application in room-scale, using customizable fuzzy sets, skeletal joint filtering, and search trees to paint in 3D using gestures</p>
 
 				<figure class="figure">
-				  <img src="img/vpaint/main.jpg" class="figure-img img-fluid" alt="Painting in VR">
-				  <figcaption class="figure-caption">Painting in the application, view from "Oculus" camera</figcaption>
-				</figure>
+					<img class="img-fluid figure-img" src="img/vpaint/main.jpg">
+					<figcaption class="figure-caption">Painting, in 3D virtually</figcaption>
+				</figure><br/>
 
 				<p>Written in C++11, using Direct3D11, Kinect V2, Leap Motion, Oculus VR hardware and APIs</p>
 				
-				<figure class="figure">
+				<figure class="figure-img">
 				  <img src="img/vpaint/fullscreen_ui.png" class="figure-img img-fluid" alt="Main UI">
 				  <figcaption class="figure-caption">Main UI of application, body viewed from "scene" camera</figcaption>
 				</figure>
@@ -842,8 +840,6 @@ MENU			INVALID			THUMBUP
 				<p>As in the lab conditions photo above, the project requires the sensors align vertically, the hardware is connected by USB3.0 (Oculus, Leap and Kinect), and the user has a minimum of 2m &times; 5m 
 				physical space (uninterrupted) to operate from the Kinect V2 and constellation sensors.</p>
 
-
-							
 		</div>
 		
 		</div>  
