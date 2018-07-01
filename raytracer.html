@@ -252,7 +252,24 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 
 				<a id="floor"><h2>The Floor</h2></a><br/>
 
-				<p>coming soon</p>
+				<p>The 'floor' plane of the image is mathematically produced in the following lines (92):</p>
+
+				<div class="row">
+<div style="background: #ffffff; height: auto; overflow-y:scroll; width:100%; border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+
+	<span style="color: #008800; font-weight: bold">if</span>(m<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span>){
+		h<span style="color: #333333">=</span>h<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span>;
+		<span style="color: #008800; font-weight: bold">return</span>((i)(ceil(h.x)<span style="color: #333333">+</span>ceil(h.y))<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">?</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">:</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>))<span style="color: #333333">*</span>(b<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span><span style="color: #333333">+</span><span style="color: #6600EE; font-weight: bold">.1</span>);
+	}
+
+</pre></div>
+</div>
+
+				<br/>
+				<p>The ternary operator here (<code>?:</code>) returns one of two values in a 3-vector format (either [3,1,1] or [3,3,3]). Looking at these values as [R,G,B] it can be seen that [3,1,1] gives a RED colour, and [1,1,1] gives a grey 
+				(or in higher values, a white) colour. A checkerboard pattern using colours of ones own choosing (or even a different design entirely) can be made by modifying these values, and/or by changing the logic in ternary condition (and scaling values 
+				in the return statement).</p>
+
 				<br/>
 
 				<a id="dimensions"><h2>Image Dimensions</h2></a><br/>
