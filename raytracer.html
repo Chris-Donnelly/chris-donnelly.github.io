@@ -7,10 +7,9 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<!--Custom CSS -->
-	<link rel=stylesheet href="bootstrap-CD-style.css">
+	<link rel="stylesheet" href="bootstrap-CD-style.css">
 	<!--Fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 	<!--Favicon-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -22,17 +21,17 @@
   <body id="top">
 
 
-	<div class="container-fluid">
-
-	  <nav class="navbar navbar-expand-sm sticky-top">
+	<div class="container-fluid bg-grad">
+	
+	  <nav class="navbar navbar-expand-md sticky-top row">
 		  <a class="brand" href="index.html">Chris Donnelly</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="fas fa-bars fa-lg"></span>
 		  </button>
-		  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+		  <div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 				  <li class="nav-item">
-					 <a class="nav-link" href="index.html">Main Page</a>
+					<a class="nav-link" href="index.html">Home</a>
 				  </li>
 				  <li class="nav-item">
 					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
@@ -40,48 +39,41 @@
 				  <li class="nav-item">
 					 <a class="nav-link" href="#contents">Project Contents</a>
 				  </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
 				</ul>
 		  </div>
 		</nav>
+		   
+		<div class="row py-sm-5"><!--row containing the content-->
+			
+            <div class="col-md-10 offset-md-1 col-xl-3 offset-xl-0 mb-4 mb-sm-0 mr-lg-5"><!--title section-->
+				<a id="contents"></a>
+				<div class="topbar bottombar py-4 py-lg-5 px-sm-5">
+					<h1 class="display-4">Business Card Raytracer</h1>
+					<p class="lead">Low code-footprint raytracer</p>
+                    <hr>
+					<p class="text-muted">Contents</p>
+					<ul class="contentlist">
+						<li><a href="#context">Context</a></li>
+						<li><a href="#spec">Specification</a></li>
+						<li><a href="#implementation">Implementation</a></li>
+                        <li><a href="#links">Further information</a>
+					</ul>
+				</div>	
+			</div> <!--title section end-->
 
-		<div class="row py-sm-5 pl-sm-2">
+            <div class="col-md-10 offset-md-1 col-lg-9 col-xl-6 p-sm-5"><!--main content section-->
 
-			<div class="col-lg-3 py-sm-5">
-			<a id="contents"></a>
-			<div class=" my-5 pt-1 topbar bottombar">
-				<h1 class="display-4">Business Card Raytracer</h1>
-				<p class="lead">Low code-footprint raytracer</p>
-				<p class="display-6">Contents</p>
-				<ul class="contentlist">
-					<li><a href="#context">Context</a>
-					<li><a href="#spec">Specification</a>
-					<li><a href="#implementation">Implementation</a>
-					<li><a href="#links">Further information</a>
-				</ul>
-			</div>
-
-			 </div>
-
-			<div class="col-sm-10 offset-sm-1 col-lg-5 offset-md-1">
-
-				<h2>Business Card Raytracer</h2>
-
-				<br/>
-				<p>Raytracing a scene in a small section of code (small enough to fit on a business card)</p>
-
-				<br/>
-
-				<a id="context"><h2>Context</h2></a><br/>
+				<p class="lead" id="context">Raytracing a scene in a small section of code (small enough to fit on a business card).</p>
 
 				<p>Based on a great article by <a href="http://fabiensanglard.net/rayTracing_back_of_business_card/" target="new">Fabien Sanglard</a>, where he analyses the answer to a 1984 <code>comp.graphics</code> challenge set by Paul Heckbert,
-				this mini-project gives a unique opportunity to tinker with a tiny and efficient raytracer, designed to be as small as possible.</p><br/>
+				this mini-project gives a unique opportunity to tinker with a tiny and efficient raytracer, designed to be as small as possible.</p>
+				
+                <noscript><img src="img/raytracer/main.jpg" class="img-fluid" alt="edited Raytracer Output"></noscript>
+                
+				<p class="figure-caption">The final output from the raytracer, with edited colours, name and resolution (<a href="img/raytracer/main.jpg" target="new">full resolution</a>)</p>
 
-				<figure>
-				  <img src="img/raytracer/main.jpg" class="figure-img img-fluid" alt="edited Raytracer Output">
-				  <figcaption class="figure-caption">The final output from the raytracer, with edited colours, name and resolution (<a href="img/raytracer/main.jpg" target="new">full resolution</a>)</figcaption>
-				</figure>
-
-				<p>The original code (expanded for readability, highlighted thanks to <a href="http://hilite.me/" target="new">hilite.me</a>):</p><br/>
+				<p>The original code (expanded for readability, highlighted thanks to <a href="http://hilite.me/" target="new">hilite.me</a>):</p>
 
 				<div class="row">
 <div style="background: #ffffff; height: 30em; overflow-y:scroll; width:100%; border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;stdlib.h&gt;   </span><span style="color: #888888">// card &gt; aek.ppm</span>
@@ -213,109 +205,103 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 
 <!-- Apologies to anyone reading the page source code - it's a chunk of [pre] so it'll never look pretty in HTML -->
 
-				<p>The output (stdout) is piped to a <a href="https://en.wikipedia.org/wiki/Netpbm_format" target="new">PPM</a> image. Converted to JPEG:</p>
+                    <p>The output (stdout) is piped to a <a href="https://en.wikipedia.org/wiki/Netpbm_format" target="new">PPM</a> image. Converted to JPEG:</p>
 
-				<br/>
-				<figure>
-				  <img src="img/raytracer/aek.jpg" class="figure-img img-fluid" alt="edited Raytracer Output">
-				  <figcaption class="figure-caption">The output image in JPEG (original image is in PPM format)</figcaption>
-				</figure>
+                    <noscript><img src="img/raytracer/aek.jpg" alt="edited Raytracer Output" /></noscript>
+                      <p class="figure-caption">The output image in JPEG (original image is in PPM format)</p>
+
+                    <p>So I decided to take a look at some of the workings, and change a few things.</p>
+                    
+                    
+                <hr>
+                    
+                <div class="py-5">
+
+                    <a id="spec"><h1>Specification</h1></a>
+                    <h4>Requirements:</h4>
+
+                    <ul>
+                        <li>Windows 10 with <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="new">WSL</a> or GNU compatible or VM with the following packages:
+                        <ul>
+                            <li>gcc
+                            <li>binutils or 'build-essential' equivalent metapackages (such as OS headers, math headers, etc)
+                            <li>imagemagick (or GIMP to manually convert the output file)
+                        </ul>
+                        <li>Text editor
+                    </ul>
+
+                    <p><i>Platform used: IBM PC Compatible, running Windows 10 64-bit, build 1803 and WSL with build packages</i>.</p>
+
+				</div>
+                    
+                <hr>
+                    
+                <div class="py-5">
+                    
+				    <a id="implementation"><h1>Implementation (changes)</h1></a>
+
+                    <ul>
+                        <li><a href="#floor">The floor</a></li>
+                        <li><a href="#dimensions">Image dimensions</a></li>
+                        <li><a href="#view">View Parameters</a></li>
+                        <li><a href="#name">The Name</a></li>
+                    </ul>
+                    </div>
+                
+                    <hr>
+                    
+                    <div class="py-4">
+                        <a id="floor"><h2>The Floor</h2></a> 
+                        <p>coming soon</p>
+                    </div>
+                    
+                    <div class="py-4">
+                        <a id="dimensions"><h2>Image Dimensions</h2></a>
+                        <p>coming soon</p>
+                    </div>
+
+                    <div class="py-4">
+                        <a id="view"><h2>View Parameters</h2></a>
+                        <p>coming soon</p>
+                    </div>
+
+                    <div class="py-4">
+                        <a id="name"><h2>The Name</h2></a>
+                        <p>coming soon</p>
+                    </div>
+
+                <hr>
+                
+                <div class="py-5">
+                    <a id="links"><h1>Further Information</h1></a>
+                        <ul>
+                            <li><a href="http://fabiensanglard.net/rayTracing_back_of_business_card/" target="new">Raytracing</a>, by Fabien Sanglard, 20/9/2013</li>
+                        </ul>
+                </div>
 				
-				<p>So I decided to take a look at some of the workings, and change a few things.</p>
-				<br/>
-
-				<a id="spec"><h2>Specification</h2></a><br/>
-				<p>Requirements:</p>
-
-				<ul>
-					<li>Windows 10 with <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="new">WSL</a> or GNU compatible or VM with the following packages:
-					<ul>
-						<li>gcc
-						<li>binutils or 'build-essential' equivalent metapackages (such as OS headers, math headers, etc)
-						<li>imagemagick (or GIMP to manually convert the output file)
-					</ul>
-					<li>Text editor
-				</ul><br/>
-
-				<p><i>Platform used: IBM PC Compatible, running Windows 10 64-bit, build 1803 and WSL with build packages</i>.</p>
-
-				<br/>
-				<a id="implementation"><h2>Implementation (changes)</h2></a><br/>
-
-				<ul>
-					<li><a href="#floor">The floor</a></li>
-					<li><a href="#dimensions">Image dimensions</a></li>
-					<li><a href="#view">View Parameters</a></li>
-					<li><a href="#name">The Name</a></li>
-				</ul>
-				<br/>
-
-				<a id="floor"><h2>The Floor</h2></a><br/>
-
-				<p>The 'floor' plane of the image is mathematically produced in the following lines (92):</p>
-
-				<div class="row">
-<div style="background: #ffffff; height: auto; overflow-y:scroll; width:100%; border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
-
-	<span style="color: #008800; font-weight: bold">if</span>(m<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span>){
-		h<span style="color: #333333">=</span>h<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span>;
-		<span style="color: #008800; font-weight: bold">return</span>((i)(ceil(h.x)<span style="color: #333333">+</span>ceil(h.y))<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">?</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">:</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>))<span style="color: #333333">*</span>(b<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span><span style="color: #333333">+</span><span style="color: #6600EE; font-weight: bold">.1</span>);
-	}
-
-</pre></div>
-</div>
-
-				<br/>
-				<p>The ternary operator here (<code>?:</code>) returns one of two values in a 3-vector format (either [3,1,1] or [3,3,3]). Looking at these values as [R,G,B] it can be seen that [3,1,1] gives a RED colour, and [1,1,1] gives a grey 
-				(or in higher values, a white) colour. A checkerboard pattern using colours of ones own choosing (or even a different design entirely) can be made by modifying these values, and/or by changing the logic in ternary condition (and scaling values 
-				in the return statement).</p>
-
-				<br/>
-
-				<a id="dimensions"><h2>Image Dimensions</h2></a><br/>
-
-				<p>coming soon</p>
-
-				<br/>
-
-				<a id="view"><h2>View Parameters</h2></a><br/>
-
-				<p>coming soon</p>
-
-				<br/>
-				
-				<a id="name"><h2>The Name</h2></a><br/>
-
-				<p>coming soon</p>
-
-				<br/>
-				
-				<a id="links"><h2>Further Information</h2></a>
-
-				<p>
-					<ul>
-						<li><a href="http://fabiensanglard.net/rayTracing_back_of_business_card/" target="new">Raytracing</a>, by Fabien Sanglard, 20/9/2013</li>
-					</ul>
-				</p>
-
-			</div><!--end of container-fluid-->
-		</div>
+            </div>
+            
+                <div class="col-12 py-2">
+                     <a href="#top" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
+                </div>
+            
+            </div><!--row end-->
+        </div><!--end of container-fluid-->
+		
 
 		<footer class="pt-3">
 			<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
 		</footer>
 
-
+    <!--other stylesheets-->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<!--Initialise tooltips from popper.js-->
-	  <script>
-		$(function () {
-			  $('[data-toggle="tooltip"]').tooltip()
-			})
-	  </script>
+    <script src="js/lazy-progressive-enhancement.min.js"></script>
+      <script>
+        loadMedia(null, null, true)
+      </script>
   </body>
 
 </html>

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="bootstrap-CD-style.css">
 	<!--Fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
 	<!--Favicon-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -23,17 +23,17 @@
   
   <body id="top">
 	  
-	<div class="container-fluid">
+	<div class="container-fluid bg-grad">
 	
-	  <nav class="navbar navbar-expand-sm sticky-top">
+	  <nav class="navbar navbar-expand-md sticky-top row">
 		  <a class="brand" href="index.html">Chris Donnelly</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="fas fa-bars fa-lg"></span>
 		  </button>
-		  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+		  <div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 				  <li class="nav-item">
-					<a class="nav-link" href="index.html">Main Page</a>
+					<a class="nav-link" href="index.html">Home</a>
 				  </li>
 				  <li class="nav-item">
 					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
@@ -41,21 +41,23 @@
 				  <li class="nav-item">
 					 <a class="nav-link" href="#contents">Project Contents</a>
 				  </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
 				</ul>
 		  </div>
 		</nav>
 		   
-		<div class="row py-sm-5 pl-sm-2">
+		<div class="row py-sm-5">
 			
-			<div class="col-lg-3 py-sm-5">
+			<div class="col-md-10 offset-md-1 col-xl-3 offset-xl-0 mb-4 mb-sm-0 mr-lg-5">
 				<a id="contents"></a>
-				<div class=" my-5 pt-1 topbar bottombar">
+				<div class="topbar bottombar py-4 py-lg-5 px-sm-5">
 					<h1 class="display-4">Virtual Paintbrush</h1>
 					<p class="lead">A virtual reality painting application in room-scale, using customizable fuzzy sets, skeletal joint filtering, and search trees to paint in 3D using gestures</p>
-					<p class="lead">Written in C++11, using Direct3D11, Kinect V2, Leap Motion, Oculus VR</p>
-					<p class="lead">MSc Dissertation Project / University of Hull, 2016-17</p><br/>
+					<p>Written in C++11, using Direct3D11, Kinect V2, Leap Motion, Oculus VR</p>
+					<p>MSc Dissertation Project / University of Hull, 2016-17</p>
 					
-					<p class="display-6">Contents</p>
+                    <hr>
+					<p class="text-muted">Contents</p>
 					<ul class="contentlist">
 						<li><a href="#context">Context</a></li>
 						<li><a href="#spec">Specification</a></li>
@@ -64,54 +66,56 @@
 				</div>	
 			</div> 
 			
-			<div class="col-sm-10 offset-sm-1 col-lg-5 offset-md-1">
+			<div class="col-md-10 offset-md-1 col-lg-9 col-xl-6 p-sm-5">
 
-				<h2>Virtual Paintbrush</h2>
 			
-				<p>A virtual reality painting application in room-scale, using customizable fuzzy sets, skeletal joint filtering, and search trees to paint in 3D using gestures</p>
-
-				<figure class="figure">
-					<img class="img-fluid figure-img" src="img/vpaint/main.jpg">
-					<figcaption class="figure-caption">Painting, in 3D virtually</figcaption>
-				</figure><br/>
-
-				<p>Written in C++11, using Direct3D11, Kinect V2, Leap Motion, Oculus VR hardware and APIs</p>
+				<!--<p>A virtual reality painting application in room-scale, using customizable fuzzy sets, skeletal joint filtering, and search trees to paint in 3D using gestures</p>-->
+                
+                <a id="context"></a>
 				
-				<figure class="figure-img">
-				  <img src="img/vpaint/fullscreen_ui.png" class="figure-img img-fluid" alt="Main UI">
-				  <figcaption class="figure-caption">Main UI of application, body viewed from "scene" camera</figcaption>
-				</figure>
-
-				<figure class="figure">
-				  <img src="img/vpaint/uielements.jpg" class="figure-img img-fluid" alt="Sensor feeds">
-				  <figcaption class="figure-caption">Live sensor feedback (red: kinect2 infrared / green: leap infrared / blue: oculus mirror)</figcaption>
-				</figure>
-				
-				<p>MSC Computer Science for Video Game Development, University Of Hull, UK</p>
-				<br/>
-				
-				<a id="context"><h2>Context</h2></a><br/>
-				
-				<p>Inspired by <a href="https://www.microsoft.com/en-gb/hololens" target="new">Microsoft Hololens</a>, I chose the "Virtual Paintbrush" project for my MSc dissertation project at Hull. I wanted to create an 
+				<p class="lead">Inspired by <a href="https://www.microsoft.com/en-gb/hololens" target="new">Microsoft Hololens</a>, I chose the "Virtual Paintbrush" project for my MSc dissertation project at Hull. I wanted to create an 
 				application which could replicate some of the advantages of the Hololens (namely, more spatial awareness, and a connection between real-world movements and their digital representations by measuring the user 
 				body dimensions and positions and reflecting them in a matching virtual-world space, meaning the user height, actions and room-position are more accurately tracked than with current software).</p>
 				
-				<p>The software would of course require a VR HMD, and sensors to detect the user (from body positions to extremities such as hands, fingers, etc). I decided to use consumer-grade hardware and accompanying 
+
+					<img class="img-fluid" src="img/vpaint/main.jpg">
+					<p class="figure-caption">Painting, in 3D virtually</p>
+                
+                <p>The software would of course require a VR HMD, and sensors to detect the user (from body positions to extremities such as hands, fingers, etc). I decided to use consumer-grade hardware and accompanying 
 				APIs (<a href="http://www.oculus.com/rift/" target="new">Oculus Rift DK2</a>, a <a href="http://www.leapmotion.com/" target="new">Leap Motion Controller</a> and <a href="https://en.wikipedia.org/wiki/Kinect#Kinect_for_Windows_v2_(2014)"
 				target="new">Microsoft Kinect V2</a>) to achieve this.</p>
+				
 
-				<p>See the project in action:</p>
+				<!--<p>Written in C++11, using Direct3D11, Kinect V2, Leap Motion, Oculus VR hardware and APIs</p>-->
 				
-				<div class="col py-5 justify-content-center">
-					<iframe style="width: 100%;" height="400" src="https://www.youtube.com/embed/KdbUJj4ehZM?rel=0" frameborder="0" ></iframe>
-				</div>
+               
+                <noscript><img src="img/vpaint/fullscreen_ui.png" class="img-fluid" alt="Main UI"></noscript>
+				  <p class="figure-caption">Main UI of application, body viewed from "scene" camera</p>
 				
-				<div class="col py-5 justify-content-center">
-					<iframe style="width: 100%;" height="400" src="https://www.youtube.com/embed/gu6dULwLVdQ?rel=0" padding="0" frameborder="0"></iframe>
-				</div>
+                <noscript><img src="img/vpaint/uielements.jpg" class="img-fluid " alt="Sensor feeds"></noscript>
+				  <p class="figure-caption">Live sensor feedback (red: kinect2 infrared / green: leap infrared / blue: oculus mirror)</p>
+                 
+				<!--<p>MSC Computer Science for Video Game Development, University Of Hull, UK</p>-->
 				
-				<br/>
-				<a id="spec"><h2>Specification</h2></a><br/>
+				
+				
+
+				<h4 class="pt-5">See the project in action:</h4>
+				
+                
+                <div class="embed-responsive embed-responsive-16by9 my-4">
+                    <noscript><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KdbUJj4ehZM?rel=0" allowfullscreen></iframe></noscript>
+                </div>
+                
+                <div class="embed-responsive embed-responsive-16by9 my-4">
+                    <noscript><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gu6dULwLVdQ?rel=0" allowfullscreen></iframe></noscript>
+                </div>
+				
+				
+                <hr>
+				
+				<div class="py-5">
+				<a id="spec"><h1>Specification</h1></a>
 				<p>The application is written in C++11, and is developed for Microsoft Windows 10 (as a Win32 app), and uses a bespoke entity-component system for rapid development. Further libraries and specifications:</p>
 
 				<ul>
@@ -132,10 +136,12 @@
                     <li><a href="https://www.leapmotion.com/product/#104" target="new">Leap Motion Controller</a></li>
                     <li><a href="https://www.eteknix.com/oculus-rift-dk2-vr-headset-review/" target="new">Oculus DK2 HMD and sensor</a></li>
 				</ul>
+                    </div>
 
-
-				<br/>
-				<a id="implementation"><h2>Implementation</h2></a><br/>
+				<hr>
+                
+                <div class="py-5">
+				<a id="implementation"><h1>Implementation</h1></a>
 				<p>The application itself requires numerous major components (and subsystems) to manage the multiple APIs and data flow; these components can be divided up into the following:</p>
 				
 				<ul>
@@ -189,13 +195,15 @@
 					</ul>
 
 				</ul>
-				<br/>
+                    </div>
+                    <hr>
 				
-				<h2 class="display-8">Main Application</h2><br/>
+				 <div class="py-5">
+				<h2 >Main Application</h2>
 				
-				<a id="appframework"><h3 class="display-8">Application Framework</h3></a><br/>
+				<a id="appframework"><h3 >Application Framework</h3></a>
 				
-				<p><i>This project is a quite complicated collection of systems, the application framework section will describe a higher-level overview of the application when running. Please refer to the 
+				<p class="text-muted"><i>This project is a quite complicated collection of systems, the application framework section will describe a higher-level overview of the application when running. Please refer to the 
 				list above for further detail into each component or system.</i></p>
 				
 				<p>The application framework is a C++11 entity-component hybrid; entities are containers for components, which are processed by their respective systems (such as mesh data being acted upon by the 
@@ -221,12 +229,14 @@
 				in an editable text file) to ascertain each bone position, in turn leading to each finger position, which in turn gives an overall hand position, and in turn both hands form a gesture or action.</p>
 				
 				<p>The gesture painting class takes these gestures and actions, and executes the necessary actions (such as painting lines, ribbons, tubes, saving files, changing colours)</p>
+                </div>     
 
-				<br/>
+                
+                <div class="py-4">
 				
-				<h2 class="display-8">Joints</h2><br/>
+				<h2 >Joints</h2>
 
-				<a id="jointslimbs"><h3 class="display-8">Joints and limbs</h3></a><br/>
+				<a id="jointslimbs"><h3 >Joints and limbs</h3></a>
 
 				<p>A key part of any body-reading project is the joint; a camera-space (where sensor is origin to its LCS) position representing a recognised point on the human body, supplied with its own properties such 
 				as biological measurement, rotation, etc. In the scope of this project, the location (and in the case of the UserSkeleton, rotation) data are mainly used to calculate joints, limbs, and therefore a body. Joints 
@@ -236,106 +246,121 @@
 				
 				<br/>
 
-				<a id="jointsmoothing"><h3 class="display-8">Joint Smoothing</h3></a><br/>
+				<a id="jointsmoothing"><h3 >Joint Smoothing</h3></a>
 				<p>Two elements require consideration when using body detection devices and software; sampling rate (the rate at which new joint data is produced) and noise (irregularities in the data, producing inaccurate joint 
-				positions). Sampling rates are shown below:<br/><br/></p>
+				positions). Sampling rates are shown below:</p><br/>
 				
-				<table border=0 cellpadding=10 cellspacing=5>
-				  <tr>
-					<th></th>
-					<th class="thlabel">Data rate</th>
-					<th class="thlabel">Frame Time</th>
-					<th class="thlabel">notes</th>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">Kinect2 (Body)</td>
-					<td class="tddata">30hz</td>
-					<td class="tddata">&asymp; 33.3ms</td>
-					<td class="tddata">&asymp; 60ms processing delay</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">Leap Motion</td>
-					<td class="tddata">&ge; 50hz</td>
-					<td class="tddata">&ge; 20ms</td>
-					<td class="tddata">Adaptive rate</td>
-				  </tr>
-				</table>
-				
-				<p><br/><sup><i>The leap motion controller data (detection) frequency may be lower than the advertised frame recording rate (image sampling) of 100-200hz. These figures are based on localized tests using 
-				the included Leap Motion diagnostic visualizer results; other results may vary.</i></sup><br/></p>
-				
+                <div class="table-responsive py-4">
+                    <table class="table">
+                      <thead>
+                        <th></th>
+                        <th>Data rate</th>
+                        <th>Frame Time</th>
+                        <th>Notes</th>
+                      </thead>
+                        <tbody>
+                      <tr>
+                        <td>Kinect2 (Body)</td>
+                        <td>30hz</td>
+                        <td>&asymp; 33.3ms</td>
+                        <td>&asymp; 60ms processing delay</td>
+                      </tr>
+                      <tr>
+                        <td>Leap Motion</td>
+                        <td>&ge; 50hz</td>
+                        <td>&ge; 20ms</td>
+                        <td>Adaptive rate</td>
+                      </tr>
+                    </tbody>      
+                    </table>
+                    <sup><i>The leap motion controller data (detection) frequency may be lower than the advertised frame recording rate (image sampling) of 100-200hz. These figures are based on localized tests using 
+				the included Leap Motion diagnostic visualizer results; other results may vary.</i></sup>
+                </div>
+    
 				<p>To compensate for lower sampling frequencies or data noise (both of which represent the real data inaccurately, causing negative effects such as stuttering or overshot), smoothing or interpolation on the 
 				data would be needed.</p>
 				
 				<p>The filtered joint classes are derived from the abstract base (<b>FilteredJoint</b>) to perform no smoothing. Each joint maintains its own history and parameters (allowing custom smoothing paramaters on 
 				a per-joint basis, although implementing differnt smoothing techniques per-joint was not fully implemented). This also enables a combination of multiple smoothing techniques within a given user body 
-				(areas with low confidence may require different smoothing parameters or algorithms). Techniques implemented are:<br/><br/></p>
-
-				<table border=0 cellpadding=10 cellspacing=5>
-				  <tr>
-					<th class="thlabel">Joint Type</th>
-					<th class="thlabel">Smoothing technique</th>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">PassthroughJoint</td>
-					<td class="tddata-left">None (raw/passthrough with only confidence checking)</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">WeightedAvgJoint</td>
-					<td class="tddata-left">Weighted Average (customizable parameters)</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">DoubleExpJoint</td>
-					<td class="tddata-left">Holt Double Exponential (customizable parameters)</td>
-				  </tr>
-				</table>
+				(areas with low confidence may require different smoothing parameters or algorithms).</p>
+                
+                <p> Techniques implemented are:</p>
+                
+                <div class="table-responsive py-4">
+                    <table class="table">
+                        <thead>
+                        <th>Joint Type</th>
+                        <th>Smoothing technique</th>
+                            </thead>
+                    <tbody>
+                      <tr>
+                        <td>PassthroughJoint</td>
+                        <td>None (raw/passthrough with only confidence checking)</td>
+                      </tr>
+                      <tr>
+                        <td>WeightedAvgJoint</td>
+                        <td>Weighted Average (customizable parameters)</td>
+                      </tr>
+                      <tr>
+                        <td>DoubleExpJoint</td>
+                        <td>Holt Double Exponential (customizable parameters)</td>
+                      </tr>
+                    </tbody>
+                    </table>
+                    </div>
 				
-				<p><br/><br/>The application allows the user to dynamically change the joint types (and therefore the smoothing technique) at run-time via the UI.</p>
+				<p>The application allows the user to dynamically change the joint types (and therefore the smoothing technique) at run-time via the UI.</p>
 
-				<p>Each technique provides its own tradeoffs (providing filtered movement or reducing errors, at a cost of latency or accuracy):<br/><br/></p>
-
-				<table border=0 cellpadding=10 cellspacing=5>
-				  <tr>
-					<th class="thlabel">Technique</th>
-					<th class="thlabel">Gain</th>
-					<th class="thlabel">Loss</th>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">Passthrough</td>
-					<td class="tddata-left">Minimal latency</td>
-					<td class="tddata-left">No error reduction (outside of API)</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">Weighted Average</td>
-					<td class="tddata-left">Heavy smoothing</td>
-					<td class="tddata-left">Higher latency, best for linear movements</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">Double Exponential</td>
-					<td class="tddata-left">Lighter smoothing, jitter reduction</td>
-					<td class="tddata-left">Some latency, requires more tuning</td>
-				  </tr>
-				  </table>
+				<p>Each technique provides its own tradeoffs (providing filtered movement or reducing errors, at a cost of latency or accuracy):</p>
+                
+                <div class="table-responsive py-4">
+                    <table class="table">
+                      <thead>
+                        <th>Technique</th>
+                        <th>Gain</th>
+                        <th>Loss</th>
+                      </thead>
+                        <tbody>
+                      <tr>
+                        <td>Passthrough</td>
+                        <td>Minimal latency</td>
+                        <td>No error reduction (outside of API)</td>
+                      </tr>
+                      <tr>
+                        <td>Weighted Average</td>
+                        <td>Heavy smoothing</td>
+                        <td>Higher latency, best for linear movements</td>
+                      </tr>
+                      <tr>
+                        <td>Double Exponential</td>
+                        <td>Lighter smoothing, jitter reduction</td>
+                        <td>Some latency, requires more tuning</td>
+                      </tr>
+                            </tbody>
+                      </table>
+                </div>
 				
-				<p><br/><sup><i>Other tradeoffs do apply; these are most important to the context of the project</i></sup></p>
+				<p><sup><i>Other tradeoffs do apply; these are most important to the context of the project</i></sup></p>
 				
 				<p>Futher research is needed to provide a definitve answer as to the best combination of smoothing techniques and parameters; however the implementation allows output of all positions (per-frame, per-body) from 
 				each body to analyse positional differences over time for more statistical analysis, as well as rendering multiple filtered bodies overlaid to provide a complementary visual comparison analysis.</p>
 				
 				<br/>
 				
-				<a id="jointreaders"><h3 class="display-8">Joint Readers</h3></a><br/>
+				<a id="jointreaders"><h3 >Joint Readers</h3></a>
 				
 				<p>The joint reader classes are used to request the 'packets' (or frames) of sensor data from the appropriate API (a slight decoupling). Kinect2 and Leap APIs are queried for their new data and (if available), the readers 
 				retrieve the frame object, packing the data into a container, and unpacking it into the appropriate target location. These essentially manage packet/frame requests of data from the API.</p>
 
 				<p><i>Note: The <a href="#userskeleton">UserSkeleton</a> and <a href="#userhands">UserHands</a> classes use Joint Readers to access new data frames.</i></p>
 				
-				<br/><br/>
+				</div>
+                
+                <div class="py-4">
 				
-				<h2 class="display-8">The User</h2><br/>
+				<h2>The User</h2>
 						
-				<a id="userbody"><h3 class="display-8">User body class</h3></a><br/>
+				<a id="userbody"><h3>User body class</h3></a>
 				
 				<p>The UserBody class manages the virtual representation of the user (the avatar) as a whole, and contains one <a href="#userskeleton">UserSkeleton</a> and two <a href="#userhands">UserHand</a> 
 				classes, representing all detectable portions of a single body. The UserBody is updated as part of the current scene (or logic) loop, in turn passing a request to update the component skeleton and hand classes.
@@ -343,7 +368,7 @@
 				
 				<br/>
 				
-				<a id="usersksleton"><h3 class="display-8">User skeleton class</h3></a><br/>
+				<a id="usersksleton"><h3>User skeleton class</h3></a>
 				
 				<p>The UserSkeleton class represents the detected body <i>excluding</i> the hands (although does include the wrists, or carpals with a joint), which is referred to in this project as the skeleton (semantics 
 				notwithstanding). Managing the data from the KinectV2 sensor (obtained as data packets from the <a href="#kinectv2api">KinectV2API</a>), the UserSkeleton manages entities for joints and 'limbs' (connecting 
@@ -356,7 +381,7 @@
 				
 				<br/>
 								
-				<a id="userhands"><h3 class="display-8">User hands class</h3></a><br/>
+				<a id="userhands"><h3>User hands class</h3></a>
 
 				<p>Like the <a href="#userskeleton">UserSkeleton</a> class, the UserHand class manages entities and data in the domain of the hand (finger joints, bones, etc). Entities representing finger bones (like the limbs) and joints (
 				which are gathered from the endpoints of bones in the Leap Motion data) are created by each UserHands (the body has one per real detectable hand), and the entities are updated with new data. As with UserSkeleton, the joints or 
@@ -367,7 +392,7 @@
             <p><b>Note:</b> The UserHand entities are set as children (and therefore child transformations) of the exposable UserSkeleton wrist entities; this attaches them to the wrist as a hand would normally attach, with a customizable three-dimensional 
             offset vector known as the <i>carpal offset</i> to compensate for wrist bones, moving the hand away from the wrist to a desired scale.</p><br/>
 			  
-				<a id="head"><h3 class="display-8">What about the head?</h3></a><br/>
+				<a id="head"><h3 >What about the head?</h3></a>
 				
 				<p>Good Question. While the Kinect does 'see' the head as a joint location with an approximate quaternion for rotation, more detail is needed for rendering to the Oculus Rift HMD. The Oculus SDK does provide a means of accessing the 
 				orientation information of the HMD (namely, the tilt of the user's head, looking direction, etc), but the location is often approximated as the sensor (a small IR camera) may not see the floor clearly (at the time of implementation, 
@@ -381,12 +406,14 @@
 				
 				<p><b>But why is there no UserHead class?</b> There was little need to create more than a derived VR-compatible camera object to mimic the user's viewing parameters; a specialised camera class to work with the Oculus SDK and work as the user's eyes.</p>
 			
-				<br/>
-				<h2 class="display-8">Rendering</h2><br/>
+				</div>
+                
+                <div class="py-4">
+				<h2 >Rendering</h2>
 				
 				<p>Output to the screen, UI layer of the screen and Oculus HMD is achieved using Direct3D 11.0 as a general-purpose renderer. The functionality of the renderer was extended beyond a regular Win32 application to accomodate the Oculus HMD.</p><br/>
 				
-				<a id="rendering"><h3 class="display-8">Rendering systems</h3></a><br/>
+				<a id="rendering"><h3 >Rendering systems</h3></a>
 
 				<p>The renderer is statically instanciated to perform its rendering duties, and while static classes are constructed before the main entry point of the application, the DXRenderer takes no action until its method "Initialize" is 
 				invoked. When this happens, D3D resources are created for rendering, offscreen buffers (depth, stencil, render target, etc) and render modes (structures such as stencil types, rasterizer modes, etc) are created and stored internally. The 
@@ -406,28 +433,28 @@
 				
 				<br/>
 
-				<a id="dxrenderer"><h3 class="display-8">Window Renderer</h3></a><br/>
+				<a id="dxrenderer"><h3 >Window Renderer</h3></a>
 				
 				<p>The Window renderer refers to the DXRenderer operating in the context of the render targets, views and resources allocated to a given Win32 Window via its HWND handle. The render target is set to the resources and swapchain tied to the HWND, 
 				and internal states are set accordingly. The list of entities is processed for rendering by the renderer, and the output image created as normal. For window rendering the scene, a 'scene' camera is used (a view and projection matrix set to the 
 				parameters of viewing the scene). This camera is passed alongside the entities, and the view/projection matrices are extracted for rendering as a scene camera.</p><br/>
 				
-				<a id="ovrrenderer"><h3 class="display-8">Oculus Renderer</h3></a><br/>
+				<a id="ovrrenderer"><h3 >Oculus Renderer</h3></a>
 				
 				<p>The Oculus renderer is a slightly more complex beast than the Window renderer, as it must request rendering <i>two</i> times (obviously, one per eye view) with slightly different viewing parameters to accurately allow rendering from the location 
 				of each eye (the HMD/API provides a reading for IPD: interpupillary distance -- effectively the distance betweeen the pupils when looking straight ahead). For the HMD, an 'OVRCamera' is used, derived from a scene camera to allow more control by 
 				supplying the view/projection matrix from the Oculus API (HMDs models have varying FOVs and resolutions resulting in a different projection matrix for each HMD; Oculus documentation recommends always using the API to retrieve the projection data).</p>
 				<br/>
 				
-				<a id="uirenderer"><h3 class="display-8">UI Renderer</h3></a><br/>
+				<a id="uirenderer"><h3 >UI Renderer</h3></a>
 				
 				<p>The UI overlays in the app (such as live camera data and Oculus mirror) are only rendered to the window. The UI renderer is designed to use the <a href="#dxrenderer">DXRenderer</a> to render elements to the same buffer as the scene render, using 
 				a 'UICamera' -- an orthographic projection matrix set to the window's buffer size and identity view matrix.</p>
 				
-				<figure class="figure">
-				  <img src="img/vpaint/ui_overlay.gif" class="figure-img img-fluid" alt="UI Overlays (blue)">
-				  <figcaption class="figure-caption">UI Overlay elements (highlighted blue)</figcaption>
-				</figure>
+				
+                    <noscript><img src="img/vpaint/ui_overlay.jpg" class="img-fluid" alt="UI Overlays (blue)"></noscript>
+				  <p class="figure-caption">UI Overlay elements (highlighted blue)</p>
+				
 
 				<p>As you can see above, the app uses <a href="http://anttweakbar.sourceforge.net" target="new">AntTweakBar</a> (left) to enable tweaking and show statistics; the bar is created by the scene, but the rendering call is managed by the UIRenderer. 
 				The bar uses opacity, so it is rendered last.</p>
@@ -436,8 +463,10 @@
 				cache-friendly list inside the UIRenderer, and passed as the renderable entities for rendering (instead of the entire scene). A small optimisation here is to render the UIElement objects first (depth/stencil enabled), and then the scene, 
 				removing overdraw for those sections of screen when rendering the scene (effectively the inverse painter's algorithm).</p>
 				
-				<br/>
-				<a id="sensorapis"><h2 class="display-8">Sensor, Hardware &amp; APIs</h2></a><br/>
+				</div>
+                
+                <div class="py-4">
+				<a id="sensorapis"><h2 >Sensor, Hardware &amp; APIs</h2></a>
 				<p>The project (rather obviously) makes use of hardware such as a Leap Motion Controller, Kinect V2 and Oculus DK2 (with sensor); each item requires its own software to control and access readings for these hardware items. Each API functionality 
 				is wrapped in a statically instanciated wrapper class (<a href="#kinevtv2api">KinectV2API</a>, <a href="#ovrapi">OVRAPI</a>, <a href="#leapapi">LeapAPI</a> for Kinect V2, Oculus and Leap Motion respectively). Since statically insanticiated classes 
 				are constructed at global scope and before the entry point of the program, the API wrappers do not initialize and create resources until the <i>initialize</i> method is called. This allows the application to prepare any necessary information before 
@@ -447,7 +476,7 @@
 				<p>Each API has an <i>Update</i> method, which is called to retrieve the latest state of the APi and hardware, and check for new data (if the API/device is functioning - if not, it shuts down the wrapper ready to be re-initialized by the main 
 				application logic loop). Any new data is stored internally, and a flag for new "clean" data is set.</p><br/>
 				
-				<a id="ovrapi"><h3 class="display-8">Oculus API Wrapper (OVRAPI)</h3></a><br/>
+				<a id="ovrapi"><h3 >Oculus API Wrapper (OVRAPI)</h3></a>
 				
 				<p>The Oculus wrapper encapsulates the libovr (Oculus SDK) functionality and state objects to provide a simple interface to address the API and hardware. The API creates HMD and view data types and accesses the oculus device (and sensor) 
 				via a stored session ADT. Rendering objects and states for the HMD are stored in the <a href="#ovrrenderer">Oculus Renderer</a> class, but the requests to create these objects are made via the <a href="#dxrenderer">Window Renderer/DXRenderer</a>.</p>
@@ -457,24 +486,24 @@
 				
 				<br/>
 				
-				<a id="kinectv2api"><h3 class="display-8">Kinect V2 API Wrapper (KinectV2API)</h3></a><br/>
+				<a id="kinectv2api"><h3 >Kinect V2 API Wrapper (KinectV2API)</h3></a>
 				
 				<p>The Kinect 2 API manages the Kinect2 SDK functionality and internal objects, retrieving body and infrared frames (although more frame types are available).</p>
 
 				<p>Frames of body data and infrared captures are stored internally, ready to be accessed by JointReaders or copied to material data, when they are marked as 'dirty' or used. Furthermore, sensor details, such as percieved height from a floor, 
 				framerate and body confidence are accessed (or calculated by the wrapper), and ready to be passed to other systems if needed.</p>
 				
-				<figure class="figure">
-				  <img src="img/vpaint/depth_ir.gif" class="figure-img img-fluid" alt="Depth & IR Streams">
-				  <figcaption class="figure-caption">Kinect 2 Depth stream (left) and Infrared stream (right)</figcaption>
-				</figure>
+				
+                    <noscript><img src="img/vpaint/depth_ir.jpg" class="img-fluid" alt="Depth & IR Streams"></noscript>
+				  <p class="figure-caption">Kinect 2 Depth stream (left) and Infrared stream (right)</p>
+				
 
             <p>While specific user-tracking is implemented in the Kinect API, it is not implemented in the project; the user is assumed and advise to be the closest user to the sensor, and in optimal conditions, should be the only person in view of the Kinect.</p>
             
 				<p>Like the <a href="#ovrapi">Oculus API wrapper</a>, the KinectV2API has a method to copy captured frame data (infrared in this case) to a specified material object, to be used by the UIRenderer and UIElements.</p>
 
 				<br/>
-				<a id="leapapi"><h3 class="display-8">Leap API Wrapper (LeapAPI)</h3></a><br/>
+				<a id="leapapi"><h3 >Leap API Wrapper (LeapAPI)</h3></a>
             
             <p>The Leap API Wrapper (LeapAPI) encapsulates functions and objects from the Leap SDK, working in the same way to the <a href="#ovrapi">Oculus</a> and <a href="#kinectv2api">Kinect</a> API wrappers.</p>
             
@@ -486,16 +515,18 @@
             ready for the next query to read them (with a flag raised to show new/fresh data). Hand data is passed as joint packets, while the API wrapper implements the same technique as the other APIs in the project; it can copy image data to a 
             specific material object for UI rendering.
             </p>
-				<br/>
+				</div>
+                
+                <div class="py-4">
             
-				<h2 class="display-8">Pose and Gesture Management</h2><br/>
+				<h2 >Pose and Gesture Management</h2>
             
             <p>After all the application, sensor, API and render management work is functioning, the program needs to be able to understand when the user's body is in a particular pre-defined state to act upon (such as a 'drawing' pose). Hard-coding values is a bad practice for most programmers, but makes for bigger problems when each user has different capabilities and measurements for their body and hands. Clearly, the developer's measurements (mine) won't match other user measurements or 
             abilities (other users may have more or less ability of movement), but completely abstract values are no use either; the answer to measure the positions of fingers on a hand, or position of a body is to measure it agains <i>itself</i>, or 
             at least agains its own standard measurements. To this end, the hand poses would measure the finger bone positions relative to their neighbours and the general palm normal and orthonormal basis vectors.</p>
             <br>
             
-				<a id="handedness"><h3 class="display-8">Left -vs- Right handedness</h3></a><br/>
+				<a id="handedness"><h3 >Left -vs- Right handedness</h3></a>
             
             <p>While right-handed, I thought it best to implement <b>handedness</b> to allow run-time switching between left and right-handed operating modes. The project does not refer to left or right hands when processing hand gestures, but uses the 
             terms <b>dominant</b> and <b>non-dominant</b>, which refers to the UI selection on the main screen (choice of left/right). All pose enumeration and action processing uses arguments of a dominant and non-dominant hand to abstract usage to 
@@ -503,194 +534,204 @@
             </p>            
             <br/>
             
-			<a id="poses"><h3 class="display-8">Pose and action config systems</h3></a><br/>
+			<a id="poses"><h3 >Pose and action config systems</h3></a>
 			
             <p>Painting in the application does not require any physical objects (stylii, remote devices, etc) to 'paint'; the application parses the current hand positions into actions to carry out, and both hand pose and action are customizable through 
 			a series of human-readable data (mostly) read by the application on initialization. In short, these files represent what constitutes a finger's pose, and which finger poses constitute a hand's pose, and which two hand poses constitute a gesture.</p>
 			
 			<p>Think of the config files specifying a program command (such as paint, save, etc) from the finger (phalange) bones up to two hands:</p>
 
-				<figure class="figure">
-				  <img src="img/vpaint/poses.gif" class="figure-img img-fluid" alt="FingerPose * 5 = HandPose, HandPose * 2 = GestureAction">
-				  <figcaption class="figure-caption">The <b>GestureAction</b> is made of two <b>HandPose</b> values, which is made of five <b>FingerPose</b> values</figcaption>
-				</figure>
+				
+                    <noscript><img src="img/vpaint/poses.gif" class="img-fluid" alt="FingerPose * 5 = HandPose, HandPose * 2 = GestureAction"></noscript>
+				  <p class="figure-caption">The <b>GestureAction</b> is made of two <b>HandPose</b> values, which is made of five <b>FingerPose</b> values</p>
+				
 
             <br/>
             
-			<a id="quantposes"><h3 class="display-8">Enumerating poses and gestures</h3></a><br/>
+			<a id="quantposes"><h3 >Enumerating poses and gestures</h3></a>
 
-			<a id="fingerpose"><h4 class="display-6">Finger Poses</h4></a><br/>
+			<a id="fingerpose"><h4 class="display-6">Finger Poses</h4></a>
 
   				<p>The <b>FingerPose</b> is an enumerated value which defines the state of one finger:</p>
 			
-				<table border=0 cellpadding=10 cellspacing=5>
-				  <tr>
-					<th class="thlabel">Fingerpose Enum</th>
-					<th class="thlabel">Meaning</th>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">STRAIGHT</td>
-					<td class="tddata-left">Finger is held straight</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">RELAXED</td>
-					<td class="tddata-left">Finger is slightly curved, a relaxed state</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">CURVED</td>
-					<td class="tddata-left">Finger is deliberately curved/bent (more than relaxed)</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">CLOSED</td>
-					<td class="tddata-left">Finger is heavily curved into a fist state</td>
-				  </tr>
-				  <tr>
-					<td class="tdlabel">NONE</td>
-					<td class="tddata-left">Unreadable / error state</td>
-				  </tr>
-				</table><br/>
+                <div class="table-responsive py-4">
+                    <table class="table">
+                      <thead>
+                        <th>Fingerpose Enum</th>
+                        <th>Meaning</th>
+                      </thead>
+                        <tbody>
+                      <tr>
+                        <td>STRAIGHT</td>
+                        <td>Finger is held straight</td>
+                      </tr>
+                      <tr>
+                        <td>RELAXED</td>
+                        <td>Finger is slightly curved, a relaxed state</td>
+                      </tr>
+                      <tr>
+                        <td>CURVED</td>
+                        <td>Finger is deliberately curved/bent (more than relaxed)</td>
+                      </tr>
+                      <tr>
+                        <td>CLOSED</td>
+                        <td>Finger is heavily curved into a fist state</td>
+                      </tr>
+                      <tr>
+                        <td>NONE</td>
+                        <td>Unreadable / error state</td>
+                      </tr>
+                            </tbody>
+                    </table>
+                </div>
 			
-			<a id="handpose"><h4 class="display-6">Hand Poses</h4></a><br/>
+			<a id="handpose"><h4 class="display-6">Hand Poses</h4></a>
 
 			<p>The <b>HandPose</b> is an enumerated value which defines the state of one hand (such as a fist, or pointing):</p>
-			
-				<table border=0 cellpadding=10 cellspacing=5>
+			<div class="table-responsive py-4">
+				<table class="table table-striped">
+				  <thead>
+					<th>HandPose Enum</th>
+					<th>Meaning</th>
+				  </thead>
+                    <tbody>
 				  <tr>
-					<th class="thlabel">HandPose Enum</th>
-					<th class="thlabel">Meaning</th>
+					<td>OPEN</td>
+					<td>Open hand with straight fingers/thumb along the palm x/z basis</td> <!-- Straight fingers and palm -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">OPEN</td>
-					<td class="tddata-left">Open hand with straight fingers/thumb along the palm x/z basis</td> <!-- Straight fingers and palm -->
+					<td>OPENGRAB</td>
+					<td>Open hand, curved fingers/thumb as if holding a medium/large ball</td> <!-- Grabbing motion - half open  -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">OPENGRAB</td>
-					<td class="tddata-left">Open hand, curved fingers/thumb as if holding a medium/large ball</td> <!-- Grabbing motion - half open  -->
+					<td>FIST</td>
+					<td>Closed hand with fully curled digits. A fist</td> <!-- The football hooligan's first choice utility -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">FIST</td>
-					<td class="tddata-left">Closed hand with fully curled digits. A fist</td> <!-- The football hooligan's first choice utility -->
+					<td>RELAXED</td>
+					<td>Open hand with very light curvature to fingers/thumb</td> <!-- As a relaxed hand would be -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">RELAXED</td>
-					<td class="tddata-left">Open hand with very light curvature to fingers/thumb</td> <!-- As a relaxed hand would be -->
+					<td>POINTINDEX</td>
+					<td>Closed fist, thumb fully bent, straight index finger</td> <!-- standard index finger point -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">POINTINDEX</td>
-					<td class="tddata-left">Closed fist, thumb fully bent, straight index finger</td> <!-- standard index finger point -->
+					<td>POINTMIDDLE</td>
+					<td>Closed fist, thumb fully bent, straight middle finger</td> <!-- "The Bird" -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">POINTMIDDLE</td>
-					<td class="tddata-left">Closed fist, thumb fully bent, straight middle finger</td> <!-- "The Bird" -->
+					<td>POINTRING</td>
+					<td>Closed fist, thumb fully bent, straight ring finger</td> <!-- Hurts to try -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">POINTRING</td>
-					<td class="tddata-left">Closed fist, thumb fully bent, straight ring finger</td> <!-- Hurts to try -->
+					<td>POINTPINKY</td>
+					<td>Closed fist, thumb fully bent, straight little or "pinky" finger</td> <!-- How the Queen drinks tea -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">POINTPINKY</td>
-					<td class="tddata-left">Closed fist, thumb fully bent, straight little or "pinky" finger</td> <!-- How the Queen drinks tea -->
+					<td>THUMBUP</td>
+					<td>Closed fist, straight thumb</td> <!-- "OK!" -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">THUMBUP</td>
-					<td class="tddata-left">Closed fist, straight thumb</td> <!-- "OK!" -->
+					<td>INDEXTHUMBL</td>
+					<td>Straight index finger, straight thumb, all other fingers in a fist</td> <!-- Loser! -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">INDEXTHUMBL</td>
-					<td class="tddata-left">Straight index finger, straight thumb, all other fingers in a fist</td> <!-- Loser! -->
+					<td>INDEXMIDDLEV</td>
+					<td>Index and Middle finger straight, all other digits in a fist</td> <!-- The Churchill Classic -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">INDEXMIDDLEV</td>
-					<td class="tddata-left">Index and Middle finger straight, all other digits in a fist</td> <!-- The Churchill Classic -->
+					<td>PINCH</td>
+					<td>Fist, with Index and Thumb curved and touching at the tips</td> <!-- How you should hold a pen -->
 				  </tr>
 				  <tr>
-					<td class="tdlabel">PINCH</td>
-					<td class="tddata-left">Fist, with Index and Thumb curved and touching at the tips</td> <!-- How you should hold a pen -->
+					<td>THREECURVED</td>
+					<td>"Pinch" action (above) including middle finger</td> <!-- Raptor hands -->
 				  </tr>
-				  <tr>
-					<td class="tdlabel">THREECURVED</td>
-					<td class="tddata-left">"Pinch" action (above) including middle finger</td> <!-- Raptor hands -->
-				  </tr>
+                        </tbody>
 				  </table>
-				  <br/>
+            </div>
 
 
-			<a id="gestureaction"><h4 class="display-6">Building Gesture Actions</h4></a><br/>
+			<a id="gestureaction"><h4>Building Gesture Actions</h4></a>
 			
   				<p>The <b>GestureAction</b> is an enumerated type which represents two <b>HandPose</b> values (such as two fists, one open hand and one pointing with index finger) they are editable values stored in the configuration files, 
 				which tie two <b>HandPose</b> values to an internal program action (non-exhaustively; more combinations/poses are easy to add to the framework).</p>
 
 				<p>The current GestureAction command values are as follows:</p>
-
-				<table border=0 cellpadding=10 cellspacing=5>
+                
+                <div class="table-responsive py-4">
+				    <table class="table table-striped">
+				  <thead>
+					<th>Enum</th>
+					<th>Description</th>
+					<th>Action taken</th>
+				  </thead>
+                    <tbody>
 				  <tr>
-					<th class="thlabel">Enum</th>
-					<th class="thlabel">Description</th>
-					<th class="thlabel">Action taken</th>
+					<td>NONE</td>
+					<td>No GestureAction</td>
+					<td>None</td>
 				  </tr>
 				  <tr>
-					<td class="tdlabel">NONE</td>
-					<td class="tddata-left">No GestureAction</td>
-					<td class="tddata-left">None</td>
+					<td>INVALID</td>
+					<td>Both hands are out of the sensor's view</td>
+					<td>None</td>
 				  </tr>
 				  <tr>
-					<td class="tdlabel">INVALID</td>
-					<td class="tddata-left">Both hands are out of the sensor's view</td>
-					<td class="tddata-left">None</td>
+					<td>PAINT</td>
+					<td>Paint</td>
+					<td>Start/continue painting (depends on dominant hand)</td>
 				  </tr>
 				  <tr>
-					<td class="tdlabel">PAINT</td>
-					<td class="tddata-left">Paint</td>
-					<td class="tddata-left">Start/continue painting (depends on dominant hand)</td>
+					<td>GRAB</td>
+					<td>Translate/Rotate last painted geometry</td>
+					<td>Unimplemented</td>
 				  </tr>
 				  <tr>
-					<td class="tdlabel">GRAB</td>
-					<td class="tddata-left">Translate/Rotate last painted geometry</td>
-					<td class="tddata-left">Unimplemented</td>
+					<td>LOAD</td>
+					<td>Load a previously saved .OBJ scene</td>
+					<td>Partially implemented</td>
 				  </tr>
 				  <tr>
-					<td class="tdlabel">LOAD</td>
-					<td class="tddata-left">Load a previously saved .OBJ scene</td>
-					<td class="tddata-left">Partially implemented</td>
+					<td>SAVE</td>
+					<td>Save the current 'painting'/scene to .OBJ file</td>
+					<td>None</td>
 				  </tr>
 				  <tr>
-					<td class="tdlabel">SAVE</td>
-					<td class="tddata-left">Save the current 'painting'/scene to .OBJ file</td>
-					<td class="tddata-left">None</td>
+					<td>MENU</td>
+					<td>Show choosable options</td>
+					<td>Change paint colour/material</td>
 				  </tr>
 				  <tr>
-					<td class="tdlabel">MENU</td>
-					<td class="tddata-left">Show choosable options</td>
-					<td class="tddata-left">Change paint colour/material</td>
+					<td>OK</td>
+					<td>Confirm decision / Stop painting</td>
+					<td>Stop painting ("close" geometry)</td>
 				  </tr>
-				  <tr>
-					<td class="tdlabel">OK</td>
-					<td class="tddata-left">Confirm decision / Stop painting</td>
-					<td class="tddata-left">Stop painting ("close" geometry)</td>
-				  </tr>
-				</table><br/>
+                        </tbody>
+				</table>
+                </div>
 				
 				<p>Mappings between GestureAction and handposes (dominand and non-dominant) are made in the config files, as readable text values.</p>
 
-				<a id="enumposes"><h3 class="display-8">Enumerating poses and gestures</h3></a><br/>
+				<a id="enumposes"><h3 >Enumerating poses and gestures</h3></a>
 				
 				<p><b>How does the app determine these poses and values?</b> The config files contain pre-averaged values to classify the poses of a finger as straight, curved, closed, etc. These values are compared to the signed angle between the z-basis of 
 				each bone (longitudinal axis; the line running 'through' the centre of the bone tip to tip). The accumulated angles represents the overall curvature value of the finger (every set of two neighbouring bones in the finger are compared and the 
 				value is added to a running total). There still can be some issues on borderline cases, where fluctuation can occur between states, so fuzzy set membership functions are used to define the state of the finger's curvature:</p>
 				
-				<figure class="figure">
-				  <img src="img/vpaint/memberfuncs.gif" class="figure-img img-fluid" alt="Membership functions">
-				  <figcaption class="figure-caption">The implemented membership functions (top-bottom: General Bell, Trapezoid, Triangle)</figcaption>
-				</figure>
+				
+                    <noscript><img src="img/vpaint/memberfuncs.gif" class="img-fluid" alt="Membership functions"></noscript>
+				  <p class="figure-caption">The implemented membership functions (top-bottom: General Bell, Trapezoid, Triangle)</p>
+				
 				
 				<p>The configuration allows the user to choose which membership functions to apply (choice of <b>triangle</b>, <b>trapezoidal</b> or <b>general bell</b>) to the finger data. The <b>MemberFuncs</b> are derived from a base class, and can be 
 				swapped out easily, or extended to more complex functions (gaussian, etc). Five membership functions are prepared from file data (assigned to NONE, STRAIGHT, RELAXED, CURVED and CLOSED), and finger curvature is passed to the collection of 
 				functions, with the highest membership value being the successful <b>FingerPose</b> candidate to return (cases of no membership at all return NONE as an error catch).</p>
 				
-				<figure class="figure">
-				  <img src="img/vpaint/memberfunc2.gif" class="figure-img img-fluid" alt="Membership function">
-				  <figcaption class="figure-caption">The value of finger curvature (or x) = 0.81 gives a highest membership value for the orange function (CURVED)</figcaption>
-				</figure>
+				
+                    <noscript><img src="img/vpaint/memberfunc2.jpg" class="img-fluid" alt="Membership function"></noscript>
+				  <p class="figure-caption">The value of finger curvature (or x) = 0.81 gives a highest membership value for the orange function (CURVED)</p>
+				
 				
 				<p>All detected (and valid) fingers are tested this way to ascertain all finger poses. Assuming one or both hands are detected and valid, we have two sets of five <b>FingerPose</b> values (if only one hand, only five are tested, if no hands, 
 				no values, and processing exits for this loop). Since the finger poses are now calculated, a <b>HandPose</b> needs to be calculated from this data.</p>
@@ -747,10 +788,10 @@ THREECURVED		2 2    2 2    1 1    3 3    3 3
 				<p>The data is built into a custom sparse N-ary tree for searching. The N-Ary tree is a maximum depth of 5, as users are expected to have 5 fingers per hand (future considerations are to customize this for other users). Each node in 
 				the tree has N branches, representing each enumerated <b>FingerPose</b>. Multiple nodes are created for each permutation in the ranged <b>FingerPose</b> data.</p>
 				
-				<figure class="figure">
-				  <img src="img/vpaint/posetree.png" class="figure-img img-fluid" alt="Simplified Pose Tree">
-				  <figcaption class="figure-caption">A simplified pose tree</figcaption>
-				</figure>
+				
+                    <noscript><img src="img/vpaint/posetree.jpg" class="img-fluid" alt="Simplified Pose Tree"></noscript>
+				  <p class="figure-caption">A simplified pose tree</p>
+				
 
 				<p>As the <b>FingerPose</b> values are used to search the tree (starting with the thumb, working to the pinky), the search will provide one of two possibilities; the <b>FingerPoses</b> match defined <b>HandPose</b> tree data, and 
 				lead to the defined pose (all <b>FingerPoses</b> match the critera for POINTINDEX, so POINTINDEX is returned), or the route through the tree stops because there is no predefined route made by the pose tree data, meaning the 
@@ -766,7 +807,7 @@ THREECURVED		2 2    2 2    1 1    3 3    3 3
 				
 				<br/>
 
-				<a id="timingposes"><h3 class="display-8">Timing poses and gestures</h3></a><br/>
+				<a id="timingposes"><h3 >Timing poses and gestures</h3></a>
 				
 				<p>The <b>GestureController</b> class is the first class to recieve the two <b>HandPose</b> values for dominant and non-dominant; it has two purposes in the application - first is to find matching <b>GestureActions</b> for the current 
 				<b>HandPoses</b> from the specified values in the data files (or return a state of 'no gestureaction'), and secondly to perform timing control of the <b>GestureActions</b>.</p>
@@ -798,7 +839,7 @@ MENU			INVALID			THUMBUP
 				<p>Interestingly, the cooldown can also be applied to the PAINT <b>GestureAction</b>, effectively setting a 'sampling rate' or 'resolution' for the act of painting (a value of 0.1 seconds cooldown means 10 samples per second, giving a higher 
 				mesh/painting resolution than sampling at 0.25).</p><br/>
 				
-				<a id="actionposes"><h3 class="display-8">Acting upon poses and gestures</h3></a><br/>
+				<a id="actionposes"><h3 >Acting upon poses and gestures</h3></a>
 				
 				<p>The <b>GestureActor</b> class is passed <b>HandPose</b>, <b>GestureAction</b>, and skeletal/hand coordinate data from the <b>GestureController</b> (this data is filtered by time, and not necessarily passed every frame; see 
 				<a href="#timingposes">Timing poses and gestures</a>). When the GestureActor recieves this information, it <i>acts</i> - it carries out the <b>GestureAction</b> as a command, using the hand/pose/skeletal data available.</p>
@@ -812,60 +853,59 @@ MENU			INVALID			THUMBUP
 				etc) is used to represent the geometry until its final form is build when the user is finished painting the current object (the current painting operation is stopped by the action being NONE or changed). The entities showing the temporary 
 				geometry are removed, and replaced with the real geometry (as an entity, with all transform operations available).</p>
 
-				<br/>
-				<h2 class="display-8">Further Considerations</h2><br/>
-				<p>The main idea behind the application can be considered for further development, such as using multiple kinect sensors or natural UI software, or implementing a virtual environment where the full user body is realized for more 
-				realistic interaction with virtual objects and spatial awareness.</p><br/>
-				
-				<a id="addnotes"><h3 class="display-8">Additional Notes</h3></a><br/>
-				
-				<p>Proper sensor placement is essential; the Leap controller has a 3D custom-printed mount to hold in place on the front of the Oculus DK2 (although an official one is also available), it is necessary to keep this level, and 
-				steadily mounted. Options exist in the Leap software to detect orientation, but ensuring the sensor is the correct way up will remove this extra work. Also, any wires between the sensor and HMD should be tied back.</p>
-				
-				<p>The Oculus IR ('constellation') sensor must be placed <b>vertically above</b> the Kinect V2 - otherwise, Y-rotation of the head will occur since the two sensor locations differ.</p>
-				
-				<figure class="figure">
-				  <img src="img/vpaint/kinect_ovr.jpg"  class="figure-img img-fluid" alt="KinectV2 / Constellation">
-				  <figcaption class="figure-caption">Setup for the KinectV2 and Constellation sensor</figcaption>
-				</figure>
-				<br/><br/>
+				</div>
+                <div class="py-4">
+                    <h2 >Further Considerations</h2>
+                    <p>The main idea behind the application can be considered for further development, such as using multiple kinect sensors or natural UI software, or implementing a virtual environment where the full user body is realized for more 
+                    realistic interaction with virtual objects and spatial awareness.</p><br/>
 
-				<p>The system setup working under lab conditions (note the constellation sensor aligns with the Kinect V2):</p>
+                    <a id="addnotes"><h3>Additional Notes</h3></a>
 
-				<figure class="figure">
-				  <img src="img/vpaint/lab-setup.jpg"  class="figure-img img-fluid" alt="KinectV2 / Constellation">
-				  <figcaption class="figure-caption">Lab setup for testing</figcaption>
-				</figure>			
+                    <p>Proper sensor placement is essential; the Leap controller has a 3D custom-printed mount to hold in place on the front of the Oculus DK2 (although an official one is also available), it is necessary to keep this level, and 
+                    steadily mounted. Options exist in the Leap software to detect orientation, but ensuring the sensor is the correct way up will remove this extra work. Also, any wires between the sensor and HMD should be tied back.</p>
 
-				<p>As in the lab conditions photo above, the project requires the sensors align vertically, the hardware is connected by USB3.0 (Oculus, Leap and Kinect), and the user has a minimum of 2m &times; 5m 
-				physical space (uninterrupted) to operate from the Kinect V2 and constellation sensors.</p>
+                    <p>The Oculus IR ('constellation') sensor must be placed <b>vertically above</b> the Kinect V2 - otherwise, Y-rotation of the head will occur since the two sensor locations differ.</p>
+
+
+                    <noscript><img class="img-fluid " src="img/vpaint/kinect_ovr.jpg" alt="KinectV2 / Constellation"></noscript>
+                      <p class="figure-caption">Setup for the KinectV2 and Constellation sensor</p>
+
+                    
+
+                    <p>The system setup working under lab conditions (note the constellation sensor aligns with the Kinect V2):</p>
+
+
+                    <noscript><img src="img/vpaint/lab-setup.jpg"  class="img-fluid" alt="KinectV2 / Constellation"></noscript>
+                      <p class="figure-caption">Lab setup for testing</p>
+
+
+                    <p>As in the lab conditions photo above, the project requires the sensors align vertically, the hardware is connected by USB3.0 (Oculus, Leap and Kinect), and the user has a minimum of 2m &times; 5m 
+                    physical space (uninterrupted) to operate from the Kinect V2 and constellation sensors.</p>
+                </div>
 
 		</div>
+            
+            <div class="col-12 py-2">
+			 <a href="#top" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
+		  </div>
 		
 		</div>  
-		
-		<div class="col-1 offset-11 pb-2">
-			<a href="#top" class="btn btn-cd" data-toggle="tooltip" data-placement="top" title="Go to top"><span class="fa fa-chevron-up fa-lg"></span></a>
-		</div>
-	   
-
 	</div><!--end of container-fluid-->
 	
 	<footer class="pt-3">
 		<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
 	</footer>
 	
-	
+	<!--other stylesheets-->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+      
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<!--Initialise tooltips from popper.js-->  
-	  <script>
-		$(function () {
-			  $('[data-toggle="tooltip"]').tooltip()
-			})
-	  </script>
+    <script src="js/lazy-progressive-enhancement.min.js"></script>
+      <script>
+        loadMedia(null, null, true)
+      </script>
   </body>
 	
 </html>

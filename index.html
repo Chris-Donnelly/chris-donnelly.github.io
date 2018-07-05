@@ -5,12 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<!--Custom CSS -->  
-	<link rel=stylesheet href="bootstrap-CD-style.css">
+	<link rel="stylesheet" href="bootstrap-CD-style.css">
 	<!--Fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 	<!--Favicon-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -23,16 +22,13 @@
 	  
 	<div class="container-fluid">
    
-	  <nav class="navbar navbar-expand-sm sticky-top">
+	  <nav class="navbar navbar-expand-md sticky-top row row">
 		  <a class="brand" href="index.html">Chris Donnelly</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="fas fa-bars fa-lg"></span>
 		  </button>
-		  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+		  <div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-			  <li class="nav-item">
-				<a class="nav-link" href="cv/chris-donnelly-cv.zip">Download CV</a>
-			  </li>
 			  <li class="nav-item">
 				<a class="nav-link" href="#about">About</a>
 			  </li>
@@ -42,190 +38,204 @@
 			  <li class="nav-item">
 				<a class="nav-link" href="#contact">Contact</a>
 			  </li>
+                <li class="nav-item pl-xl-5">
+				<a class="btn btn-cd" href="cv/chris-donnelly-cv.zip"> Download CV</a>
+			  </li>
 			</ul>
 		  </div>
 		</nav>
 			  
-		<div class="row py-5 pl-sm-5">
+		<div class="row p-5 bg-grad">
 			
-			<div class="col-sm-8 col-md-5 col-lg-4 offset-md-2">
-				<div class="jumbotron my-5 pt-1 topbar bottombar">
+			<div class="col-md-7 col-lg-5 offset-lg-2">
+				<div class="mt-md-5 pb-0">
 					<h1 class="display-4">Welcome</h1>
-					<p class="lead">Hello, and welcome to my portfolio site. Take a look down the page to see the work and projects from over the years. You can also view my linkedIn, and Youtube accounts</p>
-					<a class="btn btn-cd" href="#portfolio">View Projects</a> <a class="btn btn-cd" href="cv/chris-donnelly-cv.zip">Download CV/Resume</a>
+					<p class="lead">Hello, and welcome to my portfolio site. Take a look down the page to see my work and projects from over the years. You can also view my linkedIn and Youtube accounts.</p>
+                    <p><a href="#portfolio"><span class="fas fa-laptop fa-sm pr-2" aria-hidden></span>View Projects</a></p> 
+                    <p><a href="cv/chris-donnelly-cv.zip"><span class="fas fa-download fa-sm pr-2" aria-hidden></span>Download CV/Resume</a></p>
 				</div>     
 			 </div> 
 			
-			<div class="col-lg-2 col-md-4 col-sm-4 col-6 offset-3 offset-sm-0 pt-sm-5">
-				<img src="img/avatar-cv.png" class="img-fluid" title="CV And Portfolio">
+			<div class="col-6 offset-1 offset-sm-0 col-md-4 col-xl-3">
+                <a href="cv/chris-donnelly-cv.zip"><img src="img/avatar-cv.png" class="img-fluid img-nostyle" title="Download CV"></a>
 			</div>
 
 		</div>  
 		
-		<div class="row py-5 pl-sm-5" id="portfolio">
+		<div class="row p-5" id="portfolio">
 		
-			<div class="col-md-6">
-				<h1 class="bottombar mb-4">Portfolio</h1>
-				<p>Take a look around at the different projects from over the years; there are academic projects and personal projects, solo and group. Check them below, and feel free to contact me for any other details.</p> 
+			<div class="col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 p-4 text-center">
+				<h1 class="bottombar text-bar mb-4">Portfolio</h1>
+				<p class="lead">Take a look around at the different projects from over the years; there are academic projects and personal projects, solo and group. </p>   
+                <p>Check them below, and feel free to contact me for any other details.</p> 
 			</div>
 		</div>
 				
-		<div class="row justify-content-center" id="gallery">
+		<div class="row justify-content-center pb-5" id="gallery">
 
-				<div class="row">
-					<h3>University of Hull</h3>
+				<div class="col-12 text-center pb-3">
+					<h2>University of Hull</h2>
+                    <h4>MSc Computer Science for Video Game Development, 2016-2018</h4>
 				</div>
 
-				<!-- Force next columns to break to new line at lg breakpoint and up -->
-				<div class="w-100 d-none d-lg-block"></div>
-
-				<div class="row">
-					<h4>MSc Computer Science for Video Game Development, 2016-2018</h4>
-				</div>
 
 				<!-- Force next columns to break to new line at lg breakpoint and up -->
 				<div class="w-100 d-none d-lg-block"></div>
 
 				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="vpaint.html"><img src="img/vpaint.jpg" title="Oculus + Kinect + Leap Motion full body detection, virtual painting with gesture detection" class="img-fluid"></a>
+					<a href="vpaint.html"><noscript><img src="img/vpaint.jpg" title="Oculus + Kinect + Leap Motion full body detection, virtual painting with gesture detection" class="img-fluid"></noscript></a>
 				</div>
 				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="simulation.html"><img src="img/simulation.jpg" title="Networked P2P concurrent multithreaded rigid-body simulation with gravity wells" class="img-fluid"></a>
+					<a href="simulation.html"><noscript><img src="img/simulation.jpg" title="Networked P2P concurrent multithreaded rigid-body simulation with gravity wells" class="img-fluid"></noscript></a>
 				</div>
 				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="tunnelterror.html"><img src="img/tunnelterror.jpg" title="Custom game engine development tunnel racing game" class="img-fluid"></a>
+					<a href="tunnelterror.html"><noscript><img src="img/tunnelterror.jpg" title="Custom game engine development tunnel racing game" class="img-fluid"></noscript></a>
 				</div>
 
 				<!-- Force next columns to break to new line at lg breakpoint and up -->
 				<div class="w-100 d-none d-lg-block"></div>
 
 				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="advrendering.html"><img src="img/advrendering.jpg" title="Real-time D3D11/HLSL PS5.0 GPU Ray-marched animated underwater scene" class="img-fluid"></a>
+					<a href="advrendering.html"><noscript><img src="img/advrendering.jpg" title="Real-time D3D11/HLSL PS5.0 GPU Ray-marched animated underwater scene" class="img-fluid"></noscript></a>
 				</div>
 				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="omegawars.html"><img src="img/omegawars.jpg" title="D3D11 multiplayer XInput capable multiplayer battle arena game with Oculus support" class="img-fluid"></a>
+					<a href="omegawars.html"><noscript><img src="img/omegawars.jpg" title="D3D11 multiplayer XInput capable multiplayer battle arena game with Oculus support" class="img-fluid"></noscript></a>
 				</div>
 				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="submarine.html"><img src="img/submarine.jpg" title="Real-time graphics application in D3D11, with PCF shadows, multiple lighting, animation" class="img-fluid"></a>
+					<a href="submarine.html"><noscript><img src="img/submarine.jpg" title="Real-time graphics application in D3D11, with PCF shadows, multiple lighting, animation" class="img-fluid"></noscript></a>
 				</div>
-		</div>
-				
-		<div class="row py-5 justify-content-center" id="gallery">
-				<div class="row">
-					<h3>Miscellaneous Projects</h3>
-				</div>
-
-				<!-- Force next columns to break to new line at lg breakpoint and up -->
+            <!-- Force next columns to break to new line at lg breakpoint and up -->
 				<div class="w-100 d-none d-lg-block"></div>
-
-				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="raytracer.html"><img src="img/raytracer.jpg" title="Business Card Raytracer" class="img-fluid"></a>
-				</div>
-				<div class="col-lg-3 p-0 col-sm-6">
-					<a href="xboxpad.html"><img src="img/xboxpadusb.jpg" title="Converting original XBOX controller to standard USB type A" class="img-fluid"></a>
-				</div>
-				<div class="col-lg-3 p-0 col-sm-6">
-					<img src="img/soon.jpg" class="img-fluid">
-				</div>
-		</div>
-
-
-		<div class="row py-3 pl-sm-5 bg-muted">
+            
+                <h2 class="py-5">Miscellaneous Projects</h2>
 		
-			<div id="about" class="col"> 
-				<div class="row">
-					<div class="col-10">
-				
-						<h1 class="bottombar mb-4 pt-5">About</h1>
-						
-						<p>Chris is a Computing Science graduate from Hull, Teesside, and Abderdeen Universities, with a strong and focused love of coding in C/C++, while experimenting with technology and hardware. When he's not trying to join together software 
+				<!-- Force next columns to break to new line at lg breakpoint and up -->
+				<div class="w-100 d-none d-sm-block"></div>
+
+				<div class="col-lg-3 p-0 col-sm-6">
+					<a href="raytracer.html"><noscript><img src="img/raytracer.jpg" title="Business Card Raytracer" class="img-fluid"></noscript></a>
+				</div>
+				<div class="col-lg-3 p-0 col-sm-6">
+					<a href="xboxpad.html"><noscript><img src="img/xboxpadusb.jpg" title="Converting original XBOX controller to standard USB type A" class="img-fluid"></noscript></a>
+				</div>
+				<div class="col-lg-3 p-0 col-sm-6">
+                    <noscript><img src="img/soon.jpg" class="img-fluid" alt="Coming Soon. Check linked in for more projects"></noscript>
+				</div>
+            
+            </div>
+
+
+		<div class="row p-5 bg-accent-dark">
+		
+			<div id="about" class="col-11 offset-xl-1"> 
+                <h1 class="bottombar text-bar mb-4 pt-5">About</h1>
+            </div>
+            
+                    <div class="col-md-10 col-lg-8 offset-xl-1 col-xl-5 pb-4">
+						<p class="lead">Chris is a Computing Science graduate from Hull, Teesside, and Abderdeen Universities, with a strong and focused love of coding in C/C++, while experimenting with technology and hardware. </p>
+                            
+                        <p>When he's not trying to join together software 
 						or hardware into something new and potentially useful, you can often find him coding, soldering, dismantling and rebuilding electronics, and reading about what's going on in the world of tinkerers, hackers, developers and gaming. His projects 
 						range from small to medium apps (usually games, hardware sensor or graphics-based), upgrading or customizing joypads, and fixing up old consoles and laptops to having some downtime with a really good book (although it normally is a CS or games 
 						development-related book to be fair).</p>
 						
-						<p>But there's more to life (although he sometimes won't admit it) - when he's not describing himself in third-person on his portfolio, he may be watching oddball world cinema, nerdy TV shows, animated sitcoms or Blade Runner, you might find him 
-						out and about with friends (at the cinema, music festivals, or even just out for a meal), or on XBOX Live/Steam (talking about oddball world cinema and Blade Runner). Sometimes, he even plays the guitar really badly.</p>
+						<p>But there's more to life (although he sometimes won't admit it) - when he's not describing himself in third-person on his portfolio, he may be watching oddball world cinema, nerdy TV shows, animated sitcoms or Blade Runner. You might find him 
+						out and about with friends (at the cinema, music festivals, or even just out for a meal) or on XBOX Live/Steam (talking about oddball world cinema and Blade Runner). Sometimes, he even plays the guitar really badly.</p>
 						
-						<p>Chris has worked over the years as an opthalmic assistant, digital imaging assistant in photography equipment sales, a loss prevention officer, in outdoor equipment sales and repairs (camping) and electronics repairs (laptop, PC and 
-						game console hardware and software repairs), has great communication skills, and is very used to working in small to large teams, and even alone, where every job is a challenge and opportunity to learn new skills and techniques to succeed 
+				        <h3>Work</h3>
+                        
+                        <p>Chris has worked over the years as an opthalmic assistant, digital imaging assistant in photography equipment sales, a loss prevention officer, in outdoor equipment sales and repairs (camping) and electronics repairs (laptop, PC and 
+						game console hardware and software repairs). </p>
+                            
+                            <p>He has great communication skills and is very used to working in small to large teams, and even alone, where every job is a challenge and opportunity to learn new skills and techniques to succeed 
 						in both work and life</p>
+                        
+                        <h3>Computing</h3>
 						
 						<p>Chris has had a very keen interest in computing and gaming since he was very young, when the family acquired an MSX1 home computer, and moved through an Atari ST and numerous IBM compatible Windows/Linux PCs, for all of which he has programmed 
 						small apps and games. He also owned a NES, Gameboy, SNES, Dreamcast, PSOne, XBOX, XBOX 360 and XBOX One - most of these he has repaired, upgraded, probed, poked and modded, and a few of these he has tried some development with their SDKs and 
 						homebrew software, and would most of all love the opportunity to work with console hardware in the future.</p>
-						
-						<p>Chris is currently reading, playing and listening to:</p><br/>
-					
-						<div class="row py-6 justify-content-center">
-							<a href="http://amzn.eu/frFQLAL" target="blank"><img style="padding:5px;" src="img/reading01.jpg" class="img-fluid" title="Game Engine Black Book - Wolfenstein 3D [Fabien Sanglard]" alt="Game Engine Black Book - Wolfenstein 3D [Fabien Sanglard]"></a>
-							<a href="http://amzn.eu/iXlOZwY" target="blank"><img style="padding:5px;" src="img/reading02.jpg" class="img-fluid" title="The User Illusion: Cutting consciousness down to size [Tor Norretranders]" alt=""></a>
-							<a href="http://puyo.sega.com/tetris/" target="blank"><img style="padding:5px;" src="img/playing01.jpg" class="img-fluid" title="Puyopuyo Tetris (Steam)  [Sega]" alt="Puyopuyo Tetris (Steam) [Sega]"></a>
-							<a href="https://www.2k.com/games/bioshock-the-collection" target="blank"><img style="padding:5px;" src="img/playing02.jpg" class="img-fluid" title="Bioshock - The Collection (XBOX One) [2K]" alt="Bioshock - The Collection (XBOX One) [2K]"></a>
-							<a href="http://amzn.eu/9vEEP9x" target="blank"><img style="padding:5px;" src="img/listening01.jpg" class="img-fluid" title="Ágætis Byrjun [Sigur Ros]" alt="Ágætis Byrjun [Sigur Ros]"></a>
-							<a href="http://www.volbeat.dk/en/music/seal-the-deal-lets-boogie-deluxe-15--13-.html" target="blank"><img style="padding:5px;" src="img/listening02.jpg" class="img-fluid" title="Seal the Deal and Let's Boogie [Volbeat]" alt="Seal the Deal and Let's Boogie [Volbeat]"></a>
-						</div>
+                    </div>
+                        
+                        <div class="col-lg-3 offset-lg-1 col-xl-5 px-4">
+			 
+                            <p class="pb-2">Chris is currently reading, playing and listening to:</p>
+                            
+                            <a href="http://amzn.eu/frFQLAL" target="blank"><noscript><img src="img/reading01.jpg" class=" img-fluid img-nostyle pr-4 pb-4" title="Game Engine Black Book - Wolfenstein 3D [Fabien Sanglard]" alt="Game Engine Black Book - Wolfenstein 3D [Fabien Sanglard]"></noscript></a>
+                            
+                            <a href="http://amzn.eu/iXlOZwY" target="blank"><noscript><img src="img/reading02.jpg" class=" img-fluid img-nostyle pr-4 pb-4" title="The User Illusion: Cutting consciousness down to size [Tor Norretranders]" alt=""></noscript></a>
+                            
+                            <a href="http://puyo.sega.com/tetris/" target="blank"><noscript><img src="img/playing01.jpg" class=" img-fluid img-nostyle pr-4 pb-4" title="Puyopuyo Tetris (Steam)  [Sega]" alt="Puyopuyo Tetris (Steam) [Sega]"></noscript></a>
+                            
+                            <a href="https://www.2k.com/games/bioshock-the-collection" target="blank"><noscript><img src="img/playing02.jpg" class=" img-fluid img-nostyle pr-4 pb-4" title="Bioshock - The Collection (XBOX One) [2K]" alt="Bioshock - The Collection (XBOX One) [2K]"></noscript></a>
+                            
+                            <a href="http://amzn.eu/9vEEP9x" target="blank"><noscript><img src="img/listening01.jpg" class=" img-fluid img-nostyle pr-4 pb-4" title="Ágætis Byrjun [Sigur Ros]" alt="Ágætis Byrjun [Sigur Ros]"></noscript></a>
+                            
+							<a href="http://www.volbeat.dk/en/music/seal-the-deal-lets-boogie-deluxe-15--13-.html" target="blank"><noscript><img src="img/listening02.jpg" class=" img-fluid img-nostyle pr-4 pb-4" title="Seal the Deal and Let's Boogie [Volbeat]" alt="Seal the Deal and Let's Boogie [Volbeat]"></noscript></a>
+                            
+                        </div>
 
-						</div>
-					<div class="col">
-			
-						<img src="img/avatar.png" class="img-fluid" alt="avatar turning around" title="Hmm?">
-				
-					</div>
 				</div>
 		
-			</div>
-		
-		</div>
-		
-		<div class="row py-5 pl-sm-5">
-		
-			<div id="contact" class="col-12">
-				<h1 class="bottombar mb-4">Get in touch</h1>      
-			</div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#114;&#105;&#115;&#116;&#100;&#111;&#110;&#110;&#101;&#108;&#108;&#121;&#045;&#112;&#104;&#111;&#110;&#101;&#064;&#104;&#111;&#116;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#046;&#117;&#107;"><img style="padding:1em;" src="img/contact/email.png"></a>
-				</div>
-				<div class="col">
-					<a href="skype:christdonnelly-phone_1?chat"><img style="padding:1em;" src="img/contact/skype.gif"></a>
-				</div>
-				<div class="col">
-					<a href="https://linkedin.com/in/chris-donnelly" target="_blank"><img style="padding:1em;" src="img/contact/linkedin.gif"></a>
-				</div>
-				<div class="col">
-					<a href="http://www.twitter.com/ctd1981" target="_blank"><img style="padding:1em;" src="img/contact/twitter.gif"></a>
-				</div>
-				<div class="col">
-					<a href="https://github.com/chris-donnelly" target="_blank"><img style="padding:1em;" src="img/contact/github.gif"></a>
-				</div>
-				<div class="col">
-					<a href="https://www.youtube.com/channel/UCILTfquez0BqR3SV-UEpSiQ/videos" target="_blank"><img style="padding:1em;" src="img/contact/youtube.gif"></a>
-				</div>
-			</div>
-		</div>
+		<div class="row p-5 bg-grad">
 		
-		<div class="col-1 offset-11 pb-2">
-			<a href="#home" class="btn btn-cd" data-toggle="tooltip" data-placement="top" title="Go to top"><span class="fa fa-chevron-up fa-lg"></span></a>
-		</div>
-					
+			<div id="contact" class="col-12 text-center">
+				<h1 class="bottombar text-bar mb-4">Get in touch</h1>      
+			</div>
+            
+            <div class="col p-4">
+            
+            <div class="row text-center justify-content-center pt-3">
+                
+                <div class="col-6 col-sm-4 col-lg-2 col-xl-1 pb-4 mx-xl-3">
+                    <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#114;&#105;&#115;&#116;&#100;&#111;&#110;&#110;&#101;&#108;&#108;&#121;&#045;&#112;&#104;&#111;&#110;&#101;&#064;&#104;&#111;&#116;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#046;&#117;&#107;"><span class="fas fa-envelope fa-3x" aria-label="Email"></span> <br>Email Me</a>
+                    </div>
+                
+                <div class="col-6 col-sm-4 col-lg-2 col-xl-1 pb-4 mx-xl-3">
+                    <a href="skype:christdonnelly-phone_1?chat"><span class="fab fa-skype fa-3x" aria-label="Skype"></span><br> Skype Me</a>
+                </div>
+            
+                <div class="col-6 col-sm-4 col-lg-2 col-xl-1 pb-4 mx-xl-3">
+                    <a href="https://linkedin.com/in/chris-donnelly" target="_blank"><span class="fab fa-linkedin fa-3x" aria-label="LinkedIn"></span><br> My LinkedIn</a>
+                </div>
+        
+                <div class="col-6 col-sm-4 col-lg-2 col-xl-1 pb-4 mx-xl-3">
+                    <a href="http://www.twitter.com/ctd1981" target="_blank"><span class="fab fa-twitter fa-3x" aria-label="Twitter"></span><br> Tweet Me</a>
+                </div>
+                
+                <div class="col-6 col-sm-4 col-lg-2 col-xl-1 pb-4 mx-xl-3">
+                    <a href="https://github.com/chris-donnelly" target="_blank"><span class="fab fa-github fa-3x" aria-label="Github"></span><br> Github Projects</a>
+                </div>
+                
+                <div class="col-6 col-sm-4 col-lg-2 col-xl-1 pb-4 mx-xl-3">
+                    <a href="https://www.youtube.com/channel/UCILTfquez0BqR3SV-UEpSiQ/videos" target="_blank"><span class="fab fa-youtube fa-3x" aria-label="Youtube"></span><br> Youtube Channel</a>
+                </div>
+                
+            </div>
+            </div>
+    
+            <div class="col-12 pt-2">
+			 <a href="#home" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
+		  </div>
+            
+        </div>				
 	</div><!--end of container-fluid-->
 	  
 		<footer class="pt-3">
 			<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
 		</footer>
+      
+    <!--other stylesheets-->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<!--Initialise tooltips from popper.js-->  
-		<script>
-			$(function () {
-				$('[data-toggle="tooltip"]').tooltip()
-				})
-		</script>
-	</body>
+    <script src="js/lazy-progressive-enhancement.min.js"></script>
+      <script>
+        loadMedia(null, null, true)
+      </script>
+</body>
 	
 </html>
