@@ -252,8 +252,21 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
                     
                     <div class="py-4">
                         <a id="floor"><h2>The Floor</h2></a> 
-                        <p>coming soon</p>
-                    </div>
+                        <p>The 'floor' is found in the raytracer by measuring downward-pointing rays. The texture is created by the following code section:</p>
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">if</span>(m<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span>){
+		h<span style="color: #333333">=</span>h<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span>;
+		<span style="color: #008800; font-weight: bold">return</span>((i)(ceil(h.x)<span style="color: #333333">+</span>ceil(h.y))<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">?</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">:</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>))<span style="color: #333333">*</span>(b<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span><span style="color: #333333">+</span><span style="color: #6600EE; font-weight: bold">.1</span>);
+	}
+</pre><br/></div>
+
+<br/>
+					<p>This code reduces the incoming values to a checkerboard pattern (although treated initially as a 1D array, this can be extended very easily to 2D by repeating the pattern in U and V). The returned 
+					values are modified versions of the RGB triplets <span style="font-family:monospace;">(3,1,1)</span> and <span style="font-family:monospace;">(3,3,3)</span>. These values can be changed to represent 
+					the desired <span style="font-family:monospace;">(#R,#G,#B)</span> pixels, in a range of 0-3.
+					</p>
+
+					</div>
                     
                     <div class="py-4">
                         <a id="dimensions"><h2>Image Dimensions</h2></a>
