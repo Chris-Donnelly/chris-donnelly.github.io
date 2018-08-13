@@ -243,7 +243,6 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
                     <ul>
                         <li><a href="#floor">The floor</a></li>
                         <li><a href="#dimensions">Image dimensions</a></li>
-                        <li><a href="#view">View Parameters</a></li>
                         <li><a href="#name">The Name</a></li>
                     </ul>
                     </div>
@@ -252,7 +251,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
                     
                     <div class="py-4">
                         <a id="floor"><h2>The Floor</h2></a> 
-                        <p>The 'floor' is found in the raytracer by measuring downward-pointing rays. The texture is created by the following code section:</p>
+                        <p>The 'floor' is found in the raytracer by measuring downward-pointing rays. The texture is created by the following code section (Lines 91-94):</p>
 
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">if</span>(m<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span>){
 		h<span style="color: #333333">=</span>h<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span>;
@@ -270,17 +269,48 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
                     
                     <div class="py-4">
                         <a id="dimensions"><h2>Image Dimensions</h2></a>
-                        <p>coming soon</p>
-                    </div>
+                        <p>The image dimensions are used several times across the program; it sets the image file dimensions, and defines the horizontal and vertical count of rays used (although the amount ogf rays cast is 
+						not <span style="font-family:monospace;">horizontal &times; vertical</span> - 64 rays are cast per pixel for smoothing etc).</p>
+												
+						<p>The first reference to image dimensions is at line 101:</p>
+						
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	printf(<span style="background-color: #fff0f0">&quot;P6 512 512 255 &quot;</span>);</pre><br/></div></p>
+						
+						
+						<p>This line prints the header to the PPM image file - the image is stored in single byte-per-channel format (R,G,B) using the <span style="font-family:monospace;">P6</span> identifier. 
+						The horizontal and vertical resolutions are then listed (separated by spaces) - in the original code, the image is <span style="font-family:monospace;">512 &times; 512</span>. Next, the upper value limit for each 
+						colour channel is stated (255 - one unsigned byte).</p>
+						
+						<p>The resolution of the 'virtual screen' for rays is set by the following lines (105-107):</p>
+						
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i y<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">512</span>;y<span style="color: #333333">--</span>;)
 
-                    <div class="py-4">
-                        <a id="view"><h2>View Parameters</h2></a>
-                        <p>coming soon</p>
+		<span style="color: #008800; font-weight: bold">for</span>(i x<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">512</span>;x<span style="color: #333333">--</span>;){
+</pre><br/></div></p>
+
+						<p>Obviously, this is a nested series of loops, carrying out the ray calculation <span style="font-family:monospace;">x</span> and <span style="font-family:monospace;">y</span> times, creating a 
+						two-dimensional range of <span style="font-family:monospace;">width &times; height</span>.</p>
+						
+						<p>Note that the samples-per-pixel value can be changed at line 111:</p>
+						
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i r<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">64</span>;r<span style="color: #333333">--</span>;){
+</pre><br/></div></p>
+						
                     </div>
 
                     <div class="py-4">
                         <a id="name"><h2>The Name</h2></a>
-                        <p>coming soon</p>
+                        <p>The name is the main focus of the scene -- created from a number of reflective spheres, based on a series of bit masks in the code. These values are found in an array at line 40:</p>
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	i G[]<span style="color: #333333">=</span>{ <span style="color: #0000DD; font-weight: bold">247570</span>,<span style="color: #0000DD; font-weight: bold">280596</span>,<span style="color: #0000DD; font-weight: bold">280600</span>,<span style="color: #0000DD; font-weight: bold">249748</span>,<span style="color: #0000DD; font-weight: bold">18578</span>,<span style="color: #0000DD; font-weight: bold">18577</span>,<span style="color: #0000DD; font-weight: bold">231184</span>,<span style="color: #0000DD; font-weight: bold">16</span>,<span style="color: #0000DD; font-weight: bold">16</span> };
+</pre><br/></div></p>
+
+						<p>Also, the 'length' of each bit mask (in this case, 19 bits) is defined at line 51:</p>
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i k<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">19</span>;k<span style="color: #333333">--</span>;)
+</pre><br/></div>
+</p>
+
+						<p>...more details on this section coming soon</p>
+						
                     </div>
 
                 <hr>
