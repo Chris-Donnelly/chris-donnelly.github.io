@@ -261,8 +261,8 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 </pre><br/></div>
 
 <br/>
-					<p>This code reduces the incoming values to a checkerboard pattern (although treated initially as a 1D array, this can be extended very easily to 2D by repeating the pattern in U and V). The returned 
-					values are modified versions of the RGB triplets <span style="font-family:monospace;">(3,1,1)</span> and <span style="font-family:monospace;">(3,3,3)</span>. These values can be changed to represent 
+					<p>This code measures incoming values and produces an output of one of two colours based on the condition <span style="font-family:monospace;">ceil(h.x)+ceil(h.y))&1</span>. Outgoing values (vectors)
+					are modified versions of the RGB triplets <span style="font-family:monospace;">(3,1,1)</span> and <span style="font-family:monospace;">(3,3,3)</span>. These values can be changed to represent 
 					the desired <span style="font-family:monospace;">(#R,#G,#B)</span> pixels, in a range of 0-3.
 					</p>
 
