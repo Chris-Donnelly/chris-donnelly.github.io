@@ -262,7 +262,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 <br/>
 					<p>This code measures incoming values and produces an output of one of two colours based on the condition <span style="font-family:monospace;">ceil(h.x)+ceil(h.y))&1</span>. Outgoing values (vectors)
 					are modified versions of the RGB triplets <span style="font-family:monospace;">(3,1,1)</span> and <span style="font-family:monospace;">(3,3,3)</span>. These values can be changed to represent 
-					the desired <span style="font-family:monospace;">(#R,#G,#B)</span> pixels, in a range of 0-3.
+					the desired <span style="font-family:monospace;">(#R,#G,#B)</span> pixels.
 					</p>
 
 					</div>
@@ -291,7 +291,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 						<p>Obviously, this is a nested series of loops, carrying out the ray calculation <span style="font-family:monospace;">x</span> and <span style="font-family:monospace;">y</span> times, creating a 
 						two-dimensional range of <span style="font-family:monospace;">width &times; height</span>.</p>
 						
-						<p>Note that the samples-per-pixel value can be changed at line 111:</p>
+						<p>Note that the samples-per-pixel value (for smoothing/blur/soft shadowing) can be changed at line 111:</p>
 						
 						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i r<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">64</span>;r<span style="color: #333333">--</span>;){
 </pre><br/></div></p>
@@ -309,9 +309,121 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 </pre><br/></div>
 </p>
 
-						<p>...more details on this section coming soon</p>
+						<p>The count of values (bit masks) are defined in the for loop at line 53:</p>
+						<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">9</span>;j<span style="color: #333333">--</span>;)
+</pre><br/></div><br/>
+
+						<p>So let's look at what makes this array special - bit values (Note: I've used 32 bits for illustration):</p>
 						
+						<p>
+						
+						<div class="table-responsive py-4">
+							<table class="table">
+							  <thead>
+								<th>Index</th>
+								<th>Value</th>
+								<th>Value (little-endian)</th>
+							  </thead>
+								<tbody>
+							  <tr>
+								<td>0</td>
+								<td>247570</td>
+								<td style="font-family:monospace;">‭00000000000000111100011100010010</td>
+							  </tr>
+							  <tr>
+								<td>1</td>
+								<td>280596</td>
+								<td style="font-family:monospace;">00000000000001000100100000010100</td>
+							  </tr>
+							  <tr>
+								<td>2</td>
+								<td>280600</td>
+								<td style="font-family:monospace;">00000000000001000100100000011000</td>
+							  </tr>
+							  <tr>
+								<td>3</td>
+								<td>249748</td>
+								<td style="font-family:monospace;">00000000000000111100111110010100‬‬</td>
+							  </tr>
+							  <tr>
+								<td>4</td>
+								<td>18578</td>
+								<td style="font-family:monospace;">00000000000000000100100010010010‬</td>
+							  </tr>
+							  <tr>
+								<td>5</td>
+								<td>18577</td>
+								<td style="font-family:monospace;">00000000000000000100100010010001‬</td>
+							  </tr>
+							  <tr>
+								<td>6</td>
+								<td>231184</td>
+								<td style="font-family:monospace;">00000000000000111000011100010000‬</td>
+							  </tr>
+							  <tr>
+								<td>7</td>
+								<td>16</td>
+								<td style="font-family:monospace;">00000000000000000000000000010000</td>
+							  </tr>
+							  <tr>
+								<td>8</td>
+								<td>16</td>
+								<td style="font-family:monospace;">00000000000000000000000000010000</td>
+							  </tr>
+							</tbody>      
+							</table>
+						</div>
+						</p>
+						
+						<p>We can replace the value 0 bits with &blk14; and value 1 bits with &blk34; to make it easier to see:
+						
+<pre style="font-family:monospace;font-size:115%;">
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (247570)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (280596)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk14; (280600)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (249748)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (18578)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34; (18577)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (231184)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+</pre></p>
+
+<p>A quick vertical flip (for the sake of human viewing) gives the following:
+<pre style="font-family:monospace;font-size:115%;">
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (231184)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34; (18577)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (18578)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (249748)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk14; (280600)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (280596)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (247570)
+</pre></p>
+												
+					<p>
+					In short, each bit represents the presence of a sphere in an evenly-spaced grid. The integer values in <code>G</code> (and the bit count) can be replaced to give other results, for example the following code...
+
+					<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	i G[]<span style="color: #333333">=</span>{<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">412206</span>,<span style="color: #0000DD; font-weight: bold">608802</span>,<span style="color: #0000DD; font-weight: bold">543270</span>,<span style="color: #0000DD; font-weight: bold">13</span>,<span style="color: #0000DD; font-weight: bold">543272</span>,<span style="color: #0000DD; font-weight: bold">553390</span>,<span style="color: #0000DD; font-weight: bold">606208</span>,<span style="color: #0000DD; font-weight: bold">409632</span>,}; </pre><br/></div>
+					</p>
+					
+					<p>...produces the following result (again, with a vertical flip):</p>
+					
+					<p>					
+<pre style="font-family:monospace;font-size:115%;">&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk34;&blk14;&blk34;&blk34;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk34;&blk34;&blk14;</pre>
+					</p>
                     </div>
+					
+					<p>Some small changes can make some excellent images thanks to some great, compact code, which is also wonderully customizable (also thanks to procedural nature of the program).<p>
 
                 <hr>
                 
