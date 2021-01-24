@@ -343,6 +343,7 @@
 						<li><a href="#mainboardplate">Main Board and Internal Plate</a></li>
 						<li><a href="#mainboard">The Main Board</a></li>
 						<li><a href="#inputjacks">The Input Jacks</a></li>
+						<li><a href="#comms">Communications</a></li>
 						<li><a href="#furtherwork">Further work</a></li>
 					</ul><br/>
 				
@@ -671,8 +672,8 @@
 					<p><sup><b>A quick side note:</b> Thumbsticks traditionally provide <b>three (3)</b> values (2 analog axes in the form of analog stick X and Y, and a ditigal axis in the form of the thumbstick being 
 					pressed) - the XAC has separate inputs for the 'thumbstick button' as digital jack inputs</sup></p>
 					
-						<noscript><img src="img/xboxac/jack_dual_analog.jpg" class=" img-fluid" alt="Dual analog jack"></noscript>
-						<p class="figure-caption">Dual Analog jack connector -- 4-pole CTIA (image from <a href="http://fisherswiring2j.atuttasosta.it/" target="new">fisherswiring2j.atuttasosta.it/</a>)</p><br/>
+					<noscript><img src="img/xboxac/jack_dual_analog.jpg" class=" img-fluid" alt="Dual analog jack"></noscript>
+					<p class="figure-caption">Dual Analog jack connector -- 4-pole CTIA (image from <a href="http://fisherswiring2j.atuttasosta.it/" target="new">fisherswiring2j.atuttasosta.it/</a>)</p><br/>
 					
 					<p>Each R (ring) in the TRRS layout can be used to transmit analog values (variable voltage/resistance) for the two axes. While I don't have appropriate data on the values read, the petentiometer data can 
 					provide two analog values (one per axis) over the (aforementioned) rings of the jack</p>
@@ -680,19 +681,48 @@
 				</div>
 					
 				<div class="py-4">
-						<a id="furtherwork"><h2>Further work</h2></a><br/>
+					<a id="comms"><h2>Communications</h2></a><br/>
 						
-						<p>Further required work looking into the XAC for me would involve using <a href="https://www.wireshark.org/" target="new">Wireshark</a> to analyse the protocol used between the XAC and the PC or XBOX (
-						presumably this is standard USB with XInput format for data packets) and analysing the data used for the USB inputs (presumably this is simplified USB).</p>
+					<p>When looking at the motherboard, it's easy to see the antennae for the wireless communications (the same ones which XBOX gamepads use - proprietary 'WiFi', and Bluetooth)</p>
+
+					<noscript><img src="img/xboxac/antennae.jpg" class=" img-fluid" alt="board antennae"></noscript>
+					<p class="figure-caption">Board Antennae and micro coaxial connectors</p><br/>
+						
+					<p>These antennae are similar to the types used in modern laptops (and in phones); simple planar coils. Also, "laptop coaxial" connectors are on the board, (right side of above picture, 
+					also highlighted with smaller red boxes throughout the picture), presumably for expansion, or as a standard with the board for optional external signal boosting.</p>
+
+					<p>The main board also has a soldered connector/header for "RF DEBUG" and "NORMAL", presumably for diagnostics/testing the connectivity:</p>
+					
+					<noscript><img src="img/xboxac/rfdebug.jpg" class=" img-fluid" alt="RF DEBUG"></noscript>
+					<p class="figure-caption">Possible debug solder point for testing/diagnosing/priming</p><br/>
+
+					
+					<p>Currently I have no further information on the wireless/bluetooth properties of the XAC.</p>
 						
 				</div>
+
+
+				<div class="py-4">
+					<a id="furtherwork"><h2>Further work</h2></a><br/>
+						
+					<p>Further required work looking into the XAC for me would involve using <a href="https://www.wireshark.org/" target="new">Wireshark</a> to analyse the protocol used between the XAC and the PC or XBOX (
+					presumably this is standard USB with XInput format for data packets) and analysing the data used for the USB inputs (presumably this is simplified USB).</p>
+						
+					<p>I'd like to know more about a 6-pin connector which is not used on the main board - leading toward the networm antennae and D-Pad circuitry. This has some white printed indicator on it for 
+					some form of expected external cable, device, or antennae:</p>
+						
+					<noscript><img src="img/xboxac/external.jpg" class=" img-fluid" alt="6 pins"></noscript>
+					<p class="figure-caption">6-pin connector on board with white print</p><br/>
+				</div>
+
 				</div>
 
 				<hr>
 		
 				<div class="py-5">
-					<a id="links"><h1>Further Information (links correct at time of writing)</h1></a>
+					<a id="links"><h1>Further Information</h1></a>
 
+						<p>Links are correct at the time of writing</p><br/>
 						<ul>
 							<li><a href="https://aka.ms/D4Xbox_XAC_Input_Spec" target="new">Xbox Adaptive Controller input specification for device makers v1.5</a> - Microsoft Corporation
 							<li><a href="https://www.yourcpf.org/wp-content/uploads/2018/05/XAC-FACTSHEET-1.pdf" target="new">XBOX Adaptice Controller - Fact Sheet</a> Cerebral Palsy Foundation (Your CPF)
