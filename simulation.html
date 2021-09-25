@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!--Custom CSS -->  
+	<link rel="stylesheet" href="bootstrap-CD-style.css">
+	<!--Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+	<!--Favicon-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	
+	<title>Project: Gravity Wells</title>
+	  
+  </head>
+	
+  <body id="top">
+
+	  <div class="container-fluid bg-grad">
+	
+	  <nav class="navbar navbar-expand-md sticky-top row">
+		  <a class="brand" href="index.html">Chris Donnelly</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="fas fa-bars fa-lg"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link" href="index.html">Home</a>
+				  </li>
+				  <li class="nav-item">
+					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
+				  </li>
+				  <li class="nav-item">
+					 <a class="nav-link" href="#contents">Project Contents</a>
+				  </li>
+					<li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+				</ul>
+		  </div>
+		</nav>
+		   
+		<div class="row py-sm-5"><!--row containing the content-->
+			
+			<div class="col-md-10 offset-md-1 col-xl-3 offset-xl-0 mb-4 mb-sm-0 mr-lg-5"><!--title section-->
+				<a id="contents"></a>
+				<div class="topbar bottombar py-4 py-lg-5 px-sm-5">
+					<h1 class="display-4">Gravity Wells</h1>
+					<p class="lead">Multi-threaded and network-distributed physical simulation application</p>
+					<p>Written in C++11, using OpenGL, Win32, Winsock, GLM</p>
+					<p>Simulation &amp; Concurrency / University of Hull, 2016-17</p>
+					<hr>
+					<p class="text-muted">Contents</p>
+					<ul class="contentlist">
+						<li><a href="#context">Context</a></li>
+						<li><a href="#spec">Specification</a></li>
+						<li><a href="#implementation">Implementation</a></li>
+					</ul>
+				</div>	
+			</div> <!--title section end-->
+			
+			<div class="col-md-10 offset-md-1 col-lg-9 col-xl-6 p-sm-5"><!--main content section-->
+
+				<p class="lead">A multithreaded distributed processing (masterless peer-to-peer) physical simulation app, with live configurable simulation parameters and thread frequencies</p>
+
+				  <img src="img/simulation/main.jpg" class="img-fluid" alt="Gravity Wells Simulation">
+				  <p class="figure-caption">Gravity Wells Simulation</p>
+			
+				<p>Written in C++11, using Win32, OpenGL, Winsock, GLM and AntTweakBar</p>
+
+				<noscript><img src="img/simulation/ui.jpg" class=" img-fluid" alt="UI Controls"></noscript>
+				  <p class="figure-caption">Real-time feedback and control via UI and external files</p>	
+
+				<p>MSC Computer Science for Video Game Development, University Of Hull, UK</p>
+	           
+				<hr>
+				
+				<div class="py-5">
+				<a id="context"><h1>Context</h1></a>
+				
+					<p>A rigid-body physics simulation app featuring physically-affected spheres in a cylindrical container (circular, walled), where the user can use movable gravity wells, which repel and attract, based on the user's mouse input. 
+					Wells can be moved vertically (to a degree). Multiple app instances can connect (via a masterless peer-to-peer network) across a network, where each machine (or app instance) has its own gravity well, controlled from its networked machine. 
+					The remote wells all affect the balls in the scene, and ownership/contention of each ball is negotiated between machines (a ball affected by one well is owned by the machine owning the well; balls which are affected by multiple wells are 
+					shared). Balls will have differing physical properties (mass), which will be represented visually by colour (see below):</p>
+
+					  <img src="img/simulation/balls.jpg" class=" img-fluid" alt="Differing ball mass">
+					  <p class="figure-caption">The different mass of each ball is visually represented as red/blue/green</p>
+	 
+					<p>Furthermore, the program will be tested for network error handling by software simulating packet loss.</p>
+
+					<h4>See the project in action:</h4>
+
+					<div class="embed-responsive embed-responsive-16by9 my-4">
+						<iframe class=" embed-responsive-item" src="https://www.youtube.com/embed/CgkKzqeZbfU" allowfullscreen></iframe>
+					</div>
+					
+				</div>
+				
+				<hr>
+				
+				<div class="py-5">
+					<a id="spec"><h1>Specification</h1></a>
+					<p>The application is written in C++11, and is developed for Microsoft Windows 10 (as a Win32 app), and uses a bespoke entity-component system for rapid development. Further libraries and specifications:</p>
+
+					<ul>
+						<li>OpenGL Libraries for Win32 (included with compiler/SDK, and available at the <a href="https://www.khronos.org/registry/OpenGL/index_gl.php" target="new">OpenGL Registry</a>)
+						<li>Winsock (included with compiler/SDK)
+						<li>Windows Threads (included with compiler/SDK)
+						<li><a href="https://sourceforge.net/projects/anttweakbar/" target="new">AntTweakBar v1.16</a>
+						<li><a href="https://glm.g-truc.net/0.9.8/index.html" target="new">OpenGL Mathematics v0.9.8.4</a>
+					</ul>
+					<br/>
+
+					<p>Hardware used (connected via WiFi):</p>
+
+					<ul>
+						<li>Windows 10 PC, with NVidia GeForce 980 graphics, i7 (6th Gen) CPU</li>
+						<li>Windows 10 Laptop, with NVidia GeForce 820M graphics, i5 (4th Gen) CPU</li>
+						<li>Windows 10 Laptop, with NVidia GeForce 520M graphics, i7 (2nd Gen) CPU</li>
+					</ul>
+
+				</div>
+				
+				<hr>
+				
+				<div class="py-5">
+				<a id="implementation"><h1>Implementation</h1></a>
+				<p>The application itself requires numerous major components (and subsystems) to manage the multiple APIs and data flow; these components can be divided up into the following:</p>
+				
+				<ul>
+				<li><a href="#appframework">Application framework</a></li>
+				<li>Systems</li>
+					<ul>
+						<li><a href="#simulation">Simulation System</a></li>
+						<li><a href="#networking">Networking System</a></li>
+						<li><a href="#rendering">Rendering System</a></li>
+					</ul>
+				<li><a href="#configuration">Configuration</a></li>
+				</ul>
+				</div>
+				
+				<hr>
+				
+				<div class="py-4">
+				    <h2>Main Application</h2>
+
+					<a id="appframework"><h3>Application Framework</h3></a>
+
+					<p>The application class encapsulates Win32 functionality (such as window management and event response), and communicates with the connected <a href="#simulation">Simulation</a>, <a href="#networking">Networking</a> and 
+					<a href="#rendering">Rendering</a> systems after loading configuration information during the message loop (the UI also allows the user to set simulation parameters; see <a href="#configuration">Configuration</a>).</p>
+					
+				</div>
+					
+				<div class="py-4">
+								
+				    <h2>Systems</h2>
+				
+					<a id="simulation"><h3>Simulation</h3></a>
+
+					<p>The Simulation system simulates the motion and properties of the balls and wells. An STL vector of the balls is passed to the simulation class to process. The simulation process uses the values specified by the 
+					configuration file (and UI) to calculate the movement and new positions (based on delta time). This runs on a designated thread (and core), with timing controls to operate at the user-specified frequency.</p>
+
+					<p>Three collision calculations are performed:</p>
+
+					<ul>
+						<li>Ball vs Ball
+						<li>Ball vs Floor (base of cylinder)
+						<li>Ball vs Wall (wall of cylinder)
+					</ul>
+
+					<p>In the worst case scenario, each ball must be tested against every other ball in the area (spatial subdivision techniques can reduce the area, and distribution will further split up ball collections).</p>
+
+					<p>With no optimisations or subdivisions, a linear search through the ball array (of size n) requires n<sup>2</sup>-n collision checks (when removing the test of a ball against itself).</p>
+			  
+					<noscript><img src="img/simulation/addballs.gif" class=" img-fluid" alt="Number of balls"></noscript>
+					  <p class="figure-caption">625 balls = 390 000 checks are performed</p>
+
+
+					<p>A 'log' of collisions needs to be kept to stop collisions doubling (in the case of balls A and B, we store a collision for AB, but not for BA) - the logic is calculated twice for the same two balls otherwise. A simple hashed 
+					value stores these the balls in a standard array to process collisions.</p>
+
+					<p>The simulation calculates the new ball positions/rotations for each collision in the log, accounting for the coefficient of restitution (labelled as elasticity) and gravitational forces (world and any local gravity wells). Rotation 
+					is calculated on the distance and direction moved (friction is not implemented in rotation).</p>
+				
+				</div>
+				
+				<div class="py-4">
+
+					<a id="networking"><h3>Networking</h3></a>
+					<p>The networking system (like the <a href="#simulation">simulation</a> and <a href="#rendering">rendering</a> systems) runs on a designated thread (and core), with timing controls (for user-specified frequency). This system oversees 
+					distribution of data via WinSock sockets.</p>
+
+					<p>Non-blocking sockets are implemented and polled for data (this is performed at the frequency specified by the user). Packets with instructions such as 'ping' and 'join' were implemented (simple one-byte values) to build and maintain 
+					the network infastructure, and 'ball' packets described small groups of ball data (typically &lt; 16). I used small to medium-sized packets to transmit batches of ball data, with the aim of sending smaller packets at a greater frequency 
+					(if the network frequency setting allows it).</p>
+
+					<p>Loaded configuration files will contain a list of target machines to connect with (the application will detect which address is its own external IP and will skip the outgoing connection to this address).</p>
+
+					<p>Each application is a <i>peer/client</i> node with the exception of the first running instance - this is the master peer (<b>not</b> a server) which begins the network construction. On a connection request, the accepting machine will 
+					validate the address, and will perform a basic handshake with the requesting machine. Once the handshake is complete, the requesting machine address is passed to all other connected machines, and a handshake is made, building a 'star' 
+					topology.
+					</p>
+
+					<noscript><img src="img/simulation/peers.jpg" class=" img-fluid" alt="Peer list"></noscript>
+					  <p class="figure-caption">List of connected machines (machine's external IP not included)</p>
+
+					<p>The application stores each connected machine address in a 32-bit integer (simply storing each IPv4 octet as a consecutive byte), creating a unique ID which is used as the key in an std::map of sockets. Ths structure of the networking 
+					system allows for a large number of machines (except any local network restrictions) which can be connected (during development in computing lab conditions, six machines were connected by simply adding their IP numbers to the config files).
+					</p>
+
+					<p>Movement of each machine's gravity well is also broadcast across the network from each application to all its connected counterparts. This is performed at the rate of the Windows Processing loop (WndProc), and uses a small packet.</p>
+				
+				</div>
+					
+				<div class="py-4">
+					<a id="rendering"><h3>Rendering</h3></a>
+
+					<p>The rendering system (like the <a href="#simulation">simulation</a> and <a href="#networking">networking</a> systems) runs on a designated thread (and core), with timing controls (for user-specified frequency). It uses OpenGL for Windows 
+					to render the scene (using the OpenGL functions of AntTweakBar). Graphical fidelity was out of scope for this project, so rendering was made to be barebones, to focus on other systems.</p>
+				</div>
+					
+				<div class="py-4">
+				
+					<h2>Configuration</h2>
+
+					<a id="configuration"></a>
+
+					<p>The configuration system loads configuration data from file and passes the appropriate system.</p>
+
+					<noscript><img src="img/simulation/config.gif" class=" img-fluid" alt="Config data"></noscript>
+					  <p class="figure-caption">Configuration file contents</p>
+
+					<p>Example file contents:</p>	
+					
+					<div class="table-responsive py-4">
+							<table class="table">
+								<thead>
+									<th>token</th>
+									<th>explanation</th>
+								</thead>
+								<tbody>
+								  <tr>
+									<td>listenport</td>
+									<td>Port number to accept connections on</td>
+								  </tr>
+								  <tr>
+									<td>arenasize</td>
+									<td>Size of the arena geometry (and collisable area)</td>
+								  </tr>
+								  <tr>
+									<td>ballcount</td>
+									<td>Total number of balls to 'spawn' - this must be a square number</td>
+								  </tr>
+								  <tr>
+									<td>simulationhz</td>
+									<td>Desired operating frequency for Simulaton system</td>
+								  </tr>
+								  <tr>
+									<td>graphicshz</td>
+									<td>Desired operating frequency for Graphics system</td>
+								  </tr>
+								  <tr>
+									<td>networkhz</td>
+									<td>Desired operating frequency for Networking system</td>
+								  </tr>
+								  <tr>
+									<td>address</td>
+									<td>Space-separated IPv4 address and trailing port number to connect to (multiple entries)</td>
+								  </tr>
+								</tbody>
+							  </table>
+						</div><!--end of table wrapper div-->
+					<p><i>Note: Some values can be later changed in the UI</i></p>
+				</div>
+			
+			   
+			<div class="col-12 py-2">
+				<a href="#top" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
+			</div>
+		</div>
+	   
+		  </div><!--row end-->      
+	  </div><!--end of container-fluid-->
+
+		<footer class="pt-3">
+			<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
+		</footer>
+	
+		<!--other stylesheets-->
+	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="js/lazy-progressive-enhancement.min.js"></script>
+	  <script>
+		loadMedia(null, null, true)
+	  </script>
+  </body>
+	
+</html>

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!--Custom CSS -->
+	<link rel="stylesheet" href="bootstrap-CD-style.css">
+	<!--Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+	<!--Favicon-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+	<title>Project: Business Card Raytracer</title>
+
+  </head>
+
+  <body id="top">
+
+
+	<div class="container-fluid bg-grad">
+	
+	  <nav class="navbar navbar-expand-md sticky-top row">
+		  <a class="brand" href="index.html">Chris Donnelly</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="fas fa-bars fa-lg"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link" href="index.html">Home</a>
+				  </li>
+				  <li class="nav-item">
+					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
+				  </li>
+				  <li class="nav-item">
+					 <a class="nav-link" href="#contents">Project Contents</a>
+				  </li>
+					<li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+				</ul>
+		  </div>
+		</nav>
+		   
+		<div class="row py-sm-5"><!--row containing the content-->
+			
+			<div class="col-md-10 offset-md-1 col-xl-3 offset-xl-0 mb-4 mb-sm-0 mr-lg-5"><!--title section-->
+				<a id="contents"></a>
+				<div class="topbar bottombar py-4 py-lg-5 px-sm-5">
+					<h1 class="display-4">Business Card Raytracer</h1>
+					<p class="lead">Low code-footprint raytracer</p>
+					<hr>
+					<p class="text-muted">Contents</p>
+					<ul class="contentlist">
+						<li><a href="#context">Context</a></li>
+						<li><a href="#spec">Specification</a></li>
+						<li><a href="#implementation">Implementation</a></li>
+						<li><a href="#links">Further information</a>
+					</ul>
+				</div>	
+			</div> <!--title section end-->
+
+			<div class="col-md-10 offset-md-1 col-lg-9 col-xl-6 p-sm-5"><!--main content section-->
+
+				<p class="lead" id="context">Raytracing a scene in a small section of code (small enough to fit on a business card).</p>
+
+				<p>Based on a great article by <a href="http://fabiensanglard.net/rayTracing_back_of_business_card/" target="new">Fabien Sanglard</a>, where he analyses the answer to a 1984 <code>comp.graphics</code> challenge set by Paul Heckbert,
+				this mini-project gives a unique opportunity to tinker with a tiny and efficient raytracer, designed to be as small as possible.</p>
+				
+				<noscript><img src="img/raytracer/main.jpg" class="img-fluid" alt="edited Raytracer Output"></noscript>
+				
+				<p class="figure-caption">The final output from the raytracer, with edited colours, name and resolution (<a href="img/raytracer/main.jpg" target="new">full resolution</a>)</p>
+
+				<p>The original code (expanded for readability, highlighted thanks to <a href="http://hilite.me/" target="new">hilite.me</a>):</p>
+
+				<div class="row">
+<div style="background: #ffffff; height: 30em; overflow-y:scroll; width:100%; border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;stdlib.h&gt;   </span><span style="color: #888888">// card &gt; aek.ppm</span>
+<span style="color: #557799">#include &lt;stdio.h&gt;</span>
+<span style="color: #557799">#include &lt;math.h&gt;</span>
+
+<span style="color: #008800; font-weight: bold">typedef</span> <span style="color: #333399; font-weight: bold">int</span> i;
+<span style="color: #008800; font-weight: bold">typedef</span> <span style="color: #333399; font-weight: bold">float</span> f;
+
+<span style="color: #008800; font-weight: bold">struct</span> v {
+
+	f x,y,z;
+
+	v <span style="color: #008800; font-weight: bold">operator</span><span style="color: #333333">+</span>(v r){
+		<span style="color: #008800; font-weight: bold">return</span> v(x<span style="color: #333333">+</span>r.x,y<span style="color: #333333">+</span>r.y,z<span style="color: #333333">+</span>r.z);
+	}
+
+	v <span style="color: #008800; font-weight: bold">operator</span><span style="color: #333333">*</span>(f r) {
+		<span style="color: #008800; font-weight: bold">return</span> v(x<span style="color: #333333">*</span>r,y<span style="color: #333333">*</span>r,z<span style="color: #333333">*</span>r);
+	}
+
+	f <span style="color: #008800; font-weight: bold">operator</span><span style="color: #333333">%</span>(v r) {
+		<span style="color: #008800; font-weight: bold">return</span> x<span style="color: #333333">*</span>r.x<span style="color: #333333">+</span>y<span style="color: #333333">*</span>r.y<span style="color: #333333">+</span>z<span style="color: #333333">*</span>r.z;
+	}
+
+	v(){}
+
+	v <span style="color: #008800; font-weight: bold">operator</span><span style="color: #333333">^</span>(v r){
+		<span style="color: #008800; font-weight: bold">return</span> v(y<span style="color: #333333">*</span>r.z<span style="color: #333333">-</span>z<span style="color: #333333">*</span>r.y,z<span style="color: #333333">*</span>r.x<span style="color: #333333">-</span>x<span style="color: #333333">*</span>r.z,x<span style="color: #333333">*</span>r.y<span style="color: #333333">-</span>y<span style="color: #333333">*</span>r.x);
+	}
+
+	v(f a,f b,f c){
+		x<span style="color: #333333">=</span>a;y<span style="color: #333333">=</span>b;z<span style="color: #333333">=</span>c;
+	}
+
+	v <span style="color: #008800; font-weight: bold">operator</span><span style="color: #333333">!</span>(){
+		<span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">*</span><span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">*</span>(<span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">/</span>sqrt(<span style="color: #333333">*</span><span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">%*</span><span style="color: #008800; font-weight: bold">this</span>));
+	}
+
+};
+
+i G[]<span style="color: #333333">=</span>{ <span style="color: #0000DD; font-weight: bold">247570</span>,<span style="color: #0000DD; font-weight: bold">280596</span>,<span style="color: #0000DD; font-weight: bold">280600</span>,<span style="color: #0000DD; font-weight: bold">249748</span>,<span style="color: #0000DD; font-weight: bold">18578</span>,<span style="color: #0000DD; font-weight: bold">18577</span>,<span style="color: #0000DD; font-weight: bold">231184</span>,<span style="color: #0000DD; font-weight: bold">16</span>,<span style="color: #0000DD; font-weight: bold">16</span> };
+f <span style="color: #0066BB; font-weight: bold">R</span>(){ <span style="color: #008800; font-weight: bold">return</span>(f)rand()<span style="color: #333333">/</span>RAND_MAX; }
+
+i <span style="color: #0066BB; font-weight: bold">T</span>(v o,v d,f<span style="color: #333333">&amp;</span>t,v<span style="color: #333333">&amp;</span>n) {
+
+	t<span style="color: #333333">=</span><span style="color: #6600EE; font-weight: bold">1e9</span>;
+	i m<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>;
+	f p<span style="color: #333333">=-</span>o.z<span style="color: #333333">/</span>d.z;
+
+	<span style="color: #008800; font-weight: bold">if</span>(<span style="color: #6600EE; font-weight: bold">.01</span><span style="color: #333333">&lt;</span>p) t<span style="color: #333333">=</span>p, n<span style="color: #333333">=</span>v(<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">1</span>), m<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>;
+
+	<span style="color: #008800; font-weight: bold">for</span>(i k<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">19</span>;k<span style="color: #333333">--</span>;)
+
+		<span style="color: #008800; font-weight: bold">for</span>(i j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">9</span>;j<span style="color: #333333">--</span>;)
+
+			<span style="color: #008800; font-weight: bold">if</span>(G[j]<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">&lt;&lt;</span>k){
+
+				v p<span style="color: #333333">=</span>o<span style="color: #333333">+</span>v(<span style="color: #333333">-</span>k,<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #333333">-</span>j<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">4</span>);
+
+				f b<span style="color: #333333">=</span>p<span style="color: #333333">%</span>d,c<span style="color: #333333">=</span>p<span style="color: #333333">%</span>p<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>,q<span style="color: #333333">=</span>b<span style="color: #333333">*</span>b<span style="color: #333333">-</span>c;
+				
+				<span style="color: #008800; font-weight: bold">if</span>(q<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">0</span>){
+
+					f s<span style="color: #333333">=-</span>b<span style="color: #333333">-</span>sqrt(q);
+
+					<span style="color: #008800; font-weight: bold">if</span>(s<span style="color: #333333">&lt;</span>t<span style="color: #333333">&amp;&amp;</span>s<span style="color: #333333">&gt;</span><span style="color: #6600EE; font-weight: bold">.01</span>)t<span style="color: #333333">=</span>s,n<span style="color: #333333">=!</span>(p<span style="color: #333333">+</span>d<span style="color: #333333">*</span>t),m<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">2</span>;
+
+				}
+
+			}
+
+			<span style="color: #008800; font-weight: bold">return</span> m;
+}
+
+v <span style="color: #0066BB; font-weight: bold">S</span>(v o,v d) {
+
+	f t;
+	v n;
+
+	i m<span style="color: #333333">=</span>T(o,d,t,n);
+	
+	<span style="color: #008800; font-weight: bold">if</span>(<span style="color: #333333">!</span>m)<span style="color: #008800; font-weight: bold">return</span> v(<span style="color: #6600EE; font-weight: bold">.7</span>,<span style="color: #6600EE; font-weight: bold">.6</span>,<span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">*</span>pow(<span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">-</span>d.z,<span style="color: #0000DD; font-weight: bold">4</span>);
+
+	v h<span style="color: #333333">=</span>o<span style="color: #333333">+</span>d<span style="color: #333333">*</span>t,l<span style="color: #333333">=!</span>(v(<span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">+</span>R(),<span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">+</span>R(),<span style="color: #0000DD; font-weight: bold">16</span>)<span style="color: #333333">+</span>h<span style="color: #333333">*-</span><span style="color: #0000DD; font-weight: bold">1</span>),r<span style="color: #333333">=</span>d<span style="color: #333333">+</span>n<span style="color: #333333">*</span>(n<span style="color: #333333">%</span>d<span style="color: #333333">*-</span><span style="color: #0000DD; font-weight: bold">2</span>);
+
+	f b<span style="color: #333333">=</span>l<span style="color: #333333">%</span>n;
+
+	<span style="color: #008800; font-weight: bold">if</span>(b<span style="color: #333333">&lt;</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">||</span>T(h,l,t,n))b<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>;
+
+	f p<span style="color: #333333">=</span>pow(l<span style="color: #333333">%</span>r<span style="color: #333333">*</span>(b<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">0</span>),<span style="color: #0000DD; font-weight: bold">99</span>);
+
+	<span style="color: #008800; font-weight: bold">if</span>(m<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span>){
+		h<span style="color: #333333">=</span>h<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span>;
+		<span style="color: #008800; font-weight: bold">return</span>((i)(ceil(h.x)<span style="color: #333333">+</span>ceil(h.y))<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">?</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">:</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>))<span style="color: #333333">*</span>(b<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span><span style="color: #333333">+</span><span style="color: #6600EE; font-weight: bold">.1</span>);
+	}
+
+	<span style="color: #008800; font-weight: bold">return</span> v(p,p,p)<span style="color: #333333">+</span>S(h,r)<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.5</span>;
+}
+
+i <span style="color: #0066BB; font-weight: bold">main</span>() {
+
+	printf(<span style="background-color: #fff0f0">&quot;P6 512 512 255 &quot;</span>);
+
+	v g<span style="color: #333333">=!</span>v(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">6</span>,<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">16</span>,<span style="color: #0000DD; font-weight: bold">0</span>), a<span style="color: #333333">=!</span>(v(<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">^</span>g)<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.002</span>,b<span style="color: #333333">=!</span>(g<span style="color: #333333">^</span>a)<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.002</span>,c<span style="color: #333333">=</span>(a<span style="color: #333333">+</span>b)<span style="color: #333333">*-</span><span style="color: #0000DD; font-weight: bold">256</span><span style="color: #333333">+</span>g;
+
+	<span style="color: #008800; font-weight: bold">for</span>(i y<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">512</span>;y<span style="color: #333333">--</span>;)
+
+		<span style="color: #008800; font-weight: bold">for</span>(i x<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">512</span>;x<span style="color: #333333">--</span>;){
+
+			v p(<span style="color: #0000DD; font-weight: bold">13</span>,<span style="color: #0000DD; font-weight: bold">13</span>,<span style="color: #0000DD; font-weight: bold">13</span>);
+
+			<span style="color: #008800; font-weight: bold">for</span>(i r<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">64</span>;r<span style="color: #333333">--</span>;){
+
+				v t<span style="color: #333333">=</span>a<span style="color: #333333">*</span>(R()<span style="color: #333333">-</span><span style="color: #6600EE; font-weight: bold">.5</span>)<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">99</span><span style="color: #333333">+</span>b<span style="color: #333333">*</span>(R()<span style="color: #333333">-</span><span style="color: #6600EE; font-weight: bold">.5</span>)<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">99</span>;
+				p<span style="color: #333333">=</span>S(v(<span style="color: #0000DD; font-weight: bold">17</span>,<span style="color: #0000DD; font-weight: bold">16</span>,<span style="color: #0000DD; font-weight: bold">8</span>)<span style="color: #333333">+</span>t,<span style="color: #333333">!</span>(t<span style="color: #333333">*-</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">+</span>(a<span style="color: #333333">*</span>(R()<span style="color: #333333">+</span>x)<span style="color: #333333">+</span>b<span style="color: #333333">*</span>(y<span style="color: #333333">+</span>R())<span style="color: #333333">+</span>c)<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">16</span>))<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">3.5</span><span style="color: #333333">+</span>p;
+
+			}
+
+			printf(<span style="background-color: #fff0f0">&quot;%c%c%c&quot;</span>,(i)p.x,(i)p.y,(i)p.z);
+
+		}
+
+}
+
+</pre></div>
+</div>
+<br/>
+
+<!-- Apologies to anyone reading the page source code - it's a chunk of [pre] so it'll never look pretty in HTML -->
+
+					<p>The output (stdout) is piped to a <a href="https://en.wikipedia.org/wiki/Netpbm_format" target="new">PPM</a> image. Converted to JPEG:</p>
+
+					<noscript><img src="img/raytracer/aek.jpg" alt="edited Raytracer Output" /></noscript>
+					  <p class="figure-caption">The output image in JPEG (original image is in PPM format)</p>
+
+					<p>So I decided to take a look at some of the workings, and change a few things.</p>
+					
+					
+				<hr>
+					
+				<div class="py-5">
+
+					<a id="spec"><h1>Specification</h1></a>
+					<h4>Requirements:</h4>
+
+					<ul>
+						<li>Windows 10 with <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="new">WSL</a> or GNU compatible or VM with the following packages:
+						<ul>
+							<li>gcc
+							<li>binutils or 'build-essential' equivalent metapackages (such as OS headers, math headers, etc)
+							<li>imagemagick (or GIMP to manually convert the output file)
+						</ul>
+						<li>Text editor
+					</ul>
+
+					<p><i>Platform used: IBM PC Compatible, running Windows 10 64-bit, build 1803 and WSL with build packages</i>.</p>
+
+				</div>
+					
+				<hr>
+					
+				<div class="py-5">
+					
+				    <a id="implementation"><h1>Implementation (changes)</h1></a>
+
+					<ul>
+						<li><a href="#floor">The floor</a></li>
+						<li><a href="#dimensions">Image dimensions</a></li>
+						<li><a href="#name">The Name</a></li>
+					</ul>
+					</div>
+				
+					<hr>
+					
+					<div class="py-4">
+						<a id="floor"><h2>The Floor</h2></a> 
+						<p>The 'floor' is found in the raytracer by measuring downward-pointing rays. The texture is created by the following code section (Lines 91-94):</p>
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">if</span>(m<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span>){
+		h<span style="color: #333333">=</span>h<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span>;
+		<span style="color: #008800; font-weight: bold">return</span>((i)(ceil(h.x)<span style="color: #333333">+</span>ceil(h.y))<span style="color: #333333">&amp;</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">?</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">:</span>v(<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>,<span style="color: #0000DD; font-weight: bold">3</span>))<span style="color: #333333">*</span>(b<span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">.2</span><span style="color: #333333">+</span><span style="color: #6600EE; font-weight: bold">.1</span>);
+	}
+</pre><br/></div>
+
+<br/>
+					<p>This code measures incoming values and produces an output of one of two colours based on the condition <span style="font-family:monospace;">ceil(h.x)+ceil(h.y))&1</span>. Outgoing values (vectors)
+					are modified versions of the RGB triplets <span style="font-family:monospace;">(3,1,1)</span> and <span style="font-family:monospace;">(3,3,3)</span>. These values can be changed to represent 
+					the desired <span style="font-family:monospace;">(#R,#G,#B)</span> pixels.
+					</p>
+
+					</div>
+					
+					<div class="py-4">
+						<a id="dimensions"><h2>Image Dimensions</h2></a>
+						<p>The image dimensions are used several times across the program; it sets the image file dimensions, and defines the horizontal and vertical count of rays used (although the amount ogf rays cast is 
+						not <span style="font-family:monospace;">horizontal &times; vertical</span> - 64 rays are cast per pixel for smoothing etc).</p>
+												
+						<p>The first reference to image dimensions is at line 101:</p>
+						
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	printf(<span style="background-color: #fff0f0">&quot;P6 512 512 255 &quot;</span>);</pre><br/></div></p>
+						
+						
+						<p>This line prints the header to the PPM image file - the image is stored in single byte-per-channel format (R,G,B) using the <span style="font-family:monospace;">P6</span> identifier. 
+						The horizontal and vertical resolutions are then listed (separated by spaces) - in the original code, the image is <span style="font-family:monospace;">512 &times; 512</span>. Next, the upper value limit for each 
+						colour channel is stated (255 - one unsigned byte).</p>
+						
+						<p>The resolution of the 'virtual screen' for rays is set by the following lines (105-107):</p>
+						
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i y<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">512</span>;y<span style="color: #333333">--</span>;)
+
+		<span style="color: #008800; font-weight: bold">for</span>(i x<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">512</span>;x<span style="color: #333333">--</span>;){
+</pre><br/></div></p>
+
+						<p>Obviously, this is a nested series of loops, carrying out the ray calculation <span style="font-family:monospace;">x</span> and <span style="font-family:monospace;">y</span> times, creating a 
+						two-dimensional range of <span style="font-family:monospace;">width &times; height</span>.</p>
+						
+						<p>Note that the samples-per-pixel value (for smoothing/blur/soft shadowing) can be changed at line 111:</p>
+						
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i r<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">64</span>;r<span style="color: #333333">--</span>;){
+</pre><br/></div></p>
+						
+					</div>
+
+					<div class="py-4">
+						<a id="name"><h2>The Name</h2></a>
+						<p>The name is the main focus of the scene -- created from a number of reflective spheres, based on a series of bit masks in the code. These values are found in an array at line 40:</p>
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	i G[]<span style="color: #333333">=</span>{ <span style="color: #0000DD; font-weight: bold">247570</span>,<span style="color: #0000DD; font-weight: bold">280596</span>,<span style="color: #0000DD; font-weight: bold">280600</span>,<span style="color: #0000DD; font-weight: bold">249748</span>,<span style="color: #0000DD; font-weight: bold">18578</span>,<span style="color: #0000DD; font-weight: bold">18577</span>,<span style="color: #0000DD; font-weight: bold">231184</span>,<span style="color: #0000DD; font-weight: bold">16</span>,<span style="color: #0000DD; font-weight: bold">16</span> };
+</pre><br/></div></p>
+
+						<p>Also, the 'length' of each bit mask (in this case, 19 bits) is defined at line 51:</p>
+						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i k<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">19</span>;k<span style="color: #333333">--</span>;)
+</pre><br/></div>
+</p>
+
+						<p>The count of values (bit masks) are defined in the for loop at line 53:</p>
+						<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	<span style="color: #008800; font-weight: bold">for</span>(i j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">9</span>;j<span style="color: #333333">--</span>;)
+</pre><br/></div><br/>
+
+						<p>So let's look at what makes this array special - bit values (Note: I've used 32 bits for illustration):</p>
+						
+						<p>
+						
+						<div class="table-responsive py-4">
+							<table class="table">
+							  <thead>
+								<th>Index</th>
+								<th>Value</th>
+								<th>Value (little-endian)</th>
+							  </thead>
+								<tbody>
+							  <tr>
+								<td>0</td>
+								<td>247570</td>
+								<td style="font-family:monospace;">‭00000000000000111100011100010010</td>
+							  </tr>
+							  <tr>
+								<td>1</td>
+								<td>280596</td>
+								<td style="font-family:monospace;">00000000000001000100100000010100</td>
+							  </tr>
+							  <tr>
+								<td>2</td>
+								<td>280600</td>
+								<td style="font-family:monospace;">00000000000001000100100000011000</td>
+							  </tr>
+							  <tr>
+								<td>3</td>
+								<td>249748</td>
+								<td style="font-family:monospace;">00000000000000111100111110010100‬‬</td>
+							  </tr>
+							  <tr>
+								<td>4</td>
+								<td>18578</td>
+								<td style="font-family:monospace;">00000000000000000100100010010010‬</td>
+							  </tr>
+							  <tr>
+								<td>5</td>
+								<td>18577</td>
+								<td style="font-family:monospace;">00000000000000000100100010010001‬</td>
+							  </tr>
+							  <tr>
+								<td>6</td>
+								<td>231184</td>
+								<td style="font-family:monospace;">00000000000000111000011100010000‬</td>
+							  </tr>
+							  <tr>
+								<td>7</td>
+								<td>16</td>
+								<td style="font-family:monospace;">00000000000000000000000000010000</td>
+							  </tr>
+							  <tr>
+								<td>8</td>
+								<td>16</td>
+								<td style="font-family:monospace;">00000000000000000000000000010000</td>
+							  </tr>
+							</tbody>      
+							</table>
+						</div>
+						</p>
+						
+						<p>We can replace the value 0 bits with &blk14; and value 1 bits with &blk34; to make it easier to see:
+						
+<pre style="font-family:monospace;font-size:115%;">
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (247570)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (280596)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk14; (280600)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (249748)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (18578)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34; (18577)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (231184)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+</pre></p>
+
+<p>A quick vertical flip (for the sake of human viewing) gives the following:
+<pre style="font-family:monospace;font-size:115%;">
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (16)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14; (231184)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34; (18577)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (18578)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (249748)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk14; (280600)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14; (280596)
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14; (247570)
+</pre></p>
+												
+					<p>
+					In short, each bit represents the presence of a sphere in an evenly-spaced grid. The integer values in <code>G</code> (and the bit count) can be replaced to give other results, for example the following code...
+
+					<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	i G[]<span style="color: #333333">=</span>{<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">412206</span>,<span style="color: #0000DD; font-weight: bold">608802</span>,<span style="color: #0000DD; font-weight: bold">543270</span>,<span style="color: #0000DD; font-weight: bold">13</span>,<span style="color: #0000DD; font-weight: bold">543272</span>,<span style="color: #0000DD; font-weight: bold">553390</span>,<span style="color: #0000DD; font-weight: bold">606208</span>,<span style="color: #0000DD; font-weight: bold">409632</span>,}; </pre><br/></div>
+					</p>
+					
+					<p>...produces the following result (again, with a vertical flip):</p>
+					
+					<p>					
+<pre style="font-family:monospace;font-size:115%;">&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk34;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk34;&blk14;&blk34;&blk34;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;
+&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk14;&blk34;&blk34;&blk14;&blk14;&blk34;&blk14;&blk14;&blk34;&blk14;&blk34;&blk14;&blk14;&blk14;&blk34;&blk14;&blk34;&blk34;&blk34;&blk14;</pre>
+					</p>
+					</div>
+					
+					<p>Some small changes can make some excellent images thanks to some great, compact code, which is also wonderully customizable (also thanks to procedural nature of the program).<p>
+
+				<hr>
+				
+				<div class="py-5">
+					<a id="links"><h1>Further Information</h1></a>
+						<ul>
+							<li><a href="https://github.com/Chris-Donnelly/BusinessCardRaytracer" target="new">BusinessCardRaytracer</a>, the modified version on GitHub</li>
+						</ul>
+						<ul>
+							<li><a href="http://fabiensanglard.net/rayTracing_back_of_business_card/" target="new">Raytracing</a>, by Fabien Sanglard, 20/9/2013</li>
+						</ul>
+				</div>
+				
+			</div>
+
+				<div class="col-12 py-2">
+					 <a href="#top" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
+				</div>
+			
+			</div><!--row end-->
+		</div><!--end of container-fluid-->
+		
+
+		<footer class="pt-3">
+			<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
+		</footer>
+
+	<!--other stylesheets-->
+	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="js/lazy-progressive-enhancement.min.js"></script>
+	  <script>
+		loadMedia(null, null, true)
+	  </script>
+  </body>
+
+</html>

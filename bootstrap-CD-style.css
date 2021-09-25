@@ -1,0 +1,313 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: Lato;
+}
+
+h1,
+h2 {
+    font-weight: 300;
+}
+
+h1 {font-size:2.1rem;}
+h2 {font-size:1.7rem;}
+h3 {font-size: 1.6em;}
+h4 {font-size: 1.333em;}
+
+
+p {line-height:1.7rem}
+
+
+a[target="new"]:after { 
+    font-family: 'Font Awesome 5 Free';
+    font-weight:900;
+    content: "\f35d";
+    font-size:0.6rem;
+    padding-left:4px;
+    position: relative;
+    bottom:1px;
+}
+
+#gallery a:before {
+    font-size: 2.5rem;
+}
+
+.btn-cd,
+.display-4,
+.nav-link,
+h1,
+h2 {
+    text-transform: uppercase;
+}
+
+#gallery a:before,
+.tddata,
+.thlabel {
+    text-align: center;
+}
+
+.btn,
+.form-control {
+    border-radius: 0;
+}
+
+
+body {
+    font-weight: 400;
+    background: #CCC;
+    padding: 1rem;
+}
+
+
+.contentlist {
+    list-style-type: none;
+}
+
+.brand {
+    font-size:1.7rem;
+    font-weight:300;
+}
+
+.brand:hover {
+    text-decoration: none;
+}
+
+.navbar {
+    background-color: rgba(252, 252, 252, .90);
+}
+
+.navbar:hover {
+    background-color: rgba(252, 252, 252, 0.97);
+}
+
+/*drop shadow*/
+.navbar {
+    -webkit-box-shadow: 0px 4px 17px -12px rgba(0,0,0,0.40);
+    -moz-box-shadow: 0px 4px 17px -12px rgba(0,0,0,0.40);
+    box-shadow: 0px 4px 17px -12px rgba(0,0,0,0.40);
+}
+
+
+.container,
+.container-fluid,
+.jumbotron,
+img {
+    background: #FFF;
+}
+
+.bg-grad {
+background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 78%);
+}
+
+.bg-muted {
+    background: #F5F5F5;
+}
+
+.bg-accent-dark {
+    background:#026c82;
+}
+
+.bg-grad-h {
+    background: rgb(242,242,242);
+    background: linear-gradient(90deg, rgba(250,250,250,1) 0%, rgba(255,255,255,1) 50%, rgba(250,250,250,1) 100%);  
+}
+
+
+.navbar a,
+body {
+    color: #444;
+}
+
+
+a.btn-cd,
+.btn-cd,
+.fa-bars,
+a {
+    color: #0290ad;
+}
+
+a:hover {
+    color:#3ccae6;
+}
+
+#gallery a:hover {
+    color: #98D9E6;
+}
+
+.bg-accent-dark {
+    color:#ebf8fa;
+}
+
+.bg-accent-dark a {
+    color:#fff;
+}
+
+.bottombar,
+.topbar {
+    border-color: #98D9E6;
+}
+
+.text-bar {
+    display:inline-block;
+}
+
+.btn-cd {
+    border-color: #0290ad;
+}
+
+.btn-cd:hover {
+    border-color: #3ccae6;
+}
+
+
+.topbar {
+    border-top-style: solid;
+    border-width: 2px;
+}
+
+.bottombar {
+    border-bottom-style: solid;
+    border-width: 2px;
+}
+
+.btn-cd {
+    border-style: solid;
+    border-width: 2px;
+}
+
+
+.bottombar, h1, h2, h3, h4, h5 {
+    padding-bottom: 1rem;
+}
+
+li {
+    margin: 10px 0;
+}
+
+
+.contact-icon {
+    position: relative;
+    top: 2rem;
+    right: 1rem;
+}
+
+img {
+    padding:10px;
+    border:1px solid #ddd;
+}
+
+.img-nostyle {
+    border:none;
+    background:none;
+}
+
+
+#gallery a:hover img {
+    opacity: .2;
+    -moz-backface-visibility: hidden;
+}
+
+#gallery a:before {
+    content: "view";
+    width: 70px;
+    height: 70px;
+    display: block;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    margin: -35px 0 0 -35px;
+    opacity: 0;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+    vertical-align: middle;
+}
+
+#gallery a:hover:before {
+    opacity:1;
+    top: 50%;
+    left: 50%;
+}
+
+.btn-cd:hover .fa-chevron-up {
+    position: relative;
+    bottom:2px;
+}
+
+
+
+
+
+/*RESPONSIVE MEDIA QUERIES - Don't delete these even if there are unused ones :P */
+
+/*Screen size or larger*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) { }
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    
+    .brand {
+        padding-right:2rem;
+    }
+    
+    .nav-item {
+        padding-right:1rem;
+        
+    } 
+    
+    
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    
+    .nav-item {
+        padding-right:2rem;
+        
+    }
+    
+       .brand {
+        padding-right:5rem;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+    .navbar-nav {
+        padding-left:4rem;
+    }
+}
+
+/*Screen size or smaller*/
+
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    
+   .brand {
+        font-size:1.3rem;
+    }
+    
+    .display-4 {
+        font-size: 2.074em;
+        font-weight:400;
+    }
+
+}
+
+/* Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {}
+
+/* Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) { }
+
+/* Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) { }
+
+

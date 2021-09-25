@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!--Custom CSS -->  
+	<link rel="stylesheet" href="bootstrap-CD-style.css">
+	<!--Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+	<!--Favicon-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	
+	<title>Project: Inside the Adaptive Controller</title>
+	  
+  </head>
+	
+  <body id="top">
+	  
+
+	<div class="container-fluid bg-grad">
+	
+	  <nav class="navbar navbar-expand-md sticky-top row">
+		  <a class="brand" href="index.html">Chris Donnelly</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="fas fa-bars fa-lg"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link" href="index.html">Home</a>
+				  </li>
+				  <li class="nav-item">
+					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
+				  </li>
+				  <li class="nav-item">
+					 <a class="nav-link" href="#contents">Project Contents</a>
+				  </li>
+					<li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+				</ul>
+		  </div>
+		</nav>
+		   
+		<div class="row py-sm-5">
+				    
+			<div class="col-md-10 offset-md-1 col-xl-3 offset-xl-0 mb-4 mb-sm-0 mr-lg-5">
+				<a id="contents"></a>
+				<div class="topbar bottombar py-4 py-lg-5 px-sm-5">
+					<h1 class="display-4">Inside the Adaptive Controller</h1>
+					<p class="lead">A brief look at the Adaptive controller, for curiosity's sake</p>
+					<hr>
+					<p class="text-muted">Contents</p>
+					<ul class="contentlist">
+						<li><a href="#context">Context</a></li>
+						<li><a href="#spec">Specification</a></li>
+						<li><a href="#implementation">Implementation</a></li>
+						<li><a href="#links">Further information</a>
+					</ul>
+				</div>	
+			</div> 
+			
+			<div class="col-md-10 offset-md-1 col-lg-9 col-xl-6 p-sm-5">
+
+				<div class="py-5">
+				<a id="context"><h1>Context</h1></a>
+				
+				<p>In September 2018, Microsoft released the <a href="https://www.xbox.com/en-US/accessories/controllers/xbox-adaptive-controller" target="new">"Adaptive Controller"</a> (or "XBOX Adaptive Controller"), a game controller/input device made for users with physical disabilities or limitations.</p>
+				
+				<noscript><img src="img/xboxac/xboxac.jpg" class=" img-fluid" alt="The adaptive controller"></noscript>
+				<p class="figure-caption">The adaptive controller</p>
+			
+				<p>The device works via the proprietary wireless signal used by the XBOX One / Series X, bluetooth, and USB-C cable connection (for PC, the proprietary wifi connection requires a further adapter to 
+				connect). The device features two prominently large black buttons, a D-Pad, equivalent buttons to "navigation" and "menu", a large "guide" button, and a profile button for quick mode switches. Along 
+				the back and sides of the controller is a microphone/headset input, a USB socket for both left and right analog stick, a sync button, a USB-C charging/connection socket, a power socket, and 
+				<b>19 audio jack sockets</b>. Note that the device <b>requires</b> an external power source via the power jack (assumed 5.5mm x 2.1mm power jack), if using the "quadstick" accessories</p>
+				
+				<br/>
+				
+				<p>The bottom of the device also features 3 mounting screws for different wheelchairs or "rigging" devices (2 of 10-24 screw for AMPS compatible mounts and 1 of &frac14;-20 for tripod mounts).</p>
+				<noscript><img src="img/xboxac/under.jpg" class=" img-fluid" alt="The adaptive controller: underneath"></noscript>
+				<p class="figure-caption">Screw fittings on the bottom of the device</p>
+			
+				<br/>
+				<p>The device can be bought from multiple retailers, including Microsoft Store, and arrives in a box which can be opened with one hand, using minimal strength, and easily set up</p>
+				<br/>
+				
+				<h2>The connectors:</h2>
+
+				<p>The XAC has USB jacks on its left and right faces for respective analog stick USB inputs, and a 4-pole (see table below) 3.5mm jack for the headset also on the left face. All other jack inputs 
+				can be found on the back face:</p>
+				
+				<noscript><img src="img/xboxac/jacks.jpg" class=" img-fluid" alt="The adaptive controller: jacks"></noscript>
+				<p class="figure-caption">The adaptive controller's jack layout</p><br/>
+
+				<p>A little more information on the buttons and inputs:</p>
+
+				
+					 <div class="table-responsive py-4">
+							<table class="table">
+								<thead>
+									<th class="thlabel">Connector Type</th>
+					                <th class="thlabel">Type</th>
+					                <th class="thlabel">Relates to Gamepad</th>
+					                <th class="thlabel">Notes</th>
+								</thead>
+								<tbody>
+								  <tr>
+									<td class="tdlabel">Guide/Nexus</td>
+									<td class="tddata">Button</td>
+									<td class="tddata">Power, Guide / OS controls</td>
+									<td class="tddata">Tactile click</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">D-Pad</td>
+									<td class="tddata">Button (x4)</td>
+									<td class="tddata">Up / Down / Left / Right</td>
+									<td class="tddata">Tactile click</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">View ("back")</td>
+									<td class="tddata">Button</td>
+									<td class="tddata">View button</td>
+									<td class="tddata">Tactile click</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Menu ("start")</td>
+									<td class="tddata">Button</td>
+									<td class="tddata">Menu button</td>
+									<td class="tddata">Tactile click</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Profile</td>
+									<td class="tddata">Button</td>
+									<td class="tddata">manage input profiles</td>
+									<td class="tddata">Tactile click, 3xLED readout</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">A</td>
+									<td class="tddata">Button</td>
+									<td class="tddata">Face button: A</td>
+									<td class="tddata">Very large, tactile click</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">B</td>
+									<td class="tddata">Button</td>
+									<td class="tddata">Face button: B</td>
+									<td class="tddata">Very large, tactile click</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Headphone/Mic</td>
+									<td class="tddata">Audio jack</td>
+									<td class="tddata">audio/voice/chat</td>
+									<td class="tddata">3.5mm 4-pole audio jack<b>*</b></td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Left Stick</td>
+									<td class="tddata">USB</td>
+									<td class="tddata">Left Analog Stick</td>
+									<td class="tddata">powered, protocol not fully implemented</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Right StickStick</td>
+									<td class="tddata">USB</td>
+									<td class="tddata">Right Analog Stick</td>
+									<td class="tddata">powered, protocol not fully implemented</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Sync</td>
+									<td class="tddata">Button</td>
+									<td class="tddata">Sync Button</td>
+									<td class="tddata">syncs to PC/console, switches wireless modes</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Y</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">Face button: Y</td>
+									<td class="tddata">Digital over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">X</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">Face button: X</td>
+									<td class="tddata">Digital over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">B</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">Face button: B</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">A</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">Face button: A</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Right thumbstick press</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">Right stick (click)</td>
+									<td class="tddata">Digital over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">RB</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">Bumper: Right</td>
+									<td class="tddata">Digital over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">RT</td>
+									<td class="tddata">Jack</td>
+									<td class="tddata">Right trigger</td>
+									<td class="tddata">Analog over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">LT</td>
+									<td class="tddata">Jack</td>
+									<td class="tddata">Right trigger</td>
+									<td class="tddata">Analog over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">View</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">View button</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Menu</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">Menu button</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">X2</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">2-axis (thumbstick)</td>
+									<td class="tddata">Dual Analog over stereo jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">X1</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">2-axis (thumbstick)</td>
+									<td class="tddata">Dual Analog over stereo jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Guide/Nexus</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">Guide/Nexus button</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">LB</td>
+									<td class="tddata">Digital jack</td>
+									<td class="tddata">Bumper: Left</td>
+									<td class="tddata">Digital over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Left thumbstick press</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">Left stick (click)</td>
+									<td class="tddata">Digital over audio jack</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">RIGHT</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">D-Pad: Right</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">UP</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">D-Pad: Up</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">DOWN</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">D-Pad: Down</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">LEFT</td>
+									<td class="tddata">Digital Jack</td>
+									<td class="tddata">D-Pad: Left</td>
+									<td class="tddata">Digital over audio jack, Override**</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Data cable</td>
+									<td class="tddata">USB-C</td>
+									<td class="tddata">n/a - connection to PC/console</td>
+									<td class="tddata">Also can be used to charge device</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Power</td>
+									<td class="tddata">Jack</td>
+									<td class="tddata">n/a - power</td>
+									<td class="tddata">5VDC - 2A (USB voltage @ 2A)</td>
+								  </tr>
+
+								  </tbody>
+								  
+								  </tbody>
+							  </table>
+							  <sup><b>*</b> <i>CTIA, AHJ</i> style connector assumed from XBOX One/Surface standard; <b>tip &#8594; sleeve = L | R | GND | Mic</b> - required for audio + chat<br>
+							  <b>**</b> Override - <i>overrides/complements</i> the state of the equivalent button on the top face of the device</sup>
+						</div><!--end of table wrapper div-->
+						
+				<p>The order of the sync button, jack connectors, USB-C and power jack are the order in which they are found left-right on the back face of the controller</p><br/>
+			
+				<p><b>This information on this page refers to both my controller (model 1836), and the v1.5 input specifications document for the adaptive controller 
+				(at the time of writing, available via <a href="https://aka.ms/D4Xbox_XAC_Input_Spec" target="new">this page</a>)</b></p>
+			</div>
+				
+				<hr>
+				
+				<div class="py-5">
+					<a id="spec"><h1>Specification</h1></a>
+					<p>Requirements to open the XAC:</p>
+
+					<ul>
+						<li>Screwdriver: 1x Torx T6
+						<li>Screwdriver: 1x Torx T8
+						<li>Screwdriver: 1x small / medium Phillips (cross-slotted)
+						<li><b>(Optional):</b> prizing / probing tool (for opening casings, removing battery)
+					</ul>
+
+				</div>
+				
+				<hr>
+				
+				<div class="py-5">
+				<a id="implementation"><h1>Implementation</h1></a>
+				
+					<ul>
+						<li><a href="#unscrewthebase">Unscrewing the base</a></li>
+						<li><a href="#cabling">Cabling and disconnection</a></li>
+						<li><a href="#battery">Internal Battery</a></li>
+						<li><a href="#internalplate">The Internal Plate</a></li>
+						<li><a href="#4paudiojack">4-Pole 3.5mm Audio Jack  (audio/voice/chat)</a></li>
+						<li><a href="#mainboardplate">Main Board and Internal Plate</a></li>
+						<li><a href="#mainboard">The Main Board</a></li>
+						<li><a href="#inputjacks">The Input Jacks</a></li>
+						<li><a href="#comms">Communications</a></li>
+						<li><a href="#furtherwork">Further work</a></li>
+					</ul><br/>
+				
+					<div class="py-4">
+				
+						<a id="unscrewthebase"><h2>Unscrewing the base</h2></a>
+
+						<p>The base of the controller (bottom face) hides 4 screws under its rubber feet (see the image previously, of the controller's base and fitting screws). These rubber feet are round rubber pads 
+						with some medium glue applied to them, and can be gently teased off to reveal the Torx T8 screws underneath:</p>
+
+						<noscript><img src="img/xboxac/feet_screw.jpg" class=" img-fluid" alt="Screws under the rubber feet (Torx T8)"></noscript>
+						<p class="figure-caption">The Torx T8 screws under the foot pads</p><br/>
+
+						<p>Removing these 4 screws will loosen the outer bottom base, and it can be gently prised away from the rest of the unit, revealing the internal plastics and some of the main board:</p>
+
+						<noscript><img src="img/xboxac/battery_back.jpg" class=" img-fluid" alt="XBOX AC with bottom face removed"></noscript>
+						<p class="figure-caption">XBOX AC with bottom face removed</p>
+						<br/>
+					</div>
+					
+					<div class="py-4">
+	
+						<a id="cabling"><h2>Cabling and disconnection</h2></a>
+
+						<p>Here we can see the first internal layer of the Adaptive Controller, a plastics board (the motherboard is screwed into this, and it contains the A and B button switches), and three main 
+						cables used by the Adaptive Controller:</p>
+
+						<noscript><img src="img/xboxac/cables.jpg" class=" img-fluid" alt="Cables in the controller"></noscript>
+						<p class="figure-caption">Three cables under the AC</p>               
+
+						<p>The cables correspond to (L&#8594;R in above picture):</p>
+						
+						<div class="table-responsive py-4">
+							<table class="table">
+								<thead>
+									<th class="thlabel">Colour coding</th>
+					                <th class="thlabel">Connects to</th>
+								</thead>
+								<tbody>
+								  <tr>
+									<td class="tdlabel">Red / White / Black</td>
+									<td class="tddata">Internal Battery</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Blue / Brown <i>(left in photo)</i></td>
+									<td class="tddata">Large <b>B Button</b> switch</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Blue / Brown <i>(right in photo)</i></td>
+									<td class="tddata">Large <b>A Button</b> switch</td>
+								  </tr>
+							  </tbody>
+							  </table>
+						</div><!--end of table wrapper div-->
+						<p>These cables can be gently disconnected by hand, or with some needle-nose pliers</p><br/>
+					</div>
+					
+					<div class="py-4">
+					
+						<a id="battery"><h2>Internal Battery</h2></a><br/>
+
+						<p>The internal battery and large face buttons have been disconnected, but before continuing, a quick look at the battery:</p>
+						
+						<noscript><img src="img/xboxac/battery.jpg" class=" img-fluid" alt="Internal battery"></noscript>
+						<p class="figure-caption">Internal battery</p>               
+						
+						<ul>
+							<li>Name: Single Cell Lithium-Ion polymer battery ("Li-Polymer Rechargeable Battery")
+							<li>Dimensions: L 52mm / W 28mm / H 12mm
+							<li>Model: DYNZ01 / UN-DYNZ01
+							<li>Rating: 3.8V 2050mAh (7.79Wh)
+							<li>Weight: 0.034kg / 34g
+							<li>Maximum temperature: 60&#176;C / 140&#176;F
+						</ul>
+						
+						<p>The under side of the battery also has a sticker with a serial number / QR code</p>
+						<p>Documentation available online also states this battery has a model number <b>1836</b> and <b>UN-3841</b> (possibly an internal or invoice-based reference)</p><br/>
+					</div>
+					
+					<div class="py-4">
+						<a id="internalplate"><h2>Internal Plate</h2></a><br/>
+
+						<p>The internal plate is screwed to the motherboard and holds the switch mechanism (and cables) for the two large <b>A</b> and <b>B</b> buttons. It also contains the mounting plate 
+						which is visible from the bottom outer plate (see earlier). This is screwed into the top face's underside by four (4) Torx T8 screws</p>
+						
+						<noscript><img src="img/xboxac/internalplate_screws.jpg" class=" img-fluid" alt="Internal plate"></noscript>
+						<p class="figure-caption">Internal battery</p>             
+						
+						<p>The plate has Microsoft branding as part of the moulding (alongside standard certifications), and is ABS Polycarbonate (PC/ABS). It is labelled with the following text/number strings:</p>
+						<ul>
+							<li>M1065254
+							<li>CAV1
+							<li>ULC3598
+							<li>PC/ABS
+						</ul>
+						
+						<p>Removing these four screws (above) can remove the plate and motherboard, although one part is not connected to either and can fall loose -- the 4-pole audio jack (see next section)</p><br/>
+					</div>					
+					
+					<div class="py-4">
+						<a id="4paudiojack"><h2>4-Pole 3.5mm Audio Jack (audio/voice/chat)</h2></a><br/>
+
+						<p>The audio/voice/chat connector (on the left side of the controller, used for a chat headset) uses the same parts and connection as the revised XBOX One gamepad (and XBOX Series gamepads), a 
+						jack with feet/pad connectors to the board, presumably making production costs lower by using existing parts/connectors.</p></br>
+						
+						<noscript><img src="img/xboxac/4poleaudiojack.jpg" class=" img-fluid" alt="Internal plate"></noscript>
+						<p class="figure-caption">Internal battery</p>             
+						
+						<p>The XAC's chat jack uses the same TRRS layout (see <a href="https://www.cablechick.com.au/blog/understanding-trrs-and-audio-jacks/" target="new">here</a>) as the XBOX One (rev. 2) / 
+						Series S|X Gamepad and accessory standard, and not the original proprietary connector from release day 2013 devices. The layout used is <b>CTIA/AHJ</b>, meaning TRRS = Audio L / Audio R
+						/ GND / Microphone (mono)</p>
+						<p><sup>Please note, the Microphone ring can also be used for Video under the CTIA/AHJ standard</sup></p>
+						
+						<br/>
+						<p>A diagram highlighting the layout used:</p>
+						<noscript><img src="img/xboxac/trrs_xac.jpg" class=" img-fluid" alt="audio chat jack"></noscript>
+						<p class="figure-caption">TRRS layout for XAC chat audio jack</p>             
+					</div>
+
+					<div class="py-4">
+						<a id="mainboardplate"><h2>Main Board and Internal Plate</h2></a><br/>
+
+						<p>With the audio jack adapter out of place, the board and internal plate can be removed, giving the following:</p></br>
+						
+						<noscript><img src="img/xboxac/removed_plate.jpg" class=" img-fluid" alt="main board layout (with plate), and inner lid"></noscript>
+						<p class="figure-caption">TRRS layout for XAC chat audio jack</p>             
+						
+						<p>The highlighted points of the board (and lid) are as follows (numbered AND color coded, sincerest apologies to any readers who have issues with the image and table):</p>
+						<p><sub>Note: The order of the lower board is reversed horizontally from the lid in the picture, as these assemble together</sub></p>
+
+						<div class="table-responsive py-4">
+							<table class="table">
+								<thead>
+									<th class="thlabel">Number</th>
+					                <th class="thlabel">Colour</th>
+					                <th class="thlabel">Item</th>
+					                <th class="thlabel">notes</th>
+								</thead>
+								<tbody>
+								  <tr>
+									<td class="tdlabel">1</td>
+									<td class="tddata">Red <img src="img/xboxac/1.gif"></td>
+									<td class="tdlabel">Top B button</td>
+									<td class="tddata">Custom switch</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">2</td>
+									<td class="tddata">Red <img src="img/xboxac/1.gif"></td>
+									<td class="tdlabel">Top A button</td>
+									<td class="tddata">Custom switch</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">3</td>
+									<td class="tddata">Light Blue <img src="img/xboxac/3.gif"></td>
+									<td class="tdlabel">Guide / Nexus button</td>
+									<td class="tddata">Custom plastic, backlit</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">4</td>
+									<td class="tddata">Light Green <img src="img/xboxac/4.gif"></td>
+									<td class="tdlabel">View button</td>
+									<td class="tddata">On-board switch</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">5</td>
+									<td class="tddata">Yellow <img src="img/xboxac/5.gif"></td>
+									<td class="tdlabel">Menu button</td>
+									<td class="tddata">On-board switch</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">6</td>
+									<td class="tddata">Blue <img src="img/xboxac/6.gif"></td>
+									<td class="tdlabel">Profiles button</td>
+									<td class="tddata">Also: 3 LEDs for indicator</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">7</td>
+									<td class="tddata">Maroon <img src="img/xboxac/7.gif"></td>
+									<td class="tdlabel">Charge indicator</td>
+									<td class="tddata">Charging LED indicator (green)</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">8</td>
+									<td class="tddata">Purple <img src="img/xboxac/8.gif"></td>
+									<td class="tdlabel">D-Pad buttons</td>
+									<td class="tddata">On-board switches (white, 5-6mm?)</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">9</td>
+									<td class="tddata">Orange <img src="img/xboxac/9.gif"></td>
+									<td class="tdlabel">Sync</td>
+									<td class="tddata">On back face, requires extra plastic button</td>
+								  </tr>
+							  </tbody>
+							  </table>
+						</div><!--end of table wrapper div-->
+
+						<p><b>Also higlighed above (white circle)</b> - phillips screw (x1, the only phillips screw in the device). To separate the inner plate, remove the following screws 
+						(<b>Torx T6</b>, and <b>phillips</b> included):</p>
+						
+						<noscript><img src="img/xboxac/board_screws.jpg" class=" img-fluid" alt="main board screws to remove"></noscript>
+						<p class="figure-caption">Screws to remove to separate board and inner plate</p>             
+					</div>
+
+					<div class="py-4">
+						<a id="mainboard"><h2>The Main Board</h2></a><br/>
+
+						<p>The board is a single piece mainboard, with input jacks (x19), USB (x2), power jack (PWR) and USB-C connector</p>
+						
+						<noscript><img src="img/xboxac/main_board.jpg" class=" img-fluid" alt="main board"></noscript>
+						<p class="figure-caption">The XAC main board</p>
+						<br/>
+						
+						<p>The main board shows some serial numbers/part numbers/specs:</p>
+						
+						<ul>
+							<li>M1041486-004
+							<li>19183 / MV-4 / 94V-0
+							<li>E89382
+						</ul><br/>
+
+						<noscript><img src="img/xboxac/board_serials.jpg" class=" img-fluid" alt="on-board serials"></noscript>
+						<p class="figure-caption">Serials and model numbers on the board</p>
+						<br/>
+						
+						<p>Also chips:</p>
+
+						<ul>
+							<li>MicrosoftX905893-002, a Microsoft-manufactured <a href="https://en.wikipedia.org/wiki/Ball_grid_array" target="new">BGA</a> IC (lead-free RoHS)
+							<li>8024750 (unknown)
+							<li>FTDI VNC2-32LIC 1807 (assumed USB controller?)
+						</ul><br/>
+
+						<noscript><img src="img/xboxac/board_chips.jpg" class=" img-fluid" alt="on-board chips"></noscript>
+						<p class="figure-caption">Chips on the board (Excuse the photo quality, I don't own a macro lens)</p>
+						
+						<p>I have no experience or knowledge of these chips, some basic searching and invoice information was all that was used.</p>
+						
+					</div>
+					
+					<div class="py-4">
+						<a id="inputjacks"><h2>The Input Jacks</h2></a><br/>
+						
+						<p>The <b>19</b> input jacks on the back face of the controller allow the user to provide input for a gamepad button which each jack represents. <b>There are two types of jack</b> here; <b>analog</b> input, and
+						<b>digital</b> input, representing simple <b>on/off</b> (pressed/released) states and <b>ranged states</b> (a linear "range" of values  -- such as 0..255 or 0..65535, the controller normalizes the value to an appropriate internal 
+						range, according to its documentation).</p>
+						
+						<noscript><img src="img/xboxac/inputjacks.jpg" class=" img-fluid" alt="on-board chips"></noscript>
+						<p class="figure-caption">Chips on the board (Excuse the photo quality, I don't own a macro lens)</p><br/>
+						
+						
+						<p><b>Digital Jack Input (buttons)</b></p>
+						
+						<p>The digital input works on the theory of binary switched values; <b>booleans</b>, being true or false (or on/off, zero/one, etc). This is (when closer to a hadware level) translated into reading an 
+						electrical impulse, and ascertaining if the impulse has enough electrical value (voltage, resistance) which surpasses or remains below a given threshold.</b>
+						
+						<p>Due to the nature of being a simpler signal, extra rings are not required (or recommended) for these connectors - a "mono" jack works for this, as this requires only two connectors to represent the 
+						circuit as open/closed:</p>
+						
+						<noscript><img src="img/xboxac/jack_digital.jpg" class=" img-fluid" alt="digital jack"></noscript>
+						<p class="figure-caption">Digital jack connector (image from <a href="https://components101.com/" target="new">components101</a>)</p><br/>
+						
+						<p>In the case of the Adaptive Controller, the 
+						requirements for each value (pressed and released) are as follows:</p>
+						
+						<div class="table-responsive py-4">
+							<table class="table">
+								<thead>
+									<th class="thlabel">Signal</th>
+					                <th class="thlabel">Requirement</th>
+					                <th class="thlabel">Represents</th>
+								</thead>
+								<tbody>
+								  <tr>
+									<td class="tdlabel">High</td>
+									<td class="tddata">&gt; 0.6V</td>
+									<td class="tddata">Pressed state</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Low</td>
+									<td class="tddata">&lt; 0.3V</td>
+									<td class="tddata">Released state (passive)</td>
+								  </tr>
+							  </tbody>
+							  </table>
+						</div><!--end of table wrapper div-->						
+						<br/>
+						
+						<p><b>Analog Jack Input (triggers)</b></p>
+						
+						<p>The analog jack input follows a principle of representing a number in a range, a value between the minimum and maximum values of a single axis; the number cannot be represented in one instant by 
+						using open/closed values - either a variable electrical reading can be used, or a series of rings are needed to build a byte-like value. The easier option for timing (and using existing hardware) is 
+						to use a ring with a variable electrical reading (namely, the ring of a stereo jack, or R2 in the TRRS of a 4-pole 3.5mm CTIA/AHJ jack, as they have the same positioning):</p>
+						
+						<noscript><img src="img/xboxac/jack_analog.jpg" class=" img-fluid" alt="Analog jack"></noscript>
+						<p class="figure-caption">Analog jack connector (image from <a href="http://fisherswiring2j.atuttasosta.it/" target="new">fisherswiring2j.atuttasosta.it/</a>)</p><br/>
+						
+						<div class="table-responsive py-4">
+							<table class="table">
+								<thead>
+									<th class="thlabel">Signal</th>
+					                <th class="thlabel">Requirement</th>
+					                <th class="thlabel">Notes</th>
+								</thead>
+								<tbody>
+								  <tr>
+									<td class="tdlabel">Minimum</td>
+									<td class="tddata">&leq; 650 mV</td>
+									<td class="tddata">Adapts min to device within this area</td>
+								  </tr>
+								  <tr>
+									<td class="tdlabel">Maximum</td>
+									<td class="tddata">&geq; 650mV</td>
+									<td class="tddata">Adapts max to device within this area</td>
+								  </tr>
+							  </tbody>
+							  </table>
+						</div><!--end of table wrapper div-->						
+						<br/>
+
+					<p><b>Dual Analog Jack Input (thumbsticks)</b></p>
+					
+					<p>Providing analog values for thumbsticks/movement for two axes requires two analog inputs (stick X and Y), crowding the device, and unnecessarily untying the two intertwined axes. The solution is to 
+					provide an input for a form of analog stick/joystick as a single input jack with two analog channels</p>
+					
+					<p><sup><b>A quick side note:</b> Thumbsticks traditionally provide <b>three (3)</b> values (2 analog axes in the form of analog stick X and Y, and a ditigal axis in the form of the thumbstick being 
+					pressed) - the XAC has separate inputs for the 'thumbstick button' as digital jack inputs</sup></p>
+					
+					<noscript><img src="img/xboxac/jack_dual_analog.jpg" class=" img-fluid" alt="Dual analog jack"></noscript>
+					<p class="figure-caption">Dual Analog jack connector -- 4-pole CTIA (image from <a href="http://fisherswiring2j.atuttasosta.it/" target="new">fisherswiring2j.atuttasosta.it/</a>)</p><br/>
+					
+					<p>Each R (ring) in the TRRS layout can be used to transmit analog values (variable voltage/resistance) for the two axes. While I don't have appropriate data on the values read, the petentiometer data can 
+					provide two analog values (one per axis) over the (aforementioned) rings of the jack</p>
+					
+				</div>
+					
+				<div class="py-4">
+					<a id="comms"><h2>Communications</h2></a><br/>
+						
+					<p>When looking at the motherboard, it's easy to see the antennae for the wireless communications (the same ones which XBOX gamepads use - proprietary 'WiFi', and Bluetooth)</p>
+
+					<noscript><img src="img/xboxac/antennae.jpg" class=" img-fluid" alt="board antennae"></noscript>
+					<p class="figure-caption">Board Antennae and micro coaxial connectors</p><br/>
+						
+					<p>These antennae are similar to the types used in modern laptops (and in phones); simple planar coils. Also, "laptop coaxial" connectors are on the board, (right side of above picture, 
+					also highlighted with smaller red boxes throughout the picture), presumably for expansion, or as a standard with the board for optional external signal boosting.</p>
+
+					<p>The main board also has a soldered connector/header for "RF DEBUG" and "NORMAL", presumably for diagnostics/testing the connectivity:</p>
+					
+					<noscript><img src="img/xboxac/rfdebug.jpg" class=" img-fluid" alt="RF DEBUG"></noscript>
+					<p class="figure-caption">Possible debug solder point for testing/diagnosing/priming</p><br/>
+
+					
+					<p>Currently I have no further information on the wireless/bluetooth properties of the XAC.</p>
+						
+				</div>
+
+
+				<div class="py-4">
+					<a id="furtherwork"><h2>Further work</h2></a><br/>
+						
+					<p>Further required work looking into the XAC for me would involve using <a href="https://www.wireshark.org/" target="new">Wireshark</a> to analyse the protocol used between the XAC and the PC or XBOX (
+					presumably this is standard USB with XInput format for data packets) and analysing the data used for the USB inputs (presumably this is simplified USB).</p>
+						
+					<p>I'd like to know more about a 6-pin connector which is not used on the main board - leading toward the network antennae and D-Pad circuitry. This has some white printed indicator on it for 
+					some form of expected external cable, device, or antennae:</p>
+						
+					<noscript><img src="img/xboxac/external.jpg" class=" img-fluid" alt="6 pins"></noscript>
+					<p class="figure-caption">6-pin connector on board with white print</p><br/>
+				</div>
+
+				</div>
+
+				<hr>
+		
+				<div class="py-5">
+					<a id="links"><h1>Further Information</h1></a>
+
+						<p>Links are correct at the time of writing</p><br/>
+						<ul>
+							<li><a href="https://www.xbox.com/en-US/accessories/controllers/xbox-adaptive-controller" target="new">Adaptive Controller</a> - Microsoft Corporation
+							<li><a href="https://twitter.com/MSFTEnable">Microsoft Accessibility (MSFTEnable)</a> - Microsoft Corporation, via <a href="https://www.twitter.com" target="new">twitter</a>
+							<li><a href="https://aka.ms/D4Xbox_XAC_Input_Spec" target="new">Xbox Adaptive Controller input specification for device makers v1.5</a> - Microsoft Corporation
+							<li><a href="https://www.yourcpf.org/wp-content/uploads/2018/05/XAC-FACTSHEET-1.pdf" target="new">XBOX Adaptice Controller - Fact Sheet</a> Cerebral Palsy Foundation (Your CPF)
+						</ul>
+				</div>
+		
+
+			</div>
+			
+			<div class="col-12 py-2">
+			 <a href="#top" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
+		  </div>
+			
+		</div>
+	  </div><!--end of container-fluid-->
+
+		<footer class="pt-3">
+			<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
+		</footer>
+	
+<!--other stylesheets-->
+	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="js/lazy-progressive-enhancement.min.js"></script>
+	  <script>
+		loadMedia(null, null, true)
+	  </script>
+  </body>
+	
+</html>
