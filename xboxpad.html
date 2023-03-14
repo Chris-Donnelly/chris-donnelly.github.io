@@ -1,126 +1,88 @@
-<!doctype html>
-<html lang="en">
-  <head>
-	<!-- Required meta tags -->
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en"> <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<!--Custom CSS -->  
-	<link rel="stylesheet" href="bootstrap-CD-style.css">
-	<!--Fonts-->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-	<!--Favicon-->
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-	
-	<title>Project: XBOX Controller USB</title>
-	  
-  </head>
-	
-  <body id="top">
-	  
+	<meta name="viewport" content="initial-scale=1, user-scalable=0">
+	<meta name="description" content="Chris Donnelly">
+	<meta name="keywords" content="Chris, Donnelly, Game Engine, C++">
+	<meta name="google" content="notranslate">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="favicon.ico">
+	<title>Chris Donnelly</title>
+	<meta property="og:description" content="Chris Donnelly's Portfolio and Resume website">
+	<link href="./style/style.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="./static/html5.js"></script><![endif]-->
+</head>
+<body>
+	<header>
+		<div class="name"><span class="last">Chris</span> <span class="first">Donnelly</span></div>
+		<div class="job">C++ Engine Developer (Systems) in Frankfurt Am Main, Germany</div>
+		<div class="info">
+			<!-- Icons by W3C Creation Lab -->
+			<img src="./img/github.png" alt="github"> <a href="https://github.com/chris-donnelly" target="_blank">chris-donnelly</a> &emsp;
+			<img src="./img/email.png" alt="email"> <a href="mailto:christdonnelly-phone@hotmail.co.uk" target="_blank">christdonnelly-phone@hotmail.co.uk</a> &emsp;
+			<img src="./img/linkedin.png" alt="email"> <a href="https://linkedin.com/in/chris-donnelly" target="_blank">LinkedIn</a> &emsp;
+			<img src="./img/youtube.png" alt="email"> <a href="https://www.youtube.com/channel/UCILTfquez0BqR3SV-UEpSiQ/videos" target="_blank">Youtube</a> &emsp;
+		</div>
+		<div class="neck"></div>
+	</header>
+	<div class="ram"></div>
+	<div class="wrapper">
+		<div class="container">
+				<a href="index.html">&laquo; back to main page</a><br><br>
 
-	<div class="container-fluid bg-grad">
-	
-	  <nav class="navbar navbar-expand-md sticky-top row">
-		  <a class="brand" href="index.html">Chris Donnelly</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="fas fa-bars fa-lg"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-				  <li class="nav-item">
-					<a class="nav-link" href="index.html">Home</a>
-				  </li>
-				  <li class="nav-item">
-					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
-				  </li>
-				  <li class="nav-item">
-					 <a class="nav-link" href="#contents">Project Contents</a>
-				  </li>
-					<li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-				</ul>
-		  </div>
-		</nav>
-		   
-		<div class="row py-sm-5">
-				    
-			<div class="col-md-10 offset-md-1 col-xl-3 offset-xl-0 mb-4 mb-sm-0 mr-lg-5">
-				<a id="contents"></a>
-				<div class="topbar bottombar py-4 py-lg-5 px-sm-5">
-					<h1 class="display-4">XBOX Controller USB Mod</h1>
-					<p class="lead">Convert XBOX controller to USB for PC</p>
-					<hr>
-					<p class="text-muted">Contents</p>
-					<ul class="contentlist">
-						<li><a href="#context">Context</a></li>
-						<li><a href="#spec">Specification</a></li>
-						<li><a href="#implementation">Implementation</a></li>
-						<li><a href="#links">Further information</a>
-					</ul>
-				</div>	
-			</div> 
-			
-			<div class="col-md-10 offset-md-1 col-lg-9 col-xl-6 p-sm-5">
-
-				<p class="lead">Convert the connection for an original XBOX (C-type or S-type) joypad to standard USB for PC</p>
-			   
-				<div class="py-5">
+				<div>
 				<a id="context"><h1>Context</h1></a>
 				
 				<p>Microsoft's original XBOX console was closer to a custom-built PC than most other consoles; it used intel chips, had a hard disk, and among other features, it used a properietary modification of USB as a connection for its peripherals. The controllers 
 				(the C-Type, S-Type, light gun, etc) use the USB protocol (and hardware) to communicate with the console, even though the physical shape of the connectors looks different, and an extra connector (and therefore wire) is present.
 				</p>
 				
-					<noscript><img src="img/xboxpad/xbox.jpg" class=" img-fluid" alt="Original XBOX"></noscript>
-				  <p class="figure-caption">The original XBOX, in all its glory (with customized USB connections, front x4)</p>
+				<img src="img/xboxpad/xbox.jpg" alt="Original XBOX">
+				<p class="imgtext">The original XBOX, in all its glory (with customized USB connections, front x4)</p>
 			
 				
-				<p>A majority of recent PC Games for Windows tend to use XInput as a standard lbary for gamepad input (although other libraries do exist and are used in some games) - and to ensure compatibility with devices, XInupt specifications require that 
-				pads conform to following values when reading from or writing to (in the case of vibrations), according to <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ee417001(v=vs.85).aspx" target="new">MSDN</a>:
+				<p>Here's we can see the first-generation XBOX gamepads use for their analog input values:
  
-					 <div class="table-responsive py-4">
-							<table class="table">
+					 <div>
+							<table class="data-table">
 								<thead>
 									<th></th>
-					                <th class="thlabel">Value Range</th>
-					                <th class="thlabel">Deadzone</th>
+					                <th>Value Range</th>
+					                <th>Deadzone</th>
 								</thead>
 								<tbody>
 								  <tr>
-									<td class="tdlabel">Left/Right Trigger</td>
-									<td class="tddata">0 .. 255 (single axis)</td>
-									<td class="tddata">&le; 30 (single axis)</td>
+									<td>Left/Right Trigger</td>
+									<td>0 .. 255 (single axis)</td>
+									<td>&le; 30 (single axis)</td>
 								  </tr>
 								  <tr>
-									<td class="tdlabel">Left thumbstick</td>
-									<td class="tddata">-32768 .. 32767 (per axis)</td>
-									<td class="tddata">-7849 .. 7849 (per axis)</td>
+									<td>Left thumbstick</td>
+									<td>-32768 .. 32767 (per axis)</td>
+									<td>-7849 .. 7849 (per axis)</td>
 								  </tr>
 								  <tr>
-									<td class="tdlabel">Right thumbstick</td>
-									<td class="tddata">-32768 .. 32767 (per axis)</td>
-									<td class="tddata">-8689 .. 8689 (per axis)</td>
+									<td>Right thumbstick</td>
+									<td>-32768 .. 32767 (per axis)</td>
+									<td>-8689 .. 8689 (per axis)</td>
 								  </tr>
 								  <tr>
-									<td class="tdlabel">Left/Right Vibration Motor</td>
-									<td class="tddata">0 .. 65535* (linear)</td>
-									<td class="tddata">n/a</td>
+									<td>Left/Right Vibration Motor</td>
+									<td>0 .. 65535 (linear)</td>
+									<td>unknown</td>
 								  </tr>
 								</tbody>
 							  </table>
-						 * <sup>This value is 0.0 .. 1.0 (floating-point) on XBOX 360</sup>
 						</div><!--end of table wrapper div-->
 					
 				<p>Anyway - the main point here is that games some games do not understand the data provided by 360 pads (such as analog triggers or buttons, or the range of the analog sticks may differ).</p>
 				
 				<p>One such example is <b>Tom Clancy's Splinter Cell: Chaos Theory</b> for Windows PC - D-Pad, button and thumbstick values are the same using XInput joypads, but the triggers of an XBOX 360 pad (0 .. 255 single axis analog triggers) don't 
-				function correctly in-game, as this game expects zero/nonzero values (binary/button triggers), not the range of the analog triggers.</p>
+				function correctly in-game, as this game expects zero/nonzero values (binary/button triggers), not the range of the analog triggers.</p><br>
 												
 			
-					<noscript><img src="img/xboxpad/chaos.jpg" class=" img-fluid" alt="Chaos Theory PC"></noscript>
-				  <p class="figure-caption">Splinter Cell: Chaos Theory on PC doesn't work well with XBOX 360 XInput analog triggers</p>
+					<img src="img/xboxpad/chaos.jpg" alt="Chaos Theory PC">
+				  <p class="imgtext">Splinter Cell: Chaos Theory on PC doesn't work well with XBOX 360 XInput analog triggers</p>
 				
 				
 				<p>It could be argued that <i>technically</i> the 360 triggers work as they provide a zero/nonzeero pattern for being pressed, but this is still a problem, as the value difference between off and on (not pressed vs pressed) is 1 unit of 
@@ -133,11 +95,11 @@
 				
 				<hr>
 				
-				<div class="py-5">
+				<div>
 					<a id="spec"><h1>Specification</h1></a>
 					<p>Requirements:</p>
 
-					<ul>
+					<ul class="contentlist">
 						<li>XBOX controller (S-type or C-type) from first generation XBOX, including the 'breakaway' connector
 						<li>Wire-stripper or wire-stripping blade (my ever-trusted 'Swiss-Army' knife)
 						<li>Soldering Iron and solder
@@ -154,17 +116,17 @@
 				
 				<hr>
 				
-				<div class="py-5">
+				<div>
 				<a id="implementation"><h1>Implementation</h1></a>
 				
-				<ul>
+				<ul class="contentlist">
 					<li><a href="#padanatomy">The XBOX joypad cable</a></li>
 					<li><a href="#stripping">Cutting and stripping the cables</a></li>
 					<li><a href="#soldering">Soldering and finishing</a></li>
 					<li><a href="#drivers">Installing &amp; configuring drivers/software</a></li>
 				</ul>
 				
-					<div class="py-4">
+					<div>
 				
 						<a id="padanatomy"><h2>The XBOX joypad Cable</h2></a>
 
@@ -172,14 +134,14 @@
 						display (remember, this console was designed to use CRT displays). Just by looking at the connector, it's not too obvious from the shape that this is USB-based, but it is possible to see the 5 connector plates (like the 4 standard USB 
 						plates on a connector).</p>
 
-						<noscript><img src="img/xboxpad/xboxusb.jpg" class=" img-fluid" alt="XBOX Connector anatomy"></noscript>
-						  <p class="figure-caption">The connectors and lines in an XBOX controller, and their purposes</p>               
+						<img src="img/xboxpad/xboxusb.jpg" alt="XBOX Connector anatomy">
+						  <p class="imgtext">The connectors and lines in an XBOX controller, and their purposes</p>               
 
 						<p>The extra cable (yellow / VSYNC) is used for timing with special controller accessories (such as the light gun etc) to time the controller with the vertical screen blank; for the purposes of using the joypad, this cable can be removed, or 
 						at least disabled.</p>
 					</div>
 					
-					<div class="py-4">
+					<div>
 	
 						<a id="stripping"><h2>Cutting and stripping the cables</h2></a>
 
@@ -191,12 +153,12 @@
 								
 					</div>
 					
-					<div class="py-4">
+					<div>
 					
 						<a id="soldering"><h2>Soldering and finishing</h2></a><br/>
 
 						<p>The cutting and stripping above left me with:</p>
-						<ul>
+						<ul class="contentlist">
 							<li>XBOX controller, with its wire cut and stripped back, near to the connector
 							<li>XBOX connector and 50mm of cable, internals stripped back by approximately 10mm
 							<li>USB Type A Male connector with 50mm of cable, all four internal lines stripped back
@@ -205,20 +167,20 @@
 
 						<p>Here's how to connect each wire:</p>
 						
-						<div class="table-responsive py-4">
-							<table class="table">
+						<div>
+							<table class="data-table">
 								<thead>
-									<th class="thlabel">PWR</th>
-									<th class="thlabel">D-</th>
-									<th class="thlabel">D+</th>
-									<th class="thlabel">GND</th>
+									<th>PWR</th>
+									<th>D-</th>
+									<th>D+</th>
+									<th>GND</th>
 								</thead>
 								<tbody>
 								  <tr>
-									<td class="tddata">red - red</td>
-									<td class="tddata">white - white</td>
-									<td class="tddata">green - green</td>
-									<td class="tddata">black - black</td>
+									<td>red - red</td>
+									<td>white - white</td>
+									<td>green - green</td>
+									<td>black - black</td>
 								  </tr>
 								</tbody>
 							  </table>
@@ -231,14 +193,14 @@
 						<p>The XBOX Connector (goes into the console) and the extension cable FEMALE connector were soldered together also by matching types (again, sleeved both internally and externally).</p>
 
 						
-						<noscript><img src="img/xboxpad/female.jpg" class=" img-fluid" alt="Female USB extension to male xbox connector"></noscript>
-						  <p class="figure-caption">The female extension soldered to the male console connector</p>
+						<img src="img/xboxpad/female.jpg" alt="Female USB extension to male xbox connector">
+						  <p class="imgtext">The female extension soldered to the male console connector</p>
 		
 						<p>Effectively, this creates an extension (or passthrough) cable at teh controller's cut point, which is joined together by the opposing ends of the USB extension cable when being used on the XBOX, or allows the pad to be inserted into a 
 						standard PC USB port.</p>
 					   
-						<noscript><img src="img/xboxpad/final.jpg" class=" img-fluid" alt="Female USB extension to male xbox connector"></noscript>
-						  <p class="figure-caption">The PC-capable controller, extended to the XBOX connector - tested and functional on XBOX and PC</p>
+						<img src="img/xboxpad/final.jpg" alt="Female USB extension to male xbox connector">
+						  <p class="imgtext">The PC-capable controller, extended to the XBOX connector - tested and functional on XBOX and PC</p>
 
 						<p>The process of installing the XBCD drivers may vary across versions of Windows, and may vary as new releases become available, so please refer to the <a href="" target="new">XBCD</a> website for instructions. Mine were installed under a 
 						'unsigned drivers' boot of Windows to enable the pad to work in Windows 8/10</p>
@@ -250,38 +212,21 @@
 		
 				<hr>
 		
-				<div class="py-5">
+				<div>
 					<a id="links"><h1>Further Information</h1></a>
 
-						<ul>
+						<ul class="contentlist">
 							<li>"Hacking the Xbox: An introduction to reverse engineering" by Andrew "Bunnie" Huang (No Starch Press, ISBN 1593270291) (<a href="http://amzn.eu/aeBMutW" target="new">Amazon</a> / Free copy from <a href="https://bunniefoo.com/nostarch/HackingTheXbox_Free.pdf" target="new">Author's Website</a>)
 							<li><a href="https://www.s-config.com/xbcd-original-xbox-controllers-win10/" target="new">XBCD</a> - XBCD - Original Xbox Controllers with Win10-8 - S-Config
 						</ul>
 				</div>
-		
 
-			</div>
-			
-			<div class="col-12 py-2">
-			 <a href="#top" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
-		  </div>
-			
+
+
 		</div>
-	  </div><!--end of container-fluid-->
-
-		<footer class="pt-3">
-			<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
-		</footer>
-	
-<!--other stylesheets-->
-	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="js/lazy-progressive-enhancement.min.js"></script>
-	  <script>
-		loadMedia(null, null, true)
-	  </script>
-  </body>
-	
+	</div>
+	<footer>
+		Made with &hearts;. Based on work inspired by <a href="//github.com/posquit0/Awesome-CV">Awesome-CV</a>, and with the help of <a href="//harold.kim/">@stypr</a>
+	</footer>
+   </body>
 </html>

@@ -1,77 +1,47 @@
-<!doctype html>
-<html lang="en">
-  <head>
-	<!-- Required meta tags -->
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en"> <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<!--Custom CSS -->
-	<link rel="stylesheet" href="bootstrap-CD-style.css">
-	<!--Fonts-->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-	<!--Favicon-->
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="initial-scale=1, user-scalable=0">
+	<meta name="description" content="Chris Donnelly">
+	<meta name="keywords" content="Chris, Donnelly, Game Engine, C++">
+	<meta name="google" content="notranslate">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="favicon.ico">
+	<title>Chris Donnelly</title>
+	<meta property="og:description" content="Chris Donnelly's Portfolio and Resume website">
+	<link href="./style/style.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="./static/html5.js"></script><![endif]-->
+</head>
+<body>
+	<header>
+		<div class="name"><span class="last">Chris</span> <span class="first">Donnelly</span></div>
+		<div class="job">C++ Engine Developer (Systems) in Frankfurt Am Main, Germany</div>
+		<div class="info">
+			<!-- Icons by W3C Creation Lab -->
+			<img src="./img/github.png" alt="github"> <a href="https://github.com/chris-donnelly" target="_blank">chris-donnelly</a> &emsp;
+			<img src="./img/email.png" alt="email"> <a href="mailto:christdonnelly-phone@hotmail.co.uk" target="_blank">christdonnelly-phone@hotmail.co.uk</a> &emsp;
+			<img src="./img/linkedin.png" alt="email"> <a href="https://linkedin.com/in/chris-donnelly" target="_blank">LinkedIn</a> &emsp;
+			<img src="./img/youtube.png" alt="email"> <a href="https://www.youtube.com/channel/UCILTfquez0BqR3SV-UEpSiQ/videos" target="_blank">Youtube</a> &emsp;
+		</div>
+		<div class="neck"></div>
+	</header>
+	<div class="ram"></div>
+	<div class="wrapper">
+		<div class="container">
+				<a href="index.html">&laquo; back to main page</a><br><br>
 
-	<title>Project: Business Card Raytracer</title>
+				<span class="subtext"><i>Looking for code samples for this project? Use the left link "Code on GitHub", or simply follow <a href="https://github.com/Chris-Donnelly/BusinessCardRaytracer" target="_blank">this&#x1F5D7</a> link</i></span>
+				<hr>
 
-  </head>
-
-  <body id="top">
-
-
-	<div class="container-fluid bg-grad">
-	
-	  <nav class="navbar navbar-expand-md sticky-top row">
-		  <a class="brand" href="index.html">Chris Donnelly</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="fas fa-bars fa-lg"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-				  <li class="nav-item">
-					<a class="nav-link" href="index.html">Home</a>
-				  </li>
-				  <li class="nav-item">
-					 <a class="nav-link" href="index.html#portfolio">Portfolio</a>
-				  </li>
-				  <li class="nav-item">
-					 <a class="nav-link" href="#contents">Project Contents</a>
-				  </li>
-					<li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-				</ul>
-		  </div>
-		</nav>
-		   
-		<div class="row py-sm-5"><!--row containing the content-->
-			
-			<div class="col-md-10 offset-md-1 col-xl-3 offset-xl-0 mb-4 mb-sm-0 mr-lg-5"><!--title section-->
-				<a id="contents"></a>
-				<div class="topbar bottombar py-4 py-lg-5 px-sm-5">
-					<h1 class="display-4">Business Card Raytracer</h1>
-					<p class="lead">Low code-footprint raytracer</p>
-					<hr>
-					<p class="text-muted">Contents</p>
-					<ul class="contentlist">
-						<li><a href="#context">Context</a></li>
-						<li><a href="#spec">Specification</a></li>
-						<li><a href="#implementation">Implementation</a></li>
-						<li><a href="#links">Further information</a>
-					</ul>
-				</div>	
-			</div> <!--title section end-->
-
-			<div class="col-md-10 offset-md-1 col-lg-9 col-xl-6 p-sm-5"><!--main content section-->
-
-				<p class="lead" id="context">Raytracing a scene in a small section of code (small enough to fit on a business card).</p>
+				<h1>Raytracing a scene in a small section of code</h1>
+				<p>(small enough to fit on a business card)</p><br>
 
 				<p>Based on a great article by <a href="http://fabiensanglard.net/rayTracing_back_of_business_card/" target="new">Fabien Sanglard</a>, where he analyses the answer to a 1984 <code>comp.graphics</code> challenge set by Paul Heckbert,
 				this mini-project gives a unique opportunity to tinker with a tiny and efficient raytracer, designed to be as small as possible.</p>
 				
-				<noscript><img src="img/raytracer/main.jpg" class="img-fluid" alt="edited Raytracer Output"></noscript>
+				<img src="img/raytracer/main.jpg" class="img-fluid" alt="edited Raytracer Output">
 				
-				<p class="figure-caption">The final output from the raytracer, with edited colours, name and resolution (<a href="img/raytracer/main.jpg" target="new">full resolution</a>)</p>
+				<p class="imgtext">The final output from the raytracer, with edited colours, name and resolution (<a href="img/raytracer/main.jpg" target="new">full resolution</a>)</p>
 
 				<p>The original code (expanded for readability, highlighted thanks to <a href="http://hilite.me/" target="new">hilite.me</a>):</p>
 
@@ -207,20 +177,20 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 
 					<p>The output (stdout) is piped to a <a href="https://en.wikipedia.org/wiki/Netpbm_format" target="new">PPM</a> image. Converted to JPEG:</p>
 
-					<noscript><img src="img/raytracer/aek.jpg" alt="edited Raytracer Output" /></noscript>
-					  <p class="figure-caption">The output image in JPEG (original image is in PPM format)</p>
+					<img src="img/raytracer/aek.jpg" alt="edited Raytracer Output" />
+					<p class="imgtext">The output image in JPEG (original image is in PPM format)</p>
 
 					<p>So I decided to take a look at some of the workings, and change a few things.</p>
 					
 					
 				<hr>
 					
-				<div class="py-5">
+				<div>
 
 					<a id="spec"><h1>Specification</h1></a>
 					<h4>Requirements:</h4>
 
-					<ul>
+					<ul class="contentlist">
 						<li>Windows 10 with <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="new">WSL</a> or GNU compatible or VM with the following packages:
 						<ul>
 							<li>gcc
@@ -236,7 +206,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 					
 				<hr>
 					
-				<div class="py-5">
+				<div>
 					
 				    <a id="implementation"><h1>Implementation (changes)</h1></a>
 
@@ -249,7 +219,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 				
 					<hr>
 					
-					<div class="py-4">
+					<div>
 						<a id="floor"><h2>The Floor</h2></a> 
 						<p>The 'floor' is found in the raytracer by measuring downward-pointing rays. The texture is created by the following code section (Lines 91-94):</p>
 
@@ -267,7 +237,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 
 					</div>
 					
-					<div class="py-4">
+					<div>
 						<a id="dimensions"><h2>Image Dimensions</h2></a>
 						<p>The image dimensions are used several times across the program; it sets the image file dimensions, and defines the horizontal and vertical count of rays used (although the amount ogf rays cast is 
 						not <span style="font-family:monospace;">horizontal &times; vertical</span> - 64 rays are cast per pixel for smoothing etc).</p>
@@ -298,7 +268,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 						
 					</div>
 
-					<div class="py-4">
+					<div>
 						<a id="name"><h2>The Name</h2></a>
 						<p>The name is the main focus of the scene -- created from a number of reflective spheres, based on a series of bit masks in the code. These values are found in an array at line 40:</p>
 						<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><br/><pre style="margin: 0; line-height: 125%">	i G[]<span style="color: #333333">=</span>{ <span style="color: #0000DD; font-weight: bold">247570</span>,<span style="color: #0000DD; font-weight: bold">280596</span>,<span style="color: #0000DD; font-weight: bold">280600</span>,<span style="color: #0000DD; font-weight: bold">249748</span>,<span style="color: #0000DD; font-weight: bold">18578</span>,<span style="color: #0000DD; font-weight: bold">18577</span>,<span style="color: #0000DD; font-weight: bold">231184</span>,<span style="color: #0000DD; font-weight: bold">16</span>,<span style="color: #0000DD; font-weight: bold">16</span> };
@@ -317,7 +287,7 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 						
 						<p>
 						
-						<div class="table-responsive py-4">
+						<div class="data-table">
 							<table class="table">
 							  <thead>
 								<th>Index</th>
@@ -427,39 +397,17 @@ i <span style="color: #0066BB; font-weight: bold">main</span>() {
 
 				<hr>
 				
-				<div class="py-5">
+				<div>
 					<a id="links"><h1>Further Information</h1></a>
-						<ul>
-							<li><a href="https://github.com/Chris-Donnelly/BusinessCardRaytracer" target="new">BusinessCardRaytracer</a>, the modified version on GitHub</li>
-						</ul>
-						<ul>
+						<ul class="contentlist">
 							<li><a href="http://fabiensanglard.net/rayTracing_back_of_business_card/" target="new">Raytracing</a>, by Fabien Sanglard, 20/9/2013</li>
 						</ul>
 				</div>
-				
-			</div>
 
-				<div class="col-12 py-2">
-					 <a href="#top" class="btn btn-cd float-right" title="Go to top"><span class="fas fa-chevron-up fa-lg"></span></a>
-				</div>
-			
-			</div><!--row end-->
-		</div><!--end of container-fluid-->
-		
-
-		<footer class="pt-3">
-			<p class="small">&copy; 2018 - Website design by Emma Davies, content by Chris Donnelly<p>
-		</footer>
-
-	<!--other stylesheets-->
-	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="js/lazy-progressive-enhancement.min.js"></script>
-	  <script>
-		loadMedia(null, null, true)
-	  </script>
-  </body>
-
+		</div>
+	</div>
+	<footer>
+		Made with &hearts;. Based on work inspired by <a href="//github.com/posquit0/Awesome-CV">Awesome-CV</a>, and with the help of <a href="//harold.kim/">@stypr</a>
+	</footer>
+   </body>
 </html>
